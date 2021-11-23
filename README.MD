@@ -10,10 +10,10 @@
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
-| 1906399650 | Hafiz Bhadrika Alamsyah | 1 2 3 |
-| 1906353580 | Herbiyona | 4 5 6 |
-| 1906399000 | Aisyah Indonesia Mazaya Zayn | 4 5 6 |
-| 1906399902 | Aisha Salsabila | 4 5 6 |
+| 1906399650 | Hafiz Bhadrika Alamsyah | Laman login dan logout |
+| 1906353580 | Herbiyona | Setup model |
+| 1906399000 | Aisyah Indonesia Mazaya Zayn | Inisialisasi spring boot & github dan laman homepage |
+| 1906399902 | Aisha Salsabila | Setup model |
 ---
 **Kontrak Tahap 2 Tugas Akhir**
 
