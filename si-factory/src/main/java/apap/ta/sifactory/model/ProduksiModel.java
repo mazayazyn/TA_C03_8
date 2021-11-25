@@ -62,4 +62,9 @@ public class ProduksiModel implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = false)
     private MesinModel mesin;
+
+    //Relasi dengan Pegawai
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_pegawai", referencedColumnName = "id_pegawai", nullable = false)
+    private PegawaiModel pegawai;
 }

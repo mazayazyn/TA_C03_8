@@ -10,17 +10,17 @@
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
-| 1906399650 | Hafiz Bhadrika Alamsyah | Laman login dan logout |
-| 1906353580 | Herbiyona | Setup model |
-| 1906399000 | Aisyah Indonesia Mazaya Zayn | Inisialisasi spring boot & github dan laman homepage |
-| 1906399902 | Aisha Salsabila | Setup model |
+| 1906399650 | Hafiz Bhadrika Alamsyah | 2, 3 |
+| 1906353580 | Herbiyona | Setup model (Mesin, Produksi, Request Update Item) |
+| 1906399000 | Aisyah Indonesia Mazaya Zayn | Inisialisasi Spring Boot & Github, 1 |
+| 1906399902 | Aisha Salsabila | Setup model (Delivery, Pegawai, Role) |
 ---
 **Kontrak Tahap 2 Tugas Akhir**
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
-| 1906399650 | Hafiz Bhadrika Alamsyah | x x x |
-| 1906353580 | Herbiyona | x x x |
-| 1906399000 | Aisyah Indonesia Mazaya Zayn | x x x |
-| 1906399902 | Aisha Salsabila | x x x |
+| 1906399650 | Hafiz Bhadrika Alamsyah | 7 9 |
+| 1906353580 | Herbiyona | 4 13 |
+| 1906399000 | Aisyah Indonesia Mazaya Zayn | 14 15 |
+| 1906399902 | Aisha Salsabila | 5 11 |
 ---
