@@ -58,4 +58,9 @@ public class RequestUpdateItemModel implements Serializable{
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi", nullable = false)
     private ProduksiModel produksi;
+
+    //Relasi dengan Delivery
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = false)
+    private DeliveryModel delivery;
 }
