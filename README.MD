@@ -6,7 +6,7 @@
 * **Aisha Salsabila** - *1906399902* - *C*
 
 ---
-##Link Heroku: https://ta-c03-8.herokuapp.com
+**Link Heroku: https://ta-c03-8.herokuapp.com
 ---
 **Kontrak Tahap 1 Tugas Akhir**
 
