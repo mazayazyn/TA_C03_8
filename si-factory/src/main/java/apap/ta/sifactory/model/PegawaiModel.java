@@ -44,9 +44,9 @@ public class PegawaiModel {
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     private RoleModel role;
 
-    //Relasi dengan Delivery
-    @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)
-    private List<DeliveryModel> listDelivery;
+//    //Relasi dengan Delivery
+//    @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)
+//    private List<DeliveryModel> listDelivery;
 
     //Relasi dengan Produksi
     @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)

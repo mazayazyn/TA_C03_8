@@ -42,9 +42,9 @@ public class ProduksiModel implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggal_produksi;
 
-    @NotNull
-    @Column(nullable = false)
-    private Integer id_pegawai;
+//    @NotNull
+//    @Column(nullable = false)
+//    private Integer id_pegawai;
 
     @NotNull
     @Column(nullable = false)
