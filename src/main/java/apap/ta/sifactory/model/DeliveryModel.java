@@ -23,10 +23,10 @@ public class DeliveryModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_delivery;
 
-//    //Relasi dengan Pegawai
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @JoinColumn(name = "id_pegawai", referencedColumnName = "id_kurir", nullable = false) //ini bener gak ya penulisan id_kurir nya di referencedColumnName?
-//    private PegawaiModel pegawai;
+    //Relasi dengan Pegawai
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_kurir", referencedColumnName = "id_pegawai", nullable = false)
+    private PegawaiModel pegawai;
 
 //    //Merujuk ke id_cabang di SI-Retail
 //    @NotNull
