@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="si-factory" />
+        <module name="TA_C03_8" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="si-factory" target="11" />
+      <module name="TA_C03_8" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="TA_C03_8" options="-parameters" />
       <module name="si-factory" options="-parameters" />
     </option>
   </component>

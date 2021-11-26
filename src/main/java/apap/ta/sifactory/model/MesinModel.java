@@ -29,9 +29,9 @@ public class MesinModel implements Serializable{
     private String nama;
 
     //merujuk ke id_kategori item pada si-item
-//    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_kategori;
+    @NotNull
+    @Column(nullable = false)
+    private Integer id_kategori;
 
     @NotNull
     @Column(nullable = false)
