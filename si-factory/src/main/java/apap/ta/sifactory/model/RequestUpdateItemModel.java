@@ -50,9 +50,9 @@ public class RequestUpdateItemModel implements Serializable{
     @Column(nullable = false)
     private boolean executed;
 
-    @NotNull
-    @Column(nullable = false)
-    private Integer id_delivery;
+//    @NotNull
+//    @Column(nullable = false)
+//    private Integer id_delivery;
 
     //Relasi dengan Produksi
     @OneToOne(fetch = FetchType.LAZY)
