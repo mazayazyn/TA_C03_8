@@ -24,10 +24,10 @@ public class ProduksiModel implements Serializable{
     private Integer id_produksi;
 
     //merujuk ke siitem
-//    @NotNull
-//    @GeneratedValue(generator = "system-uuid")
-//    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-//    private Integer id_item;
+    @NotNull
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private Integer id_item;
 
     @NotNull
     @Column(nullable = false)
