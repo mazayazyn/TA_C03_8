@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pegawai</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Tambah User Baru</div>
+                <div class="card-body">
+                    <form th:action="@{/add-pegawai}" method="POST">
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" />
+
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tanggal_lahir" class="form-control" />
+
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" />
+
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" />
+
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" pattern="^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$" title="password must contain number, uppercase, lowercase, symbol and at least 8 characters"/>
+
+                        <label>Role</label>
+                        <select name="role" class="form-control">
+                            <option selected value="">-- Pilih Role --</option>
+                            <option th:each="role : ${listRole}" th:value="${role.id_role}" th:text="${role.nama_role}"></option>
+                        </select>
+                        <br>
+                        <button type="submit" class="btn btn-warning">Simpan</button>
+                        <a class="btn btn-link" href="/">Home</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
