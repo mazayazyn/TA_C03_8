@@ -1,10 +1,13 @@
 package apap.ta.sifactory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,9 +28,24 @@ public class PegawaiModel {
     private Integer id_pegawai;
 
     @NotNull
+    @Size(max = 50)
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+    @NotNull
     @Size(max=50)
     @Column(nullable= false)
     private String nama;
+
+    @NotNull
+    @Size(max = 50)
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @NotNull
+    @Lob
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @NotNull
     @Column(nullable = false)
@@ -39,14 +57,21 @@ public class PegawaiModel {
     @ColumnDefault(value = "0") //kepikiran ini di set 0, perlu ngga ya?
     private Integer counter;
 
+//    //Relasi dengan Role
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
+//    private RoleModel role;
+
     //Relasi dengan Role
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private RoleModel role;
 
-//    //Relasi dengan Delivery
-//    @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)
-//    private List<DeliveryModel> listDelivery;
+    //Relasi dengan Delivery
+    @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)
+    private List<DeliveryModel> listDelivery;
 
     //Relasi dengan Produksi
     @OneToMany(mappedBy = "pegawai", fetch = FetchType.LAZY)
