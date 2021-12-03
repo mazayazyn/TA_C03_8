@@ -1,9 +1,12 @@
 package apap.ta.sifactory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,7 +33,13 @@ public class RoleModel {
     @Column(nullable = false)
     private Integer baseWages;
 
-    //Relasi dengan Role
+//    //Relasi dengan Pegawai
+//    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+//    private List<PegawaiModel> listPegawai;
+
+    //Relasi dengan Pegawai
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private List<PegawaiModel> listPegawai;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<PegawaiModel> pegawaiRole;
 }
