@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Tugas Akhir
 ## Authors
 * **Hafiz Bhadrika Alamsyah** - *1906399650* - *C*
@@ -55,4 +54,3 @@
 | 1906353580 | Herbiyona | 4 13 |
 | 1906399000 | Aisyah Indonesia Mazaya Zayn | 14 15 |
 | 1906399902 | Aisha Salsabila | 5 11 |
->>>>>>> 6dab68d6406da19d4a58ff08883b16a783137654
