@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/pegawai")
 public class PegawaiController {
     @Autowired
     private PegawaiService pegawaiService;
@@ -33,6 +34,7 @@ public class PegawaiController {
 
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+        pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
         model.addAttribute("pegawai", pegawai);
         return "redirect:/";
