@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+<div sec:authorize="hasAnyAuthority('ADMIN')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-admin"></nav>
 
@@ -57,7 +57,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_FACTORY_MANAGER')">
+<div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
 
@@ -102,7 +102,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAuthority('ROLE_STAFF_GUDANG')">
+<div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
 
@@ -147,7 +147,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_STAFF_KURIR')">
+<div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
 
@@ -192,7 +192,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_STAFF_OPERASIONAL')">
+<div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
 

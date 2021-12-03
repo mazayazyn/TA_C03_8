@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/add-pegawai").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/pegawai/add-pegawai").hasAnyAuthority("ADMIN")
 //                .antMatchers("/factorymanager").hasAuthority("FACTORY_MANAGER")
 //                .antMatchers("/gudang").hasAuthority("STAFF_ GUDANG")
 //                .antMatchers("/kurir").hasAuthority("STAFF_KURIR")
@@ -45,22 +45,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(encoder())
                 .withUser("admin-si").password(encoder().encode("adminsifactory"))
                 .roles("ADMIN");
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("factory-manager-si").password(encoder().encode("factorymanager"))
-                .roles("FACTORY_MANAGER");
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("staff-gudang-si").password(encoder().encode("staffgudang"))
-                .roles("STAFF_GUDANG");
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("staff-kurir-si").password(encoder().encode("staffkurir"))
-                .roles("STAFF_KURIR");
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("staff-operasional-si").password(encoder().encode("staffoperasional"))
-                .roles("STAFF_OPERASIONAL");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("factory-manager-si").password(encoder().encode("factorymanager"))
+//                .roles("FACTORY_MANAGER");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("staff-gudang-si").password(encoder().encode("staffgudang"))
+//                .roles("STAFF_GUDANG");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("staff-kurir-si").password(encoder().encode("staffkurir"))
+//                .roles("STAFF_KURIR");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("staff-operasional-si").password(encoder().encode("staffoperasional"))
+//                .roles("STAFF_OPERASIONAL");
 
     }
 
