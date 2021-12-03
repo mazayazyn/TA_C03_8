@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Home </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+</head>
+
+<body>
+<div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hi Yona, as a</span>
+                            <br>
+                            <div class="animated-info">
+                                <span class="animated-item-admin">Admin</span>
+                            </div>
+                        </h1>
+
+                        <p>Description About Role Description About Role Description About Role Description About Role
+                            Description About Role Description About Role Description About Role Description About Role</p>
+
+                        <div class="custom-btn-group mt-4">
+                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Buat Pengguna</a>
+                            <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">Daftar Pegawai</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+
+<div sec:authorize="hasAnyAuthority('ROLE_FACTORY_MANAGER')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hi Azza, as a</span>
+                            <br>
+                            <div class="animated-info">
+                                <span class="animated-item-manager">Factory Manager</span>
+                            </div>
+                        </h1>
+
+                        <p>Yuk Ajukan Item kepada SI-Business. Lalu, mereka akan memproses request kamu ke SI-Item. Semakin cepat kamu request, semakin cepat juga request kamu selesai dikerjakan.</p>
+
+                        <div class="custom-btn-group mt-4">
+                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Propose Item</a>
+                            <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">List Item</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+
+<div sec:authorize="hasAuthority('ROLE_STAFF_GUDANG')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hi Aisha, as a</span>
+                            <br>
+                            <div class="animated-info">
+                                <span class="animated-item-gudang">Staff Gudang</span>
+                            </div>
+                        </h1>
+
+                        <p>Description About Role Description About Role Description About Role Description About Role
+                            Description About Role Description About Role Description About Role Description About Role</p>
+
+                        <div class="custom-btn-group mt-4">
+                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Daftar Request Update Item</a>
+                            <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">List Item</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+
+<div sec:authorize="hasAnyAuthority('ROLE_STAFF_KURIR')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hi Habe, as a</span>
+                            <br>
+                            <div class="animated-info">
+                                <span class="animated-item-kurir">Staff Kurir</span>
+                            </div>
+                        </h1>
+
+                        <p>Description About Role Description About Role Description About Role Description About Role
+                            Description About Role Description About Role Description About Role Description About Role</p>
+
+                        <div class="custom-btn-group mt-4">
+                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Daftar Delivery</a>
+                            <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">Pengiriman Delivery</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+
+<div sec:authorize="hasAnyAuthority('ROLE_STAFF_OPERASIONAL')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hi Apap, as a</span>
+                            <br>
+                            <div class="animated-info">
+                                <span class="animated-item-admin">Staff Operasional</span>
+                            </div>
+                        </h1>
+
+                        <p>Description About Role Description About Role Description About Role Description About Role
+                            Description About Role Description About Role Description About Role Description About Role</p>
+
+                        <div class="custom-btn-group mt-4">
+                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Daftar Delivery</a>
+                            <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">Assign Delivery Kurir</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Headroom.js"></script>
+<script src="js/jQuery.headroom.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
