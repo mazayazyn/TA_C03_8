@@ -80,4 +80,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        System.out.println(encoder.encode("habehabe1!"));
 //    }
 }
-
