@@ -12,7 +12,6 @@
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
-<<<<<<< HEAD
 | 1906399650 | Hafiz Bhadrika Alamsyah | 2, 3 |
 | 1906353580 | Herbiyona | Setup model (Mesin, Produksi, Request Update Item), 16 |
 | 1906399000 | Aisyah Indonesia Mazaya Zayn | Inisialisasi Spring Boot, Github, Heroku, dan 1 |
