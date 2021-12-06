@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/gudang").hasAuthority("STAFF_ GUDANG")
 //                .antMatchers("/kurir").hasAuthority("STAFF_KURIR")
 //                .antMatchers("/operasional").hasAuthority("STAFF_OPERASIONAL")
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
