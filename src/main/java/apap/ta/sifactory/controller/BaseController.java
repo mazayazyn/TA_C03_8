@@ -18,8 +18,6 @@ public class BaseController {
 
     @RequestMapping("/")
     private String home(Model model, @AuthenticationPrincipal UserDetails currentUser) {
-//        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
-//        System.out.print(role);
         PegawaiModel pegawai = (PegawaiModel) pegawaiDB.findByUsername(currentUser.getUsername());
         model.addAttribute("currentPegawai", pegawai);
         return "home";
