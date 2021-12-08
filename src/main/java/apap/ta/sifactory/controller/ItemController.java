@@ -6,7 +6,9 @@ import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 import apap.ta.sifactory.service.ItemService;
 import apap.ta.sifactory.service.MesinService;
+import apap.ta.sifactory.service.PegawaiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class ItemController {
     @Autowired
     private ItemRestService itemRestService;
 
+    @Autowired
+    private PegawaiService pegawaiService;
+  
     //Fitur 4
     @GetMapping("/propose-item")
     private String proposeItemForm(Model model) {
@@ -49,6 +54,9 @@ public class ItemController {
             model.addAttribute("cause", "item tidak berhasil disampaikan ke SI-BUSINESS");
             return "error-page";
         }
+
+        String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
+        pegawaiService.addCounterPegawai(nama);
         return "success-page";
     }
 
