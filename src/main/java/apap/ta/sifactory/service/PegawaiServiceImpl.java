@@ -24,6 +24,22 @@ public class PegawaiServiceImpl implements PegawaiService{
     }
 
     @Override
+    public PegawaiModel getPegawai(String username) {
+        PegawaiModel getPegawai = pegawaiDB.findByUsername(username);
+        if(getPegawai!=null){//jika ada pegawai dengan username
+            return getPegawai;
+        }
+        return null;
+    }
+
+    @Override
+    public void addCounterPegawai(String username) {
+        PegawaiModel pegawai = getPegawai(username);
+        Integer counterb = pegawai.getCounter();
+        pegawai.setCounter(counterb+1);
+    }
+
+    @Override
     public String encrypt(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);

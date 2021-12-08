@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
-    <title> Home </title>
+    <title>Home</title>
     <head th:fragment="css">
-        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{css/unicons.css}"/>
         <link rel="stylesheet" th:href="@{css/owl.carousel.min.css}"/>
         <link rel="stylesheet" th:href="@{css/owl.theme.default.min.css}"/>
@@ -18,48 +17,41 @@
                 crossorigin="anonymous"
         ></script>
         <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
-        <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
-        <script th:src="@{/js/popper.min.js}"></script>
         <script th:src="@{/js/bootstrap.min.js}"></script>
         <script th:src="@{/js/Headroom.js}"></script>
         <script th:src="@{/js/jQuery.headroom.js}"></script>
         <script th:src="@{/js/owl.carousel.js}"></script>
-        <script th:src="@{/js/smoothscroll.js}"></script>
         <script th:src="@{/js/custom.js}"></script>
+
     </head>
 </head>
 
 <body>
 <nav th:fragment="navbar-admin" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
+        <a class="navbar-brand" href="/"> SI-Factory</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-admin" aria-controls="navbarNav-admin" aria-expanded="false"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav-admin">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a href="/" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
+                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
+                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link"><span data-hover="Buat Pengguna">Buat Pengguna</span></a>
+                    <a th:href="@{/}" class="nav-link"><span data-hover="Buat Pengguna">Buat Pengguna</span></a>
                 </li>
-                <!--                <li class="nav-item">-->
-                <!--                    <a href="/" class="nav-link"><span data-hover="Login">Login</span></a>-->
-                <!--                </li>-->
                 <li class="nav-item">
-                    <a href="/logout" class="nav-link"><span data-hover="Logout">Logout</span></a>
+                    <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-lg-auto">
@@ -80,8 +72,6 @@
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-factory-manager" aria-controls="navbarNav-factory-manager" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -126,8 +116,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-staff-gudang" aria-controls="navbarNav-staff-gudang" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav-staff-gudang">
@@ -170,8 +158,6 @@
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-staff-kurir" aria-controls="navbarNav-staff-kurir" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -218,8 +204,6 @@
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
 

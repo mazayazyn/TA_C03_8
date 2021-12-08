@@ -10,36 +10,41 @@
 </head>
 <body>
 <div class="container" sec:authorize="hasAnyAuthority('ADMIN')">
-    <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+<!--    <nav th:replace="fragments/fragment :: navbar-admin"></nav>-->
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Tambah User Baru</div>
                 <div class="card-body">
-                    <form th:action="@{/pegawai/add-pegawai}" method="POST">
-                        <label>Nama</label>
-                        <input type="text" name="nama" class="form-control" />
+                    <form th:action="@{/pegawai/add-pegawai}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
+                        <label>Nama</label><br>
+                        <input required type="text" name="nama" class="form-control" />
+                        <br>
 
-                        <label>Tanggal Lahir</label>
-                        <input type="date" name="tanggal_lahir" class="form-control" />
+                        <label>Tanggal Lahir</label><br>
+                        <input required type="date" name="tanggal_lahir" class="form-control" />
+                        <br>
 
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control" />
+                        <label>Username</label><br>
+                        <input required type="text" name="username" class="form-control" />
+                        <br>
 
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" />
+                        <label>Email</label><br>
+                        <input required type="email" name="email" class="form-control" />
+                        <br>
 
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control"/>
+                        <label>Password</label><br>
+                        <input required type="password" name="password" class="form-control"/>
+                        <br>
 
-                        <label>Role</label>
-                        <select name="role" class="form-control">
+                        <label>Role</label><br>
+                        <select required name="role" class="form-control">
                             <option selected value="">-- Pilih Role --</option>
                             <option th:each="role : ${listRole}" th:value="${role.id_role}" th:text="${role.nama_role}"></option>
                         </select>
                         <br>
                         <button type="submit" class="btn btn-warning">Simpan</button>
-                        <a class="btn btn-link" href="/">Home</a>
+                        <button class="btn btn-link" href="/">Home</button>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,5 @@
 package apap.ta.sifactory.rest;
 
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter@Setter
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemDetail {
     @JsonProperty("uuid")

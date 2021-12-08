@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
@@ -31,8 +32,17 @@ public class PegawaiController {
 
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+        if(pegawaiService.getPegawai(pegawai.getUsername())!=null){//pegawai yang ingin ditambah ada username sama
+            model.addAttribute("page", "menambah");
+            model.addAttribute("tipe", "akun pengguna/pegawai");
+            model.addAttribute("cause", "username sudah digunakan");
+            return "error-page";
+        }
         pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
+
+        String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
+        pegawaiService.addCounterPegawai(nama);
         model.addAttribute("pegawai", pegawai);
         return "redirect:/";
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/sifactory")
 public class ItemRestController {
     @Autowired
     private ItemRestService itemRestService;
@@ -27,4 +27,7 @@ public class ItemRestController {
             );
         }
     }
+
+//    @PostMapping(value = "/propose-item")
+
 }
