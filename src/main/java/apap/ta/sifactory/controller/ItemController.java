@@ -54,6 +54,7 @@ public class ItemController {
             model.addAttribute("cause", "item tidak berhasil disampaikan ke SI-BUSINESS");
             return "error-page";
         }
+
         String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         pegawaiService.addCounterPegawai(nama);
         return "success-page";
