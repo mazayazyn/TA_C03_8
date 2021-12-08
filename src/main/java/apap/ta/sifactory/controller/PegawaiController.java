@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/pegawai")
 public class PegawaiController {
     @Autowired
     private PegawaiService pegawaiService;
@@ -23,9 +24,6 @@ public class PegawaiController {
     private String addPegawaiForm(Model model) {
         PegawaiModel user = new PegawaiModel();
         List<RoleModel> listRole = roleService.getListRole();
-        for (RoleModel role : listRole) {
-            System.out.println(role.getNama_role());
-        }
         model.addAttribute("user", user);
         model.addAttribute("listRole", listRole);
         return "form-add-pegawai";

@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <title> Home </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hi Yona, as a</span>
+                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as an'"></span>
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-admin">Admin</span>
@@ -37,7 +38,7 @@
                             Description About Role Description About Role Description About Role Description About Role</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Buat Pengguna</a>
+                            <a th:href="@{/pegawai/add-pegawai}" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i>Buat Pengguna/Pegawai</a>
                             <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">Daftar Pegawai</a>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_FACTORY_MANAGER')">
+<div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
 
@@ -70,7 +71,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hi Azza, as a</span>
+                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as a'"></span>
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-manager">Factory Manager</span>
@@ -80,6 +81,7 @@
                         <p>Yuk Ajukan Item kepada SI-Business. Lalu, mereka akan memproses request kamu ke SI-Item. Semakin cepat kamu request, semakin cepat juga request kamu selesai dikerjakan.</p>
 
                         <div class="custom-btn-group mt-4">
+                            <a th:href="@{/pegawai/add-pegawai}" class="btn mr-lg-2 custom-btn" type="button"><i class='uil uil-file-alt'></i>Buat Pengguna/Pegawai</a>
                             <a href="/" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Propose Item</a>
                             <a href="/" class="btn custom-btn custom-btn-bg custom-btn-link">List Item</a>
                         </div>
@@ -101,7 +103,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAuthority('ROLE_STAFF_GUDANG')">
+<div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
 
@@ -114,7 +116,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hi Aisha, as a</span>
+                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as a'"></span>
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-gudang">Staff Gudang</span>
@@ -146,7 +148,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_STAFF_KURIR')">
+<div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
 
@@ -159,7 +161,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hi Habe, as a</span>
+                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as a'"></span>
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-kurir">Staff Kurir</span>
@@ -191,7 +193,7 @@
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ROLE_STAFF_OPERASIONAL')">
+<div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
 
@@ -204,7 +206,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Hi Apap, as a</span>
+                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as a'"></span>
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-admin">Staff Operasional</span>
@@ -235,16 +237,6 @@
     <!-- FOOTER -->
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
-
-
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/Headroom.js"></script>
-<script src="js/jQuery.headroom.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/custom.js"></script>
 
 </body>
 </html>
