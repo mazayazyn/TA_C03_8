@@ -21,7 +21,7 @@ import java.util.List;
 public class MesinModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_mesin;
+    private Integer idMesin;
 
     @NotNull
     @Size(max=50)
