@@ -33,6 +33,7 @@ public class PegawaiController {
 
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+        pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
         model.addAttribute("pegawai", pegawai);
         return "redirect:/";
