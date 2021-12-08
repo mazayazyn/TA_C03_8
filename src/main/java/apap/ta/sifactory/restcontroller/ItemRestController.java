@@ -12,21 +12,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-<<<<<<< HEAD
-@RequestMapping("/api/sifactory")
-=======
 @RequestMapping("/api/v1")
->>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
 public class ItemRestController {
     @Autowired
     private ItemRestService itemRestService;
 
-<<<<<<< HEAD
-    @GetMapping(value="/getItem")
-=======
     //Fitur 5
     @GetMapping(value="/listItem")
->>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
     private List<ItemDetail> getAllItem(){
         try {
             return itemRestService.getAllItem();
@@ -36,10 +28,5 @@ public class ItemRestController {
             );
         }
     }
-<<<<<<< HEAD
 
-//    @PostMapping(value = "/propose-item")
-
-=======
->>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
 }

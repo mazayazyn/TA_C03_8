@@ -32,15 +32,12 @@ public class PegawaiController {
 
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
-<<<<<<< HEAD
         if(pegawaiService.getPegawai(pegawai.getUsername())!=null){//pegawai yang ingin ditambah ada username sama
             model.addAttribute("page", "menambah");
             model.addAttribute("tipe", "akun pengguna/pegawai");
             model.addAttribute("cause", "username sudah digunakan");
             return "error-page";
         }
-=======
->>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
         pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
 
