@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -22,4 +23,17 @@ public class ItemController {
         model.addAttribute("listItem", listItem);
         return "viewall-item";
     }
+
+    //Fitur 7
+    @GetMapping("/item/update/{uuid}")
+    public String getFormUpdateItem() {
+        return "form-update-item";
+    }
+
+    //Fitur 7
+    @PostMapping("/item/update/{uuid}")
+    public String postFormUpdateItem() {
+        return "respon-update-item";
+    }
+
 }
