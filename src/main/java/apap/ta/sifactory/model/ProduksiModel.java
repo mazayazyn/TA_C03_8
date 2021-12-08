@@ -60,7 +60,7 @@ public class ProduksiModel implements Serializable{
 
     //Relasi dengan Mesin
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = false)
+    @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = true)
     private MesinModel mesin;
 
     //Relasi dengan Pegawai

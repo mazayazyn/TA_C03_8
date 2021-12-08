@@ -14,8 +14,16 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private RequestUpdateItemDB requestUpdateItemDB;
 
+    @Autowired
+    private ProduksiService produksiService;
+
     @Override
     public RequestUpdateItemModel createRequest(RequestUpdateItemModel req) {
+        //create produksi
+        produksiService.createProduksiByRequest(req);
+        //set produksi
+        //set delivery
+
         return requestUpdateItemDB.save(req);
     }
 }
