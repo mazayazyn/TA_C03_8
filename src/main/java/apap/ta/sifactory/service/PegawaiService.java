@@ -9,4 +9,5 @@ public interface PegawaiService {
     void addCounterPegawai(String username);
     List<PegawaiModel> getDaftarPegawai();
     String encrypt(String password);
+
 }

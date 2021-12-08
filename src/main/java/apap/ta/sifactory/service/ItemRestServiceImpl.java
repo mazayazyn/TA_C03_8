@@ -13,6 +13,7 @@ import apap.ta.sifactory.rest.Setting;
 import java.util.*;
 
 import reactor.core.publisher.Mono;
+import apap.ta.sifactory.rest.GetItem;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.rest.ListItemDetail;
 
@@ -68,5 +69,17 @@ public class ItemRestServiceImpl implements ItemRestService{
 //                .body(Mono.just(proposeItem), ItemDetail.class)
 //                .retrieve()
 //                .bodyToMono(ItemDetail.class).block();
+    }
+
+    @Override
+    public ItemDetail getItemByUUID(String uuid) {
+        String uuid_dicari = "/" + uuid;
+        System.out.print(uuid_dicari);
+        GetItem getSiItem = this.webClient.get().uri(uuid_dicari)
+                .retrieve()
+                .bodyToMono(GetItem.class)
+                .block();
+        System.out.print(getSiItem);
+        return getSiItem.getItem();
     }
 }

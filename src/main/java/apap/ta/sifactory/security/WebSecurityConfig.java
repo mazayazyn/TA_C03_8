@@ -21,7 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/pegawai/add-pegawai").hasAnyAuthority("ADMIN")
+                .antMatchers("/add-pegawai").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/api/**").permitAll()
 //                .antMatchers("/factorymanager").hasAuthority("FACTORY_MANAGER")
 //                .antMatchers("/gudang").hasAuthority("STAFF_ GUDANG")
 //                .antMatchers("/kurir").hasAuthority("STAFF_KURIR")
@@ -32,7 +33,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
+                .permitAll()
+                .and()
+                .cors()
+                .and()
+                .csrf()
+                .disable()
+        ;
+
     }
 
     @Bean
