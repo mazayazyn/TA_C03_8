@@ -23,45 +23,50 @@
             integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
             crossorigin="anonymous">
     </script>
-<!--    <object th:include="fragments/fragment :: css" th:remove="tag"></object>-->
-<!--    <object th:include="fragments/fragment :: js" th:remove="tag"></object>-->
+    <!--    <object th:include="fragments/fragment :: css" th:remove="tag"></object>-->
+    <!--    <object th:include="fragments/fragment :: js" th:remove="tag"></object>-->
 </head>
 
 <body>
 <!--<nav th:replace="fragments/fragment :: navbar"></nav>-->
-<div class="container-sm rounded w-75 p-5 my-3">
+<div class="container-sm rounded w-75 p-5 my-3" sec:authorize="hasAnyAuthority('STAFF_GUDANG', 'STAFF_OPERASIONAL')">
     <div class="card m-4 p-4 border border-warning">
         <div class="card-body">
             <div class="justify-content-center">
                 <h1 class="font-weight-bold" style="color: #62433E; text-align: center">List Item</h1>
                 <br> <br>
-<!--                <a th:href="@{/store/add}" class="mx-2 btn" style="color: white; background-color: #EF974F; width: 150px">+ Add Store</a>-->
-<!--                <br> <br>-->
+                <!--                <a th:href="@{/store/add}" class="mx-2 btn" style="color: white; background-color: #EF974F; width: 150px">+ Add Store</a>-->
+                <!--                <br> <br>-->
                 <table class="table table-striped">
                     <thead>
                     <tr class="text-white" style="text-align: center; background-color: #62433E" >
                         <th>No</th>
+                        <th>ID Request</th>
                         <th>Nama Item</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
                         <th>Kategori</th>
+                        <th>Stok Tambahan</th>
+                        <th>Executed</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="item, iterationStatus : ${listItem}" style="text-align: center">
+                    <tr th:each="request, iterationStatus : ${listRequest}" style="text-align: center">
                         <td th:text="${iterationStatus.count}"></td>
-                        <td th:text="${item.nama}"></td>
-                        <td th:text="${item.harga}"></td>
-                        <td th:text="${item.stok}"></td>
-                        <td th:text="${item.kategori}"></td>
+                        <td th:text="${request.id_request_update_item}"></td>
+                        <div th:each="item : ${listItem}">
+                            <td th:if="${item.uuid} == ${request.id_item}" th:text="${item.nama}"></td>
+                        </div>
+                        <td th:text="${request.kategori}"></td>
+                        <td th:text="${request.tambahan_stok}"></td>
+                        <td th:if="${request.executed} == false" th:text="❌"></td>
+                        <td th:if="${request.executed} == true" th:text="✔️"></td>
                         <td>
-<!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                            <a class="btn btn-sm btn-primary" th:href="@{/item/} + ${item.uuid}">Detail</a>
-                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/item/update} + ${item.uuid}">Update</a>
-<!--                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>-->
+                            <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template detail & update-->
+                            <a class="btn btn-sm btn-primary" th:href="@{/request/} + ${request.id_request_update_item}">Detail</a>
+                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update} + ${request.id_request_update_item}">Update</a>
+                            <!--                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>-->
                         </td>
-                    </tr>
+                    </div>
                     </tbody>
                 </table>
             </div>

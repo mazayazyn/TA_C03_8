@@ -21,30 +21,31 @@ public class DeliveryModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_delivery;
+    @Column(name = "id_delivery")
+    private Integer idDelivery;
 
     //Relasi dengan Pegawai
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_kurir", referencedColumnName = "id_pegawai", nullable = false)
     private PegawaiModel pegawai;
 
-//    //Merujuk ke id_cabang di SI-Retail
-//    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_cabang;
+    //Merujuk ke id_cabang di SI-Retail
+    @NotNull
+    @Column(name = "id_cabang", nullable = false)
+    private Integer idCabang;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_dibuat", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_dibuat;
+    private LocalDate tanggalDibuat;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_dikirim", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_dikirim;
+    private LocalDate tanggalDikirim;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "sent", nullable = false)
     @ColumnDefault(value = "false") //kepikiran ini di set false, perlu ngga ya?
     private Boolean sent;
 

@@ -25,7 +25,8 @@ import java.util.List;
 public class PegawaiModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_pegawai;
+    @Column(name = "id_pegawai")
+    private Integer idPegawai;
 
     @NotNull
     @Size(max = 50)
@@ -34,7 +35,7 @@ public class PegawaiModel {
 
     @NotNull
     @Size(max=50)
-    @Column(nullable= false)
+    @Column(name = "nama", nullable= false)
     private String nama;
 
     @NotNull
@@ -48,12 +49,12 @@ public class PegawaiModel {
     private String password;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_lahir", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_lahir;
+    private LocalDate tanggalLahir;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "counter", nullable = false)
     @ColumnDefault(value = "0") //kepikiran ini di set 0, perlu ngga ya?
     private Integer counter;
 

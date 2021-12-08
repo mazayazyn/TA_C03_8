@@ -22,15 +22,16 @@ import java.util.List;
 public class RoleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_role;
+    @Column(name = "id_role")
+    private Long idRole;
 
     @NotNull
     @Size(max=20)
-    @Column(nullable= false)
-    private String nama_role;
+    @Column(name = "nama_role", nullable= false)
+    private String namaRole;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "base_wages", nullable = false)
     private Integer baseWages;
 
 //    //Relasi dengan Pegawai
