@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>List Pegawai</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<div class="container" sec:authorize="hasAnyAuthority('ADMIN','FACTORY_MANAGER')">
+    <div th:if="${role == '[ADMIN]'}">
+        <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+    </div>
+    <div th:if="${role == '[FACTORY_MANAGER]'}">
+        <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
+    </div>
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <h2>Daftar Pegawai</h2>
+                <table class="table table-striped">
+                    <thead class="text-center">
+                    <tr>
+                        <th>Nama Pegawai</th>
+                        <th>Role</th>
+                        <th>Gaji</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    <tr th:each="pegawai : ${listPegawai}" class="table-striped">
+                        <td th:text="${pegawai.nama}"></td>
+                        <td th:text="${pegawai.role.nama_role}"></td>
+                        <!--                        <td th:text="${pegawai.counter}*${pegawai.role.baseWages}"></td>-->
+                        <td th:text="'Rp'+${#numbers.formatDecimal(pegawai.counter*pegawai.role.baseWages,1,'COMMA',0, 'POINT')}"></td>
+                        <br>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

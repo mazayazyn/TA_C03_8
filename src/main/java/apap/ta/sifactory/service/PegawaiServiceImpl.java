@@ -45,4 +45,9 @@ public class PegawaiServiceImpl implements PegawaiService{
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
     }
+
+    @Override
+    public List<PegawaiModel> getDaftarPegawai() {
+        return pegawaiDB.findAll();
+    }
 }

@@ -21,6 +21,7 @@ public class PegawaiController {
     @Autowired
     private RoleService roleService;
 
+    //Fitur 16
     @GetMapping("/add-pegawai")
     private String addPegawaiForm(Model model) {
         PegawaiModel user = new PegawaiModel();
@@ -45,6 +46,18 @@ public class PegawaiController {
         pegawaiService.addCounterPegawai(nama);
         model.addAttribute("pegawai", pegawai);
         return "redirect:/";
+    }
+
+    //Fitur 17
+    @GetMapping(value = "/daftar-pegawai")
+    public String viewAllFilm(
+            Model model
+    ){
+        List<PegawaiModel> listPegawai = pegawaiService.getDaftarPegawai();
+        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+        model.addAttribute("role", role);
+        model.addAttribute("listPegawai", listPegawai);
+        return "list-pegawai";
     }
 
 }
