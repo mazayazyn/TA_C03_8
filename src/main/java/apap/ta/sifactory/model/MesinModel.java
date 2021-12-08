@@ -21,25 +21,26 @@ import java.util.List;
 public class MesinModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_mesin;
+    @Column(name = "id_mesin")
+    private Integer idMesin;
 
     @NotNull
     @Size(max=50)
-    @Column(nullable= false)
+    @Column(name = "nama", nullable= false)
     private String nama;
 
     //merujuk ke id_kategori item pada si-item
     @NotNull
-    @Column(nullable = false)
-    private Integer id_kategori;
+    @Column(name = "id_kategori", nullable = false)
+    private Integer idKategori;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_dibuat", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_dibuat;
+    private LocalDate tanggalDibuat;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "kapasitas", nullable = false)
     private Integer kapasitas;
 
     //Relasi dengan Produksi

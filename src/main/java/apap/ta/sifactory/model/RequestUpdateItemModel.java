@@ -21,33 +21,34 @@ import java.time.LocalDate;
 public class RequestUpdateItemModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_request_update_item;
+    @Column(name = "id_request_update_item")
+    private Integer idRequestUpdateItem;
 
     //merujuk ke siitem
     @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Integer id_item;
+    private Integer idItem;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer id_kategori;
+    @Column(name = "id_kategori", nullable = false)
+    private Integer idKategori;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer tambahan_stok;
+    @Column(name = "tambahan_stok", nullable = false)
+    private Integer tambahanStok;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_request", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_request;
+    private LocalDate tanggalRequest;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer id_cabang;
+    @Column(name = "id_cabang", nullable = false)
+    private Integer idCabang;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "executed", nullable = false)
     private boolean executed;
 
 //    @NotNull
@@ -56,11 +57,11 @@ public class RequestUpdateItemModel implements Serializable{
 
     //Relasi dengan Produksi
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi", nullable = false)
+    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi")
     private ProduksiModel produksi;
 
     //Relasi dengan Delivery
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = false)
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery")
     private DeliveryModel delivery;
 }

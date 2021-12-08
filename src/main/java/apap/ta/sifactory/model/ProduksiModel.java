@@ -21,34 +21,35 @@ import java.time.LocalDate;
 public class ProduksiModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_produksi;
+    @Column(name = "id_produksi")
+    private Integer idProduksi;
 
     //merujuk ke siitem
     @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Integer id_item;
+    private Integer idItem;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer id_kategori;
+    @Column(name = "id_kategori", nullable = false)
+    private Integer idKategori;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer tambahan_stok;
+    @Column(name = "tambahan_stok", nullable = false)
+    private Integer tambahanStok;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "tanggal_produksi", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggal_produksi;
+    private LocalDate tanggalProduksi;
 
 //    @NotNull
 //    @Column(nullable = false)
 //    private Integer id_pegawai;
 
     @NotNull
-    @Column(nullable = false)
-    private Integer id_request_update_item;
+    @Column(name = "id_request_update_item", nullable = false)
+    private Integer idRequestUpdateItem;
 
 //    @NotNull
 //    @Column(nullable = false)
@@ -56,7 +57,7 @@ public class ProduksiModel implements Serializable{
 
     //Relasi dengan Request Update Item
     @OneToOne(mappedBy = "produksi",fetch = FetchType.LAZY)
-    private RequestUpdateItemModel requestupdate;
+    private RequestUpdateItemModel requestUpdateItem;
 
     //Relasi dengan Mesin
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

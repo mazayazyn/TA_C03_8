@@ -18,7 +18,7 @@ public class ItemServiceImpl implements ItemService{
     public List<JenisKategori> getKategoriItem(List<MesinModel> listMesin) {
         List<JenisKategori> listKategori = new ArrayList<>();
         for (MesinModel m:listMesin) {
-            JenisKategori kategori = JenisKategori.values()[m.getId_kategori()-1];
+            JenisKategori kategori = JenisKategori.values()[m.getIdKategori()-1];
             if(!listKategori.contains(kategori)){
                 listKategori.add(kategori);
             }
