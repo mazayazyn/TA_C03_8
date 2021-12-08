@@ -5,7 +5,7 @@ import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 import apap.ta.sifactory.service.ItemService;
-import apap.ta.sifactory.service.MesinService;
+import apap.ta.sifactory.service.MesinRestService;
 import apap.ta.sifactory.service.PegawaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/item")
 public class ItemController {
     @Autowired
-    private MesinService mesinService;
+    private MesinRestService mesinService;
 
     @Autowired
     private ItemService itemService;
