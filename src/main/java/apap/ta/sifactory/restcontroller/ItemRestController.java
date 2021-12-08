@@ -17,7 +17,8 @@ public class ItemRestController {
     @Autowired
     private ItemRestService itemRestService;
 
-    @GetMapping(value="/getItem")
+    //Fitur 5
+    @GetMapping(value="/listItem")
     private List<ItemDetail> getAllItem(){
         try {
             return itemRestService.getAllItem();

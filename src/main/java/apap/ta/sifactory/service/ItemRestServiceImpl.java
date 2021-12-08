@@ -22,11 +22,13 @@ public class ItemRestServiceImpl implements ItemRestService{
         this.webClient = webClientBuilder.baseUrl(Setting.siItemUrl).build();
     }
 
+    //Fitur 5
     @Override
     public List<ItemDetail> getAllItem() {
         ListItemDetail getSiItem = this.webClient.get().uri("/")
                 .retrieve()
-                .bodyToMono(ListItemDetail.class).block();
+                .bodyToMono(ListItemDetail.class)
+                .block();
         return getSiItem.getListItem();
     }
 
