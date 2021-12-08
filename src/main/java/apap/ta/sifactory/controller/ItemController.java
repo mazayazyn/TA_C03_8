@@ -29,7 +29,7 @@ public class ItemController {
 
     @Autowired
     private PegawaiService pegawaiService;
-
+  
     //Fitur 4
     @GetMapping("/propose-item")
     private String proposeItemForm(Model model) {
@@ -54,6 +54,7 @@ public class ItemController {
             model.addAttribute("cause", "item tidak berhasil disampaikan ke SI-BUSINESS");
             return "error-page";
         }
+
         String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         pegawaiService.addCounterPegawai(nama);
         return "success-page";
