@@ -22,7 +22,7 @@
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
 | 1906399650 | Hafiz Bhadrika Alamsyah | 7 9 |
-| 1906353580 | Herbiyona | 4 13 |
+| 1906353580 | Herbiyona | 4 13 17 |
 | 1906399000 | Aisyah Indonesia Mazaya Zayn | 14 15 |
 | 1906399902 | Aisha Salsabila | 5 11 |
 ---
