@@ -27,12 +27,17 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        //baru byname
         produksi.setId_kategori(produksiBaru.getId_kategori());
         produksi.setId_request_update_item(null);
+        //input user
         produksi.setTambahan_stok(produksiBaru.getTambahan_stok());
+        //tanggal sekarang
         produksi.setTanggal_produksi(produksiBaru.getTanggal_produksi());
+        //input user
         produksi.setMesin(produksiBaru.getMesin());
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
+        //uuid
         produksi.setId_item(produksiBaru.getId_item());
 
         return produksiDB.save(produksi);
