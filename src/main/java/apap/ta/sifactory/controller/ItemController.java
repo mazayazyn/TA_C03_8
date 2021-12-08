@@ -1,5 +1,6 @@
 package apap.ta.sifactory.controller;
 
+<<<<<<< HEAD
 import apap.ta.sifactory.model.JenisKategori;
 import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.rest.ItemDetail;
@@ -23,10 +24,24 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+=======
+import apap.ta.sifactory.rest.ItemDetail;
+import apap.ta.sifactory.service.ItemRestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+
+@Controller
+public class ItemController {
+>>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
 
     @Autowired
     private ItemRestService itemRestService;
 
+<<<<<<< HEAD
     @GetMapping("/propose-item")
     private String proposeItemForm(Model model) {
         ItemDetail proposeItem = new ItemDetail();
@@ -52,5 +67,13 @@ public class ItemController {
             return "error-page";
         }
         return "success-page";
+=======
+    //Fitur 5
+    @GetMapping("/listItem")
+    public String listItem(Model model) {
+        List<ItemDetail> listItem = itemRestService.getAllItem();
+        model.addAttribute("listItem", listItem);
+        return "viewall-item";
+>>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
     }
 }

@@ -10,16 +10,26 @@
 </head>
 <body>
 <div class="container" sec:authorize="hasAnyAuthority('ADMIN')">
+<<<<<<< HEAD
 <!--    <nav th:replace="fragments/fragment :: navbar-admin"></nav>-->
+=======
+    <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+>>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Tambah User Baru</div>
                 <div class="card-body">
+<<<<<<< HEAD
                     <form th:action="@{/pegawai/add-pegawai}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
                         <label>Nama</label><br>
                         <input required type="text" name="nama" class="form-control" />
                         <br>
+=======
+                    <form th:action="@{/pegawai/add-pegawai}" method="POST">
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" />
+>>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
 
                         <label>Tanggal Lahir</label><br>
                         <input required type="date" name="tanggal_lahir" class="form-control" />
@@ -33,9 +43,14 @@
                         <input required type="email" name="email" class="form-control" />
                         <br>
 
+<<<<<<< HEAD
                         <label>Password</label><br>
                         <input required type="password" name="password" class="form-control"/>
                         <br>
+=======
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control"/>
+>>>>>>> f52847d92578c802686dd9775dbe2792f4fd1051
 
                         <label>Role</label><br>
                         <select required name="role" class="form-control">
