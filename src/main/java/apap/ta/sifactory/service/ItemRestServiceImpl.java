@@ -20,6 +20,7 @@ import apap.ta.sifactory.rest.ListItemDetail;
 @Service
 @Transactional
 public class ItemRestServiceImpl implements ItemRestService{
+
     private final WebClient webClient;
     private final WebClient proposeWeb;
 

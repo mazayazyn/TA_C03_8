@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class MesinServiceImpl implements MesinRestService {
+public class MesinRestServiceImpl implements MesinRestService {
     @Autowired
     MesinDB mesinDB;
 

@@ -9,6 +9,6 @@ import java.util.List;
 public interface ItemRestService {
     List<ItemDetail> getAllItem();
     String postProposeItem(ItemDetail proposeItem);
-    List<String> getKategoriItem();
+//    List<String> getKategoriItem();
     ItemDetail getItemByUUID(String uuid);
 }

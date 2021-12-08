@@ -31,7 +31,7 @@
                     <tbody class="text-center">
                     <tr th:each="pegawai : ${listPegawai}" class="table-striped">
                         <td th:text="${pegawai.nama}"></td>
-                        <td th:text="${pegawai.role.nama_role}"></td>
+                        <td th:text="${pegawai.role.namaRole}"></td>
                         <!--                        <td th:text="${pegawai.counter}*${pegawai.role.baseWages}"></td>-->
                         <td th:text="'Rp'+${#numbers.formatDecimal(pegawai.counter*pegawai.role.baseWages,1,'COMMA',0, 'POINT')}"></td>
                         <br>

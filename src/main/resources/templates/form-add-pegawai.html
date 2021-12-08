@@ -22,7 +22,7 @@
                         <br>
 
                         <label>Tanggal Lahir</label><br>
-                        <input required type="date" name="tanggal_lahir" class="form-control" />
+                        <input required type="date" name="tanggalLahir" class="form-control" />
                         <br>
 
                         <label>Username</label><br>
@@ -40,7 +40,7 @@
                         <label>Role</label><br>
                         <select required name="role" class="form-control">
                             <option selected value="">-- Pilih Role --</option>
-                            <option th:each="role : ${listRole}" th:value="${role.id_role}" th:text="${role.nama_role}"></option>
+                            <option th:each="role : ${listRole}" th:value="${role.idRole}" th:text="${role.namaRole}"></option>
                         </select>
                         <br>
                         <button type="submit" class="btn btn-warning">Simpan</button>
