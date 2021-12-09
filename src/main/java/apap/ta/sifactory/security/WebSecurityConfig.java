@@ -65,14 +65,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-    //kepake
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-//    }
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+    }
 
 //    @Autowired
 //    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
