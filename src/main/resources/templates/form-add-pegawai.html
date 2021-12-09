@@ -9,7 +9,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<!--<div class="container" sec:authorize="hasAnyAuthority('ADMIN')">-->
+<div class="container" sec:authorize="hasAnyAuthority('ADMIN')">
     <nav th:replace="fragments/fragment :: navbar-admin"></nav>
     <div class="row justify-content-center">
         <div class="col-md-6">
