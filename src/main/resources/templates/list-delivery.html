@@ -28,6 +28,7 @@
                         <th>Tanggal Dibuat</th>
                         <th>Tanggal Dikirim</th>
                         <th>Status Dikirim</th>
+                        <th>Kirim</th>
                     </tr>
                     </thead>
                     <tbody class="text-center">
@@ -38,6 +39,11 @@
                         <td th:text="${delivery.tanggalDikirim}"></td>
                         <td th:if="${delivery.sent} == false">Belum Dikirim</td>
                         <td th:if="${delivery.sent} == true">Terkirim</td>
+                        <div>
+                            <td th:if="${delivery.sent} == false">
+                                <a class="btn btn-primary" th:href="@{/}">Kirim</a>
+                            </td>
+                        </div>
                         <br>
                     </tr>
                     </tbody>
