@@ -45,7 +45,7 @@ public class ItemController {
     private String proposeItemPost(@ModelAttribute ItemDetail proposeItem, Model model) {
         //manggil servicenya sibusiness
         String responsePropose = itemRestService.postProposeItem(proposeItem);
-        if (responsePropose.equals("Propose item success")) {
+        if (responsePropose.equals("201")) {
             model.addAttribute("action", "propose");
             model.addAttribute("tipe", "item");
         } else {
