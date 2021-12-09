@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div sec:authorize="hasAnyAuthority('ADMIN')">
+<div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-admin"></nav>
 
@@ -27,7 +27,7 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">SI-Factory Website</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as an'"></span>
+<!--                            <span class="mr-2" th:text="'Hi ' + ${currentPegawai.nama} + ' as an'"></span>-->
                             <br>
                             <div class="animated-info">
                                 <span class="animated-item-admin">Admin</span>
