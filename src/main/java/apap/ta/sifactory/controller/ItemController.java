@@ -6,7 +6,7 @@ import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 import apap.ta.sifactory.service.ItemService;
-import apap.ta.sifactory.service.MesinRestService;
+import apap.ta.sifactory.service.MesinService;
 import apap.ta.sifactory.service.PegawaiService;
 import apap.ta.sifactory.service.ProduksiService;
 
@@ -26,7 +26,7 @@ import java.util.List;
 @RequestMapping("/item")
 public class ItemController {
     @Autowired
-    private MesinRestService mesinService;
+    private MesinService mesinService;
 
     @Autowired
     private ItemService itemService;
@@ -55,7 +55,7 @@ public class ItemController {
     private String proposeItemPost(@ModelAttribute ItemDetail proposeItem, Model model) {
         //manggil servicenya sibusiness
         String responsePropose = itemRestService.postProposeItem(proposeItem);
-        if (responsePropose.equals("Propose item success")) {
+        if (responsePropose.equals("201")) {
             model.addAttribute("action", "propose");
             model.addAttribute("tipe", "item");
         } else {
@@ -64,7 +64,6 @@ public class ItemController {
             model.addAttribute("cause", "item tidak berhasil disampaikan ke SI-BUSINESS");
             return "error-page";
         }
-
         String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         pegawaiService.addCounterPegawai(nama);
         return "success-page";

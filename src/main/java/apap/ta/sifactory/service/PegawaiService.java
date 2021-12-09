@@ -8,6 +8,7 @@ public interface PegawaiService {
     PegawaiModel getPegawai(String username);
     void addCounterPegawai(String username);
     List<PegawaiModel> getDaftarPegawai();
+    List<PegawaiModel> getKurir();
     String encrypt(String password);
 
 }
