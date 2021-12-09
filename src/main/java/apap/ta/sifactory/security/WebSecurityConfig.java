@@ -21,8 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/add-pegawai").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/pegawai/add-pegawai").hasAnyAuthority("ADMIN")
 //                .antMatchers("/factorymanager").hasAuthority("FACTORY_MANAGER")
 //                .antMatchers("/gudang").hasAuthority("STAFF_ GUDANG")
 //                .antMatchers("/kurir").hasAuthority("STAFF_KURIR")
@@ -33,15 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
-                .permitAll()
-                .and()
-                .cors()
-                .and()
-                .csrf()
-                .disable()
-        ;
-
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
     }
 
     @Bean
@@ -49,12 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("admin-si").password(encoder().encode("adminsifactory"))
-                .roles("ADMIN");
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("admin-si").password(encoder().encode("adminsifactory"))
+//                .roles("ADMIN");
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
 //                .withUser("factory-manager-si").password(encoder().encode("factorymanager"))
@@ -72,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("staff-operasional-si").password(encoder().encode("staffoperasional"))
 //                .roles("STAFF_OPERASIONAL");
 
-    }
+//    }
 
     @Autowired
     private UserDetailsService userDetailsService;
