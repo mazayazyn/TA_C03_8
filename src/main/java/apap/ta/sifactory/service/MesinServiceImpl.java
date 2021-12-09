@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -17,5 +19,16 @@ public class MesinServiceImpl implements MesinService{
     @Override
     public List<MesinModel> getAllMesin() {
         return mesinDB.findAll();
+    }
+
+    @Override
+    public MesinModel getMesinByIdMesin(Integer idMesin) {
+        Optional<MesinModel> mesin = mesinDB.findByIdMesin(idMesin);
+
+        if(mesin.isPresent()){
+            return mesin.get();
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }

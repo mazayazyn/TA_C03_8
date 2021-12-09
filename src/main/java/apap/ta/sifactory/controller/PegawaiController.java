@@ -41,11 +41,11 @@ public class PegawaiController {
         }
         pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
-
         String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         pegawaiService.addCounterPegawai(nama);
-        model.addAttribute("pegawai", pegawai);
-        return "redirect:/";
+        model.addAttribute("action", "menambah");
+        model.addAttribute("tipe", "akun pengguna/pegawai baru");
+        return "success-page";
     }
 
     //Fitur 17

@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         PegawaiModel pegawai = pegawaiDB.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNama_role()));
+        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNamaRole()));
         return new User(pegawai.getUsername(), pegawai.getPassword(), grantedAuthorities);
     }
 }
