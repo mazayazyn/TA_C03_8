@@ -1,7 +1,7 @@
 package apap.ta.sifactory.restcontroller;
 
 import apap.ta.sifactory.model.MesinModel;
-import apap.ta.sifactory.service.MesinRestService;
+import apap.ta.sifactory.service.MesinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +17,17 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api/v1")
 public class MesinRestController {
     @Autowired
-    private MesinRestService mesinRestService;
+    private MesinService mesinService;
 
     @GetMapping(value = "/list-mesin")
     private List<MesinModel> retrieveListMesin(){
-        return mesinRestService.getAllMesin();
+        return mesinService.getAllMesin();
     }
 
     @GetMapping(value = "/mesin/{idMesin}")
     private MesinModel retrieveMesin(@PathVariable("idMesin") Integer idMesin) {
         try {
-            return mesinRestService.getMesinByIdMesin(idMesin);
+            return mesinService.getMesinByIdMesin(idMesin);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Id Mesin " + String.valueOf(idMesin) + " Not Found,"
