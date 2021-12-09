@@ -50,7 +50,7 @@ public class PegawaiController {
 
     //Fitur 17
     @GetMapping(value = "/daftar-pegawai")
-    public String viewAllFilm(
+    public String viewAllPegawai(
             Model model
     ){
         List<PegawaiModel> listPegawai = pegawaiService.getDaftarPegawai();
