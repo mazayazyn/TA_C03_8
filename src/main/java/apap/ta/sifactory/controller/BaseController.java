@@ -18,8 +18,8 @@ public class BaseController {
 
     @RequestMapping("/")
     private String home(Model model, @AuthenticationPrincipal UserDetails currentUser) {
-//        PegawaiModel pegawai = (PegawaiModel) pegawaiDB.findByUsername(currentUser.getUsername());
-//        model.addAttribute("currentPegawai", pegawai);
+        PegawaiModel pegawai = (PegawaiModel) pegawaiDB.findByUsername(currentUser.getUsername());
+        model.addAttribute("currentPegawai", pegawai);
         return "home";
     }
 
