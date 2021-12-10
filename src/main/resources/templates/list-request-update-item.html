@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Item</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<div class="container">
+    <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+        <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+    </div>
+    <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+        <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+    </div>
+    <br><br><br>
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <h2>Daftar Request Update Item</h2>
+                <table class="table table-striped">
+                    <thead class="text-center">
+                    <tr>
+                        <th>ID Request</th>
+                        <th>Tanggal Request</th>
+                        <th>ID Item</th>
+                        <th>Nama Item</th>
+                        <th>Kategori</th>
+                        <th>Stok Tambahan</th>
+                        <th>Executed</th>
+                        <th>ID Produksi</th>
+                        <th>ID Delivery</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    <tr th:each="request : ${listRequest}" style="text-align: center">
+                        <td th:text="${request.idRequestUpdateItem}"></td>
+                        <td th:text="|${#dates.day(request.tanggalRequest)} ${#dates.monthName(request.tanggalRequest)} ${#dates.year(request.tanggalRequest)}|"></td>
+                        <td th:text="${request.idItem}"></td>
+                        <div th:each="item : ${listItem}">
+                            <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
+                        </div>
+                        <td th:text="${request.kategori}"></td>
+                        <td th:text="${request.tambahanStok}"></td>
+                        <td th:if="${request.executed} == false" th:text="❌"></td>
+                        <td th:if="${request.executed} == true" th:text="✔️"></td>
+                        <td th:if="${request.idProduksi} == null" th:text="-"></td>
+                        <td th:if="${request.idProduksi} != null" th:text="${request.idProduksi}"></td>
+                        <td th:if="${request.idDelivery} == null" th:text="-"></td>
+                        <td th:if="${request.idDelivery} != null" th:text="${request.idDelivery}"></td>
+                        <td>
+                            <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template detail & update-->
+                            <a th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update/} + ${request.idRequestUpdateItem}">Update</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

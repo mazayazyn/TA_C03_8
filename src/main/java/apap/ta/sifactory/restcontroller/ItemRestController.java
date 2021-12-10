@@ -19,7 +19,7 @@ public class ItemRestController {
     private ItemRestService itemRestService;
 
     //Fitur 5
-    @GetMapping(value="/listItem")
+    @GetMapping(value="/daftar-item")
     private List<ItemDetail> getAllItem(){
         try {
             return itemRestService.getAllItem();

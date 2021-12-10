@@ -42,8 +42,8 @@ public class RequestUpdateItemModel implements Serializable{
 
     @NotNull
     @Column(name = "tanggal_request", nullable = false)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Timestamp tanggalRequest;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tanggalRequest;
 
     @NotNull
     @Column(name = "id_cabang", nullable = false)
