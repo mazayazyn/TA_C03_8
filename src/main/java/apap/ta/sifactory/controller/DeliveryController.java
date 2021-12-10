@@ -2,7 +2,6 @@ package apap.ta.sifactory.controller;
 
 import apap.ta.sifactory.model.DeliveryModel;
 import apap.ta.sifactory.model.PegawaiModel;
-import apap.ta.sifactory.service.DeliveryRestService;
 import apap.ta.sifactory.service.DeliveryService;
 import apap.ta.sifactory.service.PegawaiService;
 import org.json.JSONException;
@@ -23,8 +22,8 @@ public class DeliveryController {
     @Autowired
     private DeliveryService deliveryService;
 
-    @Autowired
-    private DeliveryRestService deliveryRestService;
+    // @Autowired
+    // private DeliveryRestService deliveryRestService;
 
     //Fitur 12
     //Daftar request update item kalo executed True ada button Buat Delivery

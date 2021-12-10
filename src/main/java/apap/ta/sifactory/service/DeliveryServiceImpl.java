@@ -21,8 +21,8 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Autowired
     private DeliveryRestService deliveryRestService;
 
-    @Autowired
-    private DeliveryService deliveryService;
+    // @Autowired
+    // private DeliveryService deliveryService;
 
     @Override
     public List<DeliveryModel> getAllDelivery() {
