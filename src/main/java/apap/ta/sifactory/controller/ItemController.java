@@ -77,7 +77,7 @@ public class ItemController {
     }
 
     //Fitur 7
-    @GetMapping("/item/update/{uuid}")
+    @GetMapping("/update/{uuid}")
     public String getFormUpdateItem(
         @PathVariable String uuid,
         Model model
@@ -88,7 +88,7 @@ public class ItemController {
     }
 
     //Fitur 7
-    @PostMapping("/item/update/")
+    @PostMapping("/update/")
     public String postFormUpdateItem(
         Model model,
         @ModelAttribute ProduksiModel produksi
