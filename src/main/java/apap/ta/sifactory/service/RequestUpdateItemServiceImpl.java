@@ -1,8 +1,6 @@
 package apap.ta.sifactory.service;
 
-import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
-import apap.ta.sifactory.repository.ProduksiDB;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -3,10 +3,8 @@ package apap.ta.sifactory.service;
 import apap.ta.sifactory.model.PegawaiModel;
 import apap.ta.sifactory.repository.PegawaiDB;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;

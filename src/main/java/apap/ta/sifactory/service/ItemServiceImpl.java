@@ -6,11 +6,10 @@ import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
+import javax.transaction.Transactional;
+
 
 @Service
 @Transactional
@@ -24,13 +23,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public RequestUpdateItemModel createRequest(RequestUpdateItemModel req) {
-        //create produksi
-        produksiService.createProduksiByRequest(req);
-        //set produksi
-        //set delivery
-
-        return requestUpdateItemDB.save(req);
-
+        RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
+        produksiService.createProduksiByRequest(ReqSave);
+        return ReqSave;
     }
 
     @Override
@@ -44,5 +39,7 @@ public class ItemServiceImpl implements ItemService {
         }
         return listKategori;
     }
+
+
 }
 

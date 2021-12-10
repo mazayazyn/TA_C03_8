@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -51,16 +48,15 @@ public class RequestUpdateItemModel implements Serializable{
 
     @NotNull
     @Column(name = "executed", nullable = false)
-    @ColumnDefault(value = "false")
     private boolean executed;
 
     //Relasi dengan Produksi
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi", nullable = true)
+    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi")
     private ProduksiModel produksi;
 
     //Relasi dengan Delivery
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = true)
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery")
     private DeliveryModel delivery;
 }

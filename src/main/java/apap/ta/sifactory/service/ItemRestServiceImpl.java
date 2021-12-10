@@ -1,7 +1,6 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
-import apap.ta.sifactory.rest.*;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,13 +8,9 @@ import apap.ta.sifactory.rest.ListItemDetail;
 
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
-
 import java.util.*;
-
-import reactor.core.publisher.Mono;
 import apap.ta.sifactory.rest.GetItem;
 import apap.ta.sifactory.rest.ItemDetail;
-import apap.ta.sifactory.rest.ListItemDetail;
 
 @Service
 @Transactional
@@ -38,16 +33,30 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
-//    @Override
-//    public ListItemDetail getListItemDetail() {
-//        return this.webClient.get().uri("/")
-//                .retrieve()
-//                .bodyToMono(ListItemDetail.class)
-//                .block();
-//    }
+    //Fitur 4
+    @Override
+    public ItemDetail getItemByUUID(String uuid) {
+        String uuid_dicari = "/" + uuid;
+        System.out.print(uuid_dicari);
+        GetItem getSiItem = this.webClient.get().uri(uuid_dicari)
+                .retrieve()
+                .bodyToMono(GetItem.class)
+                .block();
+        System.out.print(getSiItem);
+        return getSiItem.getItem();
+    }
 
     //Fitur 4
     @Override
+    public List<String> getKategoriItem() {
+//        Mono<ItemDetail> hasil = getAllItem();
+//        System.out.print(hasil);
+//        for (ItemDetail i:hasil) {
+//            //if id kategori di mesin
+//        }
+        return null;
+    }
+
     public String postProposeItem(ItemDetail proposeItem) {
         Integer kategori = JenisKategori.valueOf(proposeItem.getKategori()).ordinal()+1;
         Map<String, Object> data = new HashMap<>();
@@ -74,15 +83,4 @@ public class ItemRestServiceImpl implements ItemRestService{
         return statusCode;
     }
 
-    @Override
-    public ItemDetail getItemByUUID(String uuid) {
-        String uuid_dicari = "/" + uuid;
-        System.out.print(uuid_dicari);
-        GetItem getSiItem = this.webClient.get().uri(uuid_dicari)
-                .retrieve()
-                .bodyToMono(GetItem.class)
-                .block();
-        System.out.print(getSiItem);
-        return getSiItem.getItem();
-    }
 }

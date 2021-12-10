@@ -4,7 +4,6 @@ import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +34,7 @@ public class SifactoryRestController {
 
         if(bindingResult.hasFieldErrors()) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field."
+                    HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field." + bindingResult
             );
         }
         else {
