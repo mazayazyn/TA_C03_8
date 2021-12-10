@@ -34,10 +34,10 @@
                 <div class="card-header">Update Stok Item By Request Update</div>
                 <div class="card-body">
                     <form th:action="@{/update-by-request}" th:object="${requestUpdateItem}" method="POST">
-                        <input type="hidden" th:field="*{id_request_update_item}" />
-                        <input type="hidden" th:field="*{id_kategori}" />
-                        <input type="hidden" th:field="*{id_cabang}" />
-                        <input type="hidden" th:field="*{tanggal_request}" />
+                        <input type="hidden" th:field="*{idRequestUpdateItem}" />
+                        <input type="hidden" th:field="*{idKategori}" />
+                        <input type="hidden" th:field="*{idCabang}" />
+                        <input type="hidden" th:field="*{tanggalRequest}" />
                         <input type="hidden" th:field="*{executed}" />
 
                         <div class="form-row" style="text-align: left">
