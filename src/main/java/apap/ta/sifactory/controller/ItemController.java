@@ -1,12 +1,10 @@
 package apap.ta.sifactory.controller;
 
-<<<<<<< HEAD
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 import apap.ta.sifactory.service.ProduksiService;
 
-=======
 import apap.ta.sifactory.model.JenisKategori;
 import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.rest.ItemDetail;
@@ -14,19 +12,15 @@ import apap.ta.sifactory.service.ItemRestService;
 import apap.ta.sifactory.service.ItemService;
 import apap.ta.sifactory.service.MesinService;
 import apap.ta.sifactory.service.PegawaiService;
->>>>>>> origin
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-=======
 import org.springframework.web.bind.annotation.*;
->>>>>>> origin
 
 import java.util.List;
 
@@ -53,7 +47,7 @@ public class ItemController {
     private String proposeItemForm(Model model) {
         ItemDetail proposeItem = new ItemDetail();
         List<MesinModel> listMesin = mesinService.getAllMesin();
-        // List<JenisKategori> listKategori = itemService.getKategoriItem(listMesin);
+        List<JenisKategori> listKategori = itemService.getKategoriItem(listMesin);
         model.addAttribute("listKategori", listKategori);
         model.addAttribute("proposeItem", proposeItem);
         return "form-propose-item";

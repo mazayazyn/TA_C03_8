@@ -2,9 +2,13 @@ package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
 import apap.ta.sifactory.model.MesinModel;
+import apap.ta.sifactory.model.RequestUpdateItemModel;
+import apap.ta.sifactory.repository.RequestUpdateItemDB;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
