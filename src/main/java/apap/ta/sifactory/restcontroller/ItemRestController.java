@@ -28,15 +28,4 @@ public class ItemRestController {
         }
     }
 
-//    @GetMapping(value="/listItemDetail")
-//    private ListItemDetail getListItemDetail(){
-//        try {
-//            return itemRestService.getListItemDetail();
-//        } catch (NoSuchElementException e) {
-//            throw new ResponseStatusException(
-//                    HttpStatus.NOT_FOUND, "List item not found"
-//            );
-//        }
-//    }
-
 }
