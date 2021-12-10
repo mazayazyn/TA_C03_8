@@ -22,12 +22,12 @@ public class RequestUpdateItemController {
     private ItemRestService itemRestService;
 
     //Fitur 10
-    @GetMapping("/list")
+    @GetMapping("/daftar-request")
     public String listRequest(Model model) {
         List<RequestUpdateItemModel> listRequest = requestUpdateItemService.getAllRequest();
         List<ItemDetail> listItem = itemRestService.getAllItem();
         model.addAttribute("listRequest", listRequest);
         model.addAttribute("listItem", listItem);
-        return "viewall-request-update-item";
+        return "list-request-update-item";
     }
 }
