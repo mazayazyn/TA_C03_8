@@ -2,8 +2,6 @@ package apap.ta.sifactory.restcontroller;
 
 import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.rest.BaseResponse;
-import apap.ta.sifactory.rest.ItemDetail;
-import apap.ta.sifactory.rest.ListMesinDetail;
 import apap.ta.sifactory.rest.MesinDetail;
 import apap.ta.sifactory.service.MesinRestService;
 import apap.ta.sifactory.service.MesinService;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.NoSuchElementException;

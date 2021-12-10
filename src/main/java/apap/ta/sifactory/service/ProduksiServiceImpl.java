@@ -26,17 +26,12 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        //baru byname
         produksi.setIdKategori(produksiBaru.getIdKategori());
         produksi.setIdRequestUpdateItem(null);
-        //input user
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
-        //tanggal sekarang
-//        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
-        //input user
+        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
         produksi.setMesin(produksiBaru.getMesin());
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
-        //uuid
         produksi.setIdItem(produksiBaru.getIdItem());
 
         return produksiDB.save(produksi);
@@ -45,14 +40,12 @@ public class ProduksiServiceImpl implements ProduksiService {
     @Override
     public ProduksiModel createProduksiByRequest(RequestUpdateItemModel req) {
         ProduksiModel produksi = new ProduksiModel();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getAuthorities());
 
         produksi.setIdKategori(req.getIdKategori());
         produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
+        produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);
-        produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
         produksi.setIdItem(req.getIdItem());
 
         return produksiDB.save(produksi);

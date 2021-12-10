@@ -1,15 +1,14 @@
 package apap.ta.sifactory.controller;
 
-import apap.ta.sifactory.model.JenisKategori;
-import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
+import apap.ta.sifactory.service.ProduksiService;
+import apap.ta.sifactory.model.JenisKategori;
+import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.service.ItemService;
 import apap.ta.sifactory.service.MesinService;
 import apap.ta.sifactory.service.PegawaiService;
-import apap.ta.sifactory.service.ProduksiService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +35,7 @@ public class ItemController {
 
     @Autowired
     private ProduksiService produksiService;
-
+    
     @Autowired
     private PegawaiService pegawaiService;
 
@@ -70,11 +69,11 @@ public class ItemController {
     }
 
     //Fitur 5
-    @GetMapping("/listItem")
+    @GetMapping("/daftar-item")
     public String listItem(Model model) {
         List<ItemDetail> listItem = itemRestService.getAllItem();
         model.addAttribute("listItem", listItem);
-        return "viewall-item";
+        return "list-item";
     }
 
     //Fitur 7

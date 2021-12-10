@@ -2,8 +2,10 @@ package apap.ta.sifactory.controller;
 
 import apap.ta.sifactory.model.DeliveryModel;
 import apap.ta.sifactory.model.PegawaiModel;
+import apap.ta.sifactory.service.DeliveryRestService;
 import apap.ta.sifactory.service.DeliveryService;
 import apap.ta.sifactory.service.PegawaiService;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class DeliveryController {
 
     @Autowired
     private DeliveryService deliveryService;
+
+    @Autowired
+    private DeliveryRestService deliveryRestService;
 
     //Fitur 12
     //Daftar request update item kalo executed True ada button Buat Delivery
@@ -75,5 +80,29 @@ public class DeliveryController {
         }
         model.addAttribute("role", role);
         return "list-delivery";
+    }
+
+    //Fitur 14
+    @GetMapping(value = "/kirim-delivery/{idDelivery}")
+    public String sentDelivery(
+        @PathVariable Integer idDelivery,
+        @ModelAttribute DeliveryModel deliveryModel,
+        Model model
+    ) throws JSONException {
+        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+        if (role.equals("[STAFF_KURIR]")){
+            model.addAttribute("role", role);
+            model.addAttribute("idDelivery", idDelivery);
+            DeliveryModel delivery = deliveryService.getDeliveryByIdDelivery(idDelivery);
+            if (deliveryService.checkCabang(delivery.getIdCabang()) == true){
+                boolean flag = true;
+                delivery.setSent(flag);
+                model.addAttribute("alamat", deliveryService.returnAlamat(delivery.getIdCabang()));
+                String name = SecurityContextHolder.getContext().getAuthentication().getName();
+                pegawaiService.addCounterPegawai(name);
+                return "success-kirim";
+            }
+        }
+        return "failed-kirim";
     }
 }
