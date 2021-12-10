@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 @Transactional
 public class MesinRestServiceImpl  implements MesinRestService{
-    private final WebClient webClient;
-
-    public MesinRestServiceImpl(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Setting.listMesinUrl).build();
-    }
+//    private final WebClient webClient;
+//
+//    public MesinRestServiceImpl(WebClient.Builder webClientBuilder) {
+//        this.webClient = webClientBuilder.baseUrl(Setting.listMesinUrl).build();
+//    }
 
 //    @Override
 //    public List<MesinDetail> getAllMesin() {

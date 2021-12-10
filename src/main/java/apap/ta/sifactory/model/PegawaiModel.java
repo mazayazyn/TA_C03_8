@@ -58,11 +58,6 @@ public class PegawaiModel {
     @ColumnDefault(value = "0") //kepikiran ini di set 0, perlu ngga ya?
     private Integer counter;
 
-//    //Relasi dengan Role
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
-//    private RoleModel role;
-
     //Relasi dengan Role
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)

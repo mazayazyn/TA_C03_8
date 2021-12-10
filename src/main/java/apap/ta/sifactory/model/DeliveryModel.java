@@ -34,12 +34,10 @@ public class DeliveryModel {
     @Column(name = "id_cabang", nullable = false)
     private Integer idCabang;
 
-//    @NotNull
     @Column(name = "tanggal_dibuat", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalDibuat;
 
-//    @NotNull
     @Column(name = "tanggal_dikirim", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalDikirim;
