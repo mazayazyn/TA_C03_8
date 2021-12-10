@@ -1,4 +1,4 @@
-package apap.ta.sifactory.controller;
+package apap.ta.sifactory.restcontroller;
 
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.service.ItemService;
@@ -15,13 +15,13 @@ import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1")
 public class SifactoryRestController {
 
     @Autowired
     private ItemService itemService;
 
-    @PostMapping("request-update-item")
+    @PostMapping(value="/request-update-item")
     private RequestUpdateItemModel requestUpdateItem(@Valid @RequestBody RequestUpdateItemModel req, BindingResult bindingResult ) {
 //        try {
 //            itemService.createRequest(req);
