@@ -17,48 +17,56 @@
         <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
     </div>
     <br><br><br>
-    <div class="card m-4 p-4">
-        <div class="card-body">
+    <div class="card mx-auto" >
+        <div class="card-header">
             <div class="d-flex justify-content-center">
                 <h2>Daftar Request Update Item</h2>
-                <table class="table table-striped">
-                    <thead class="text-center">
-                    <tr>
-                        <th>ID Request</th>
-                        <th>Tanggal Request</th>
-                        <th>ID Item</th>
-                        <th>Nama Item</th>
-                        <th>Kategori</th>
-                        <th>Stok Tambahan</th>
-                        <th>Executed</th>
-                        <th>ID Produksi</th>
-                        <th>ID Delivery</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    <tr th:each="request : ${listRequest}" style="text-align: center">
-                        <td th:text="${request.idRequestUpdateItem}"></td>
-                        <td th:text="|${#dates.day(request.tanggalRequest)} ${#dates.monthName(request.tanggalRequest)} ${#dates.year(request.tanggalRequest)}|"></td>
-                        <td th:text="${request.idItem}"></td>
-                        <div th:each="item : ${listItem}">
-                            <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
-                        </div>
-                        <td th:text="${request.kategori}"></td>
-                        <td th:text="${request.tambahanStok}"></td>
-                        <td th:if="${request.executed} == false" th:text="❌"></td>
-                        <td th:if="${request.executed} == true" th:text="✔️"></td>
-                        <td th:if="${request.idProduksi} == null" th:text="-"></td>
-                        <td th:if="${request.idProduksi} != null" th:text="${request.idProduksi}"></td>
-                        <td th:if="${request.idDelivery} == null" th:text="-"></td>
-                        <td th:if="${request.idDelivery} != null" th:text="${request.idDelivery}"></td>
-                        <td>
-                            <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template detail & update-->
-                            <a th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update/} + ${request.idRequestUpdateItem}">Update</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <div class="justify-content-center">
+                    <table class="table table-striped">
+                        <thead class="text-center">
+                        <tr>
+                            <th>ID Request</th>
+                            <th>Tanggal Request</th>
+                            <th>ID Item</th>
+                            <th>Nama Item</th>
+                            <th>Kategori</th>
+                            <th>Stok Tambahan</th>
+                            <th>Executed</th>
+                            <th>ID Produksi</th>
+                            <th>ID Delivery</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        <tr th:each="request : ${listRequest}" style="text-align: center">
+                            <td th:text="${request.idRequestUpdateItem}"></td>
+                            <td th:text="${request.tanggalRequest}"></td>
+                            <td th:text="${request.idItem}"></td>
+                            <div th:each="item : ${listItem}">
+                                <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
+                            </div>
+                            <td th:text="${request.idKategori}"></td>
+                            <td th:text="${request.tambahanStok}"></td>
+                            <td th:if="${request.executed} == false">&#10006;</td>
+                            <td th:if="${request.executed} == true">&#10004;</td>
+                            <!--                        <td th:if="${request.idProduksi} == null" th:text="-"></td>-->
+                            <!--                        <td th:if="${request.idProduksi} != null" th:text="${request.idProduksi}"></td>-->
+                            <!--                        <td th:if="${request.idDelivery} == null" th:text="-"></td>-->
+                            <!--                        <td th:if="${request.idDelivery} != null" th:text="${request.idDelivery}"></td>-->
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template update-->
+                                <a th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update/} + ${request.idRequestUpdateItem}">Update</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
