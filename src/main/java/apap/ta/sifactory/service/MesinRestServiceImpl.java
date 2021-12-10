@@ -16,6 +16,9 @@ public class MesinRestServiceImpl  implements MesinRestService{
 //        this.webClient = webClientBuilder.baseUrl(Setting.listMesinUrl).build();
 //    }
 
+//    public MesinRestServiceImpl(WebClient.Builder webClientBuilder) {
+//        this.webClient = webClientBuilder.baseUrl(Setting.listMesinUrl).build();
+//    }
 //    @Override
 //    public List<MesinDetail> getAllMesin() {
 //        ListMesinDetail i = this.webClient.get().uri("/")
