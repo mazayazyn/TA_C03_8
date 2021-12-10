@@ -4,12 +4,9 @@ import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
-import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import apap.ta.sifactory.repository.ProduksiDB;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

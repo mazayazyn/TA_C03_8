@@ -21,8 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/add-pegawai").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/pegawai/add-pegawai").hasAnyAuthority("ADMIN")
 //                .antMatchers("/factorymanager").hasAuthority("FACTORY_MANAGER")
 //                .antMatchers("/gudang").hasAuthority("STAFF_ GUDANG")
 //                .antMatchers("/kurir").hasAuthority("STAFF_KURIR")
@@ -34,14 +33,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
-                .permitAll()
                 .and()
                 .cors()
                 .and()
                 .csrf()
-                .disable()
-        ;
-
+                .disable();
     }
 
     @Bean
@@ -53,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
-//                .withUser("admin-si").password(encoder().encode("adminsifactory"))
+//                .withUser("admin1").password(encoder().encode("admin1"))
 //                .roles("ADMIN");
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())

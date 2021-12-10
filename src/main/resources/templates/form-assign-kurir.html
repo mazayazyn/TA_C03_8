@@ -22,8 +22,8 @@
                         <input type="hidden" th:field="*{id_request_update_item}" />
                         <label>Daftar Kurir</label>
                         <select name="id_kurir" class="form-control">
-                            <option selected value="">-- Pilih Kategori --</option>
-                            <option th:each="kurir : ${listKurir}" th:value="${kurir.id_pegawai}" th:text="${kurir.nama}"></option>
+                            <option selected value="">-- Pilih Kurir --</option>
+                            <option th:each="kurir : ${listKurir}" th:value="${kurir.idPegawai}" th:text="${kurir.nama}"></option>
                         </select>
                         <br>
                         <button type="submit" class="btn btn-warning">Simpan</button>

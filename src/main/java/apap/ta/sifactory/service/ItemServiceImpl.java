@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
+
 
 @Service
 @Transactional
@@ -41,9 +41,9 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<JenisKategori> getKategoriItem(List<MesinModel> listMesin) {
         List<JenisKategori> listKategori = new ArrayList<>();
-        for (MesinModel m:listMesin) {
-            JenisKategori kategori = JenisKategori.values()[m.getIdKategori()-1];
-            if(!listKategori.contains(kategori)){
+        for (MesinModel m : listMesin) {
+            JenisKategori kategori = JenisKategori.values()[m.getIdKategori() - 1];
+            if (!listKategori.contains(kategori)) {
                 listKategori.add(kategori);
             }
         }
@@ -52,3 +52,4 @@ public class ItemServiceImpl implements ItemService {
 
 
 }
+

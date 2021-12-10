@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -28,7 +26,7 @@ public class ProduksiModel implements Serializable{
     @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Integer idItem;
+    private String idItem;
 
     @NotNull
     @Column(name = "id_kategori", nullable = false)
@@ -38,13 +36,13 @@ public class ProduksiModel implements Serializable{
     @Column(name = "tambahan_stok", nullable = false)
     private Integer tambahanStok;
 
-    @NotNull
-    @Column(name = "tanggal_produksi", nullable = false)
+//    @NotNull
+    @Column(name = "tanggal_produksi", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalProduksi;
 
-    @NotNull
-    @Column(name = "id_request_update_item", nullable = false)
+//    @NotNull
+    @Column(name = "id_request_update_item", nullable = true)
     private Integer idRequestUpdateItem;
 
     //Relasi dengan Request Update Item
@@ -53,7 +51,8 @@ public class ProduksiModel implements Serializable{
 
     //Relasi dengan Mesin
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = true)
+//    @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = true)
+    @JoinColumn(name = "id_mesin", referencedColumnName = "id_mesin", nullable = false)
     private MesinModel mesin;
 
     //Relasi dengan Pegawai

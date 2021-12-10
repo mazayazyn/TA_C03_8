@@ -1,7 +1,6 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
-import apap.ta.sifactory.rest.*;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,13 +8,9 @@ import apap.ta.sifactory.rest.ListItemDetail;
 
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
-
 import java.util.*;
-
-import reactor.core.publisher.Mono;
 import apap.ta.sifactory.rest.GetItem;
 import apap.ta.sifactory.rest.ItemDetail;
-import apap.ta.sifactory.rest.ListItemDetail;
 
 @Service
 @Transactional
@@ -51,6 +46,7 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getItem();
     }
 
+    //Fitur 4
     @Override
     public List<String> getKategoriItem() {
 //        Mono<ItemDetail> hasil = getAllItem();
@@ -86,4 +82,5 @@ public class ItemRestServiceImpl implements ItemRestService{
 
         return statusCode;
     }
+
 }

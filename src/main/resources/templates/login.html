@@ -18,32 +18,29 @@
 </head>
 
 <body>
-<div class="container-fluid">
-    <h2>Hello !</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    Log In
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h3>Login To SI-Factory</h3><br>
+            </div>
+                <div th:if="${param.error}">
+                    <span style="color: red">Invalid username or password</span>
                 </div>
-                <div class="card-body">
-                    <div th:if="${param.error}">
-                        <span style="color: red">Invalid username or password</span>
+            <div class="justify-content-center">
+                <form th:action="@{/login}" method="POST">
+                    <div class="row form-group">
+                        <label class="col-sm-4">Username</label>
+                        <input type="text" class="col-sm-8 form-control input-sm" name="username"/>
                     </div>
-                    <form th:action="@{/login}" method="POST">
-                        <div class="row form-group">
-                            <label class="col-sm-4">Username:</label>
-                            <input type="text" class="col-sm-8 form-control input-sm" name="username"/>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-sm-4">Password:</label>
-                            <input type="password" class="col-sm-8 form-control input-sm" name="password"/>
-                        </div>
-                        <div class="row form-group">
-                            <button type="submit" class="btn btn-warning">Sign In</button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4">Password</label>
+                        <input type="password" class="col-sm-8 form-control input-sm" name="password"/>
+                    </div>
+                    <div class="row form-group justify-content-center">
+                        <button type="submit" class="btn btn-warning">Sign In</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

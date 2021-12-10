@@ -34,22 +34,22 @@ public class DeliveryModel {
     @Column(name = "id_cabang", nullable = false)
     private Integer idCabang;
 
-    @NotNull
-    @Column(name = "tanggal_dibuat", nullable = false)
+//    @NotNull
+    @Column(name = "tanggal_dibuat", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalDibuat;
 
-    @NotNull
-    @Column(name = "tanggal_dikirim", nullable = false)
+//    @NotNull
+    @Column(name = "tanggal_dikirim", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalDikirim;
 
     @NotNull
     @Column(name = "sent", nullable = false)
-    @ColumnDefault(value = "false") //kepikiran ini di set false, perlu ngga ya?
+    @ColumnDefault(value = "false")
     private Boolean sent;
 
     //Relasi dengan Request Update Item
-    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private RequestUpdateItemModel requestUpdate;
 }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -28,5 +27,16 @@ public class ItemRestController {
             );
         }
     }
+
+//    @GetMapping(value="/listItemDetail")
+//    private ListItemDetail getListItemDetail(){
+//        try {
+//            return itemRestService.getListItemDetail();
+//        } catch (NoSuchElementException e) {
+//            throw new ResponseStatusException(
+//                    HttpStatus.NOT_FOUND, "List item not found"
+//            );
+//        }
+//    }
 
 }
