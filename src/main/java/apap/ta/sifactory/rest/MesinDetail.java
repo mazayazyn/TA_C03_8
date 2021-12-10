@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MesinDetail {
@@ -18,7 +20,7 @@ public class MesinDetail {
     private Integer idKategori;
 
     @JsonProperty("tanggalDibuat")
-    private String tanggalDibuat;
+    private LocalDate tanggalDibuat;
 
     @JsonProperty("kapasitas")
     private Integer kapasitas;

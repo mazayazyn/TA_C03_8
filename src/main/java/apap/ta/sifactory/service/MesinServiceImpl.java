@@ -24,7 +24,6 @@ public class MesinServiceImpl implements MesinService{
     @Override
     public MesinModel getMesinByIdMesin(Integer idMesin) {
         Optional<MesinModel> mesin = mesinDB.findByIdMesin(idMesin);
-
         if(mesin.isPresent()){
             return mesin.get();
         } else {
