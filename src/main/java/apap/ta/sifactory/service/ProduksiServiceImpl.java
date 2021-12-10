@@ -49,14 +49,15 @@ public class ProduksiServiceImpl implements ProduksiService {
     public ProduksiModel createProduksiByRequest(RequestUpdateItemModel req) {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getAuthorities());
+        System.out.println(authentication);
 
         produksi.setIdKategori(req.getIdKategori());
+        //blm ada id gmn caranya
         produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);
-        produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
+        // produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
         produksi.setIdItem(req.getIdItem());
 
         return produksiDB.save(produksi);

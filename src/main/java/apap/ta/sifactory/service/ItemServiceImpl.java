@@ -6,6 +6,8 @@ import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,11 +28,14 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public RequestUpdateItemModel createRequest(RequestUpdateItemModel req) {
         //create produksi
-        produksiService.createProduksiByRequest(req);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
         //set produksi
         //set delivery
+        RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
+        produksiService.createProduksiByRequest(ReqSave);
 
-        return requestUpdateItemDB.save(req);
+        return ReqSave;
     }
 
     @Override

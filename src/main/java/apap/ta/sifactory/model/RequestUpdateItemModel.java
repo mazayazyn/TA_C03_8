@@ -50,10 +50,6 @@ public class RequestUpdateItemModel implements Serializable{
     @Column(name = "executed", nullable = false)
     private boolean executed;
 
-//    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_delivery;
-
     //Relasi dengan Produksi
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi")
