@@ -16,12 +16,12 @@ public class MesinRestServiceImpl  implements MesinRestService{
         this.webClient = webClientBuilder.baseUrl(Setting.listMesinUrl).build();
     }
 
-    @Override
-    public List<MesinDetail> getAllMesin() {
-        ListMesinDetail i = this.webClient.get().uri("/")
-                .retrieve()
-                .bodyToMono(ListMesinDetail.class)
-                .block();
-        return i.getListMesin();
-    }
+//    @Override
+//    public List<MesinDetail> getAllMesin() {
+//        ListMesinDetail i = this.webClient.get().uri("/")
+//                .retrieve()
+//                .bodyToMono(ListMesinDetail.class)
+//                .block();
+//        return i.getListMesin();
+//    }
 }
