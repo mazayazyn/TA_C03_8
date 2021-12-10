@@ -13,11 +13,14 @@
 <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
-    <div class="row justify-content-center">
+</div>
+<div class="container">
+    <div class="d-flex justify-content-center">
         <div class="col-md-6">
+            <br>
             <div class="card">
-                <div class="card-header">Propose Item</div>
-                <div class="card-body">
+                <div class="card-body justify-content-center">
+                    <h3>Propose Item</h3>
                     <form th:action="@{/item/propose-item}" th:object="${proposeItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
                         <label>Nama Item</label>
                         <input required type="text" name="nama" class="form-control" />

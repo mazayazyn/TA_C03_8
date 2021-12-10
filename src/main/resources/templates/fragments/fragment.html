@@ -28,17 +28,17 @@
 <body>
 <nav th:fragment="navbar-admin" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/"> SI-Factory</a>
+        <a class="navbar-brand" href="/"><i class='uil uil-user'></i>  SI-Factory</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-admin" aria-controls="navbarNav-admin" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarNav-admin">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/item/listItem}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
@@ -52,14 +52,6 @@
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-lg-auto">
-                <div class="ml-lg-4">
-                    <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                    </div>
-                </div>
             </ul>
         </div>
     </div>
@@ -77,7 +69,7 @@
         <div class="collapse navbar-collapse" id="navbarNav-factory-manager">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/item/listItem}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
@@ -91,15 +83,6 @@
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav ml-lg-auto">
-                <div class="ml-lg-4">
-                    <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                    </div>
-                </div>
             </ul>
         </div>
     </div>
@@ -117,29 +100,17 @@
         <div class="collapse navbar-collapse" id="navbarNav-staff-gudang">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/item/listItem}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
+                    <a th:href="@{/request/list}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav ml-lg-auto">
-                <div class="ml-lg-4">
-                    <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                    </div>
-                </div>
             </ul>
         </div>
     </div>
@@ -157,32 +128,17 @@
         <div class="collapse navbar-collapse" id="navbarNav-staff-kurir">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/item/listItem}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
-                </li>
-                <li class="nav-item">
                     <a th:href="@{/delivery/daftar-delivery}" class="nav-link"><span data-hover="Daftar Delivery">Daftar Delivery</span></a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Pengiriman Delivery">Pengiriman Delivery</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav ml-lg-auto">
-                <div class="ml-lg-4">
-                    <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                    </div>
-                </div>
             </ul>
         </div>
     </div>
@@ -192,42 +148,28 @@
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-staff-operasional" aria-controls="navbarNav-staff-operasional" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav-staff-operasional">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="List Item">List Item</span></a>
+                    <a th:href="@{/item/listItem}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
+                    <a th:href="@{/request/list}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Delivery">Daftar Delivery</span></a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Assign Delivery">Assign Delivery</span></a>
+                    <a th:href="@{/delivery/daftar-delivery}" class="nav-link"><span data-hover="Daftar Delivery">Daftar Delivery</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-lg-auto">
-                <div class="ml-lg-4">
-                    <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                    </div>
-                </div>
             </ul>
         </div>
     </div>
