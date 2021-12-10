@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Si Factory</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    
+    <div class="d-flex justify-content-center pt-5">
+
+        <div class="d-flex flex-column justify-content-center w-75 d-grid gap-3">
+          <!-- Konten isi disini -->
+          <h1 class="text-center pb-3 text-center">Lorem Ipsum</h1>
+          <p th:text=${item.uuid}></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+
+  
+        </div>
+  
+      </div>
+
+</body>
+</html>

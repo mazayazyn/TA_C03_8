@@ -52,18 +52,18 @@
                     <tbody>
                     <tr th:each="request, iterationStatus : ${listRequest}" style="text-align: center">
                         <td th:text="${iterationStatus.count}"></td>
-                        <td th:text="${request.id_request_update_item}"></td>
+                        <td th:text="${request.idRequestUpdateItem}"></td>
                         <div th:each="item : ${listItem}">
-                            <td th:if="${item.uuid} == ${request.id_item}" th:text="${item.nama}"></td>
+                            <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
                         </div>
                         <td th:text="${request.kategori}"></td>
-                        <td th:text="${request.tambahan_stok}"></td>
+                        <td th:text="${request.tambahanStok}"></td>
                         <td th:if="${request.executed} == false" th:text="❌"></td>
                         <td th:if="${request.executed} == true" th:text="✔️"></td>
                         <td>
                             <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template detail & update-->
-                            <a class="btn btn-sm btn-primary" th:href="@{/request/} + ${request.id_request_update_item}">Detail</a>
-                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update} + ${request.id_request_update_item}">Update</a>
+                            <a class="btn btn-sm btn-primary" th:href="@{/request/} + ${request.idRequestUpdateItem}">Detail</a>
+                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update} + ${request.idRequestUpdateItem}">Update</a>
                             <!--                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>-->
                         </td>
                     </div>

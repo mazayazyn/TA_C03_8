@@ -10,4 +10,5 @@ public interface PegawaiService {
     List<PegawaiModel> getDaftarPegawai();
     List<PegawaiModel> getKurir();
     String encrypt(String password);
+
 }

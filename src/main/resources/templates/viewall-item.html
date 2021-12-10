@@ -57,8 +57,8 @@
                         <td th:text="${item.kategori}"></td>
                         <td>
 <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                            <a class="btn btn-sm btn-primary" th:href="@{/item/} + ${item.uuid}">Detail</a>
-                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/item/update} + ${item.uuid}">Update</a>
+                            <a class="btn btn-sm btn-primary" th:href="@{#}">Detail</a>
+                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/item/update/} + ${item.uuid}">Update</a>
 <!--                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>-->
                         </td>
                     </tr>

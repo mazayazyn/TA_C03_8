@@ -1,6 +1,7 @@
 package apap.ta.sifactory.restcontroller;
 
 import apap.ta.sifactory.rest.ItemDetail;
+import apap.ta.sifactory.rest.ListItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,16 @@ public class ItemRestController {
             );
         }
     }
+
+//    @GetMapping(value="/listItemDetail")
+//    private ListItemDetail getListItemDetail(){
+//        try {
+//            return itemRestService.getListItemDetail();
+//        } catch (NoSuchElementException e) {
+//            throw new ResponseStatusException(
+//                    HttpStatus.NOT_FOUND, "List item not found"
+//            );
+//        }
+//    }
 
 }
