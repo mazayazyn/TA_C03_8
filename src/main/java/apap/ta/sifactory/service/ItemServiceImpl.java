@@ -4,12 +4,8 @@ import apap.ta.sifactory.model.JenisKategori;
 import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -27,14 +23,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public RequestUpdateItemModel createRequest(RequestUpdateItemModel req) {
-        //create produksi
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication);
-        //set produksi
-        //set delivery
         RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
         produksiService.createProduksiByRequest(ReqSave);
-
         return ReqSave;
     }
 
