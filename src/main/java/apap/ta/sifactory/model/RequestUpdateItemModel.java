@@ -6,9 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -48,7 +50,7 @@ public class RequestUpdateItemModel implements Serializable{
 
     @NotNull
     @Column(nullable = false)
-    private boolean executed;
+    private boolean executed = false;
 
 //    @NotNull
 //    @Column(nullable = false)
