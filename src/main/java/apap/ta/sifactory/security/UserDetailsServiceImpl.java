@@ -10,11 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private PegawaiDB pegawaiDB;
@@ -24,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         PegawaiModel pegawai = pegawaiDB.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNama_role()));
+        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNamaRole()));
         return new User(pegawai.getUsername(), pegawai.getPassword(), grantedAuthorities);
     }
 }

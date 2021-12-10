@@ -8,6 +8,8 @@ import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import apap.ta.sifactory.repository.ProduksiDB;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,17 +30,17 @@ public class ProduksiServiceImpl implements ProduksiService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         //baru byname
-        produksi.setId_kategori(produksiBaru.getId_kategori());
-        produksi.setId_request_update_item(null);
+        produksi.setIdKategori(produksiBaru.getIdKategori());
+        produksi.setIdRequestUpdateItem(null);
         //input user
-        produksi.setTambahan_stok(produksiBaru.getTambahan_stok());
+        produksi.setTambahanStok(produksiBaru.getTambahanStok());
         //tanggal sekarang
-        produksi.setTanggal_produksi(produksiBaru.getTanggal_produksi());
+        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
         //input user
         produksi.setMesin(produksiBaru.getMesin());
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
         //uuid
-        produksi.setId_item(produksiBaru.getId_item());
+        produksi.setIdItem(produksiBaru.getIdItem());
 
         return produksiDB.save(produksi);
     }
@@ -49,13 +51,13 @@ public class ProduksiServiceImpl implements ProduksiService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(authentication.getAuthorities());
 
-        produksi.setId_kategori(req.getId_kategori());
-        produksi.setId_request_update_item(req.getId_request_update_item());
-        produksi.setTambahan_stok(req.getTambahan_stok());
-        produksi.setTanggal_produksi(req.getTanggal_request());
+        produksi.setIdKategori(req.getIdKategori());
+        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
+        produksi.setTambahanStok(req.getTambahanStok());
+        produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
-        produksi.setId_item(req.getId_item());
+        produksi.setIdItem(req.getIdItem());
 
         return produksiDB.save(produksi);
     }

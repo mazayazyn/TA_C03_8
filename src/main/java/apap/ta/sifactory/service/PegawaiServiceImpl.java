@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,9 +26,42 @@ public class PegawaiServiceImpl implements PegawaiService{
     }
 
     @Override
+    public PegawaiModel getPegawai(String username) {
+        PegawaiModel getPegawai = pegawaiDB.findByUsername(username);
+        if(getPegawai!=null){//jika ada pegawai dengan username
+            return getPegawai;
+        }
+        return null;
+    }
+
+    @Override
+    public void addCounterPegawai(String username) {
+        PegawaiModel pegawai = getPegawai(username);
+        Integer counterb = pegawai.getCounter();
+        pegawai.setCounter(counterb+1);
+    }
+
+    @Override
     public String encrypt(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
+    }
+
+    @Override
+    public List<PegawaiModel> getDaftarPegawai() {
+        return pegawaiDB.findAll();
+    }
+
+    @Override
+    public List<PegawaiModel> getKurir() {
+        List<PegawaiModel> listP = getDaftarPegawai();
+        List<PegawaiModel> listKurir = new ArrayList<>();
+        for (PegawaiModel p:listP){
+            if(p.getRole().getNamaRole().equals("STAFF_KURIR")){
+                listKurir.add(p);
+            }
+        }
+        return listKurir;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class PegawaiController {
     @Autowired
     private RoleService roleService;
 
+    //Fitur 16
     @GetMapping("/add-pegawai")
     private String addPegawaiForm(Model model) {
         PegawaiModel user = new PegawaiModel();
@@ -31,10 +33,31 @@ public class PegawaiController {
 
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+        if(pegawaiService.getPegawai(pegawai.getUsername())!=null){//pegawai yang ingin ditambah ada username sama
+            model.addAttribute("page", "menambah");
+            model.addAttribute("tipe", "akun pengguna/pegawai");
+            model.addAttribute("cause", "username sudah digunakan");
+            return "error-page";
+        }
         pegawai.setCounter(0);
         pegawaiService.addPegawai(pegawai);
-        model.addAttribute("pegawai", pegawai);
-        return "redirect:/";
+        String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
+        pegawaiService.addCounterPegawai(nama);
+        model.addAttribute("action", "menambah");
+        model.addAttribute("tipe", "akun pengguna/pegawai baru");
+        return "success-page";
+    }
+
+    //Fitur 17
+    @GetMapping(value = "/daftar-pegawai")
+    public String viewAllPegawai(
+            Model model
+    ){
+        List<PegawaiModel> listPegawai = pegawaiService.getDaftarPegawai();
+        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+        model.addAttribute("role", role);
+        model.addAttribute("listPegawai", listPegawai);
+        return "list-pegawai";
     }
 
 }

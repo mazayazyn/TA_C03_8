@@ -1,8 +1,11 @@
 package apap.ta.sifactory.service;
 
-import apap.ta.sifactory.rest.ListItemDetail;
+import apap.ta.sifactory.model.JenisKategori;
+import apap.ta.sifactory.rest.*;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import apap.ta.sifactory.rest.ListItemDetail;
 
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
@@ -18,9 +21,11 @@ import apap.ta.sifactory.rest.ListItemDetail;
 @Transactional
 public class ItemRestServiceImpl implements ItemRestService{
     private final WebClient webClient;
+    private final WebClient siBusinessWeb;
 
     public ItemRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.siItemUrl).build();
+        this.siBusinessWeb = webClientBuilder.baseUrl(Setting.siBusinessUrl).build();
     }
 
     //Fitur 5
@@ -33,6 +38,7 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
+    //Fitur 4
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
@@ -53,5 +59,31 @@ public class ItemRestServiceImpl implements ItemRestService{
 //            //if id kategori di mesin
 //        }
         return null;
+    }
+
+    public String postProposeItem(ItemDetail proposeItem) {
+        Integer kategori = JenisKategori.valueOf(proposeItem.getKategori()).ordinal()+1;
+        Map<String, Object> data = new HashMap<>();
+        data.put("name", proposeItem.getNama());
+        data.put("stock", proposeItem.getStok());
+        data.put("price", proposeItem.getHarga());
+        data.put("category", kategori);
+        String hasil = this.siBusinessWeb.post().uri("/api/v1/item/propose")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.ALL)
+                .syncBody(data)
+                .retrieve()
+                .bodyToMono(String.class).block();
+        System.out.println("hasil");
+        System.out.println(hasil);
+
+        hasil = hasil.substring(1, hasil.length()-1);
+        System.out.println(hasil);
+        String getStatus = hasil.split(",")[1];   //split to get response status
+        System.out.println(getStatus);
+        String statusCode = getStatus.split(":")[1];
+        System.out.println(statusCode);
+
+        return statusCode;
     }
 }

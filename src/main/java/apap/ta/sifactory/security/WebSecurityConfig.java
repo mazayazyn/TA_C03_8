@@ -49,12 +49,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("admin-si").password(encoder().encode("adminsifactory"))
-                .roles("ADMIN");
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("admin-si").password(encoder().encode("adminsifactory"))
+//                .roles("ADMIN");
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
 //                .withUser("factory-manager-si").password(encoder().encode("factorymanager"))
@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("staff-operasional-si").password(encoder().encode("staffoperasional"))
 //                .roles("STAFF_OPERASIONAL");
 
-    }
+//    }
 
     @Autowired
     private UserDetailsService userDetailsService;

@@ -4,7 +4,9 @@ import apap.ta.sifactory.model.RequestUpdateItemModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface RequestUpdateItemDB extends JpaRepository<RequestUpdateItemModel, Integer>{
+import javax.transaction.Transactional;
 
+@Repository
+@Transactional
+public interface RequestUpdateItemDB extends JpaRepository<RequestUpdateItemModel, Integer>{
 }

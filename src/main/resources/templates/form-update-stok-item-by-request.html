@@ -49,7 +49,7 @@
                             <label>Mesin yang Akan Digunakan</label>
                             <select name="mesin" class="form-control">
                                 <option hidden>-- Pilih Mesin --</option>
-                                <option th:each="mesin : ${listMesin}" th:value="${mesin.id_mesin}" th:text="${mesin.nama}"></option>
+                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
                             </select>
                         </div>
                         <div style="margin-top: 2rem">
