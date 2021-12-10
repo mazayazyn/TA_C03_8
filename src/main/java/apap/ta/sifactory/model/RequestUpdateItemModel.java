@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -28,7 +30,7 @@ public class RequestUpdateItemModel implements Serializable{
     @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Integer idItem;
+    private String idItem;
 
     @NotNull
     @Column(name = "id_kategori", nullable = false)
@@ -40,8 +42,8 @@ public class RequestUpdateItemModel implements Serializable{
 
     @NotNull
     @Column(name = "tanggal_request", nullable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tanggalRequest;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Timestamp tanggalRequest;
 
     @NotNull
     @Column(name = "id_cabang", nullable = false)
@@ -49,19 +51,16 @@ public class RequestUpdateItemModel implements Serializable{
 
     @NotNull
     @Column(name = "executed", nullable = false)
+    @ColumnDefault(value = "false")
     private boolean executed;
-
-//    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_delivery;
 
     //Relasi dengan Produksi
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi")
+    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi", nullable = true)
     private ProduksiModel produksi;
 
     //Relasi dengan Delivery
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery")
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = true)
     private DeliveryModel delivery;
 }

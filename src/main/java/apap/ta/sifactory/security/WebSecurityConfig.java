@@ -32,7 +32,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
+                .and()
+                .cors()
+                .and()
+                .csrf()
+                .disable();
     }
 
     @Bean
@@ -44,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
-//                .withUser("admin-si").password(encoder().encode("adminsifactory"))
+//                .withUser("admin1").password(encoder().encode("admin1"))
 //                .roles("ADMIN");
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
