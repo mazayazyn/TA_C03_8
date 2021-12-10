@@ -69,11 +69,11 @@ public class ItemController {
     }
 
     //Fitur 5
-    @GetMapping("/listItem")
+    @GetMapping("/daftar-item")
     public String listItem(Model model) {
         List<ItemDetail> listItem = itemRestService.getAllItem();
         model.addAttribute("listItem", listItem);
-        return "viewall-item";
+        return "list-item";
     }
 
     //Fitur 7
