@@ -32,7 +32,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         //input user
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
         //tanggal sekarang
-        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
+//        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
         //input user
         produksi.setMesin(produksiBaru.getMesin());
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
@@ -51,7 +51,6 @@ public class ProduksiServiceImpl implements ProduksiService {
         produksi.setIdKategori(req.getIdKategori());
         produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
-        produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
         produksi.setIdItem(req.getIdItem());

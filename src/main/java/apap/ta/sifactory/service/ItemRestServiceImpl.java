@@ -38,6 +38,14 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
+//    @Override
+//    public ListItemDetail getListItemDetail() {
+//        return this.webClient.get().uri("/")
+//                .retrieve()
+//                .bodyToMono(ListItemDetail.class)
+//                .block();
+//    }
+
     //Fitur 4
     @Override
     public String postProposeItem(ItemDetail proposeItem) {

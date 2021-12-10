@@ -28,7 +28,7 @@ public class ProduksiModel implements Serializable{
     @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Integer idItem;
+    private String idItem;
 
     @NotNull
     @Column(name = "id_kategori", nullable = false)
@@ -38,22 +38,14 @@ public class ProduksiModel implements Serializable{
     @Column(name = "tambahan_stok", nullable = false)
     private Integer tambahanStok;
 
-    @NotNull
-    @Column(name = "tanggal_produksi", nullable = false)
+//    @NotNull
+    @Column(name = "tanggal_produksi", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalProduksi;
 
 //    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_pegawai;
-
-    @NotNull
-    @Column(name = "id_request_update_item", nullable = false)
+    @Column(name = "id_request_update_item", nullable = true)
     private Integer idRequestUpdateItem;
-
-//    @NotNull
-//    @Column(nullable = false)
-//    private Integer id_mesin;
 
     //Relasi dengan Request Update Item
     @OneToOne(mappedBy = "produksi",fetch = FetchType.LAZY)
