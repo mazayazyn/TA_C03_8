@@ -50,6 +50,6 @@ public class DeliveryModel {
     private Boolean sent;
 
     //Relasi dengan Request Update Item
-    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private RequestUpdateItemModel requestUpdate;
 }
