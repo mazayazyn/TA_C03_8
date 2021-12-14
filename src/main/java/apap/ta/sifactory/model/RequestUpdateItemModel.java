@@ -51,12 +51,11 @@ public class RequestUpdateItemModel implements Serializable{
     private boolean executed;
 
     //Relasi dengan Produksi
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_produksi", referencedColumnName = "id_produksi")
+    @OneToOne(mappedBy = "requestUpdateItem",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ProduksiModel produksi;
 
     //Relasi dengan Delivery
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery")
+    @OneToOne(mappedBy = "requestUpdate", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = false)
     private DeliveryModel delivery;
 }

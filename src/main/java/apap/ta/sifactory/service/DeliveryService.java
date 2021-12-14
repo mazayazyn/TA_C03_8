@@ -12,4 +12,5 @@ public interface DeliveryService {
     boolean checkCabang (Integer idCabang) throws JSONException;
     DeliveryModel getDeliveryByIdDelivery(Integer idDelivery);
     String returnAlamat (Integer idCabang) throws JSONException;
+    void addDelivery(DeliveryModel delivery);
 }

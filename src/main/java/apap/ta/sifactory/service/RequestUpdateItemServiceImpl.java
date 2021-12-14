@@ -19,4 +19,8 @@ public class RequestUpdateItemServiceImpl implements RequestUpdateItemService{
         return requestUpdateItemDB.findAll();
     }
 
+    @Override
+    public RequestUpdateItemModel getRequestById(Integer id) {
+        return requestUpdateItemDB.findByIdRequestUpdateItem(id);
+    }
 }

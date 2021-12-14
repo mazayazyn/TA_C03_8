@@ -48,6 +48,7 @@ public class DeliveryModel {
     private Boolean sent;
 
     //Relasi dengan Request Update Item
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_request_update_item", referencedColumnName = "id_request_update_item", nullable = false)
     private RequestUpdateItemModel requestUpdate;
 }

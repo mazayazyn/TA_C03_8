@@ -9,4 +9,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface RequestUpdateItemDB extends JpaRepository<RequestUpdateItemModel, Integer>{
+    RequestUpdateItemModel findByIdRequestUpdateItem(Integer id);
 }

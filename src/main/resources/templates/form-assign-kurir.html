@@ -13,17 +13,22 @@
 <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-    <div class="row justify-content-center">
+</div>
+<div class="container">
+    <div class="d-flex justify-content-center">
         <div class="col-md-6">
+            <br>
             <div class="card">
-                <div class="card-header">Assign Delivery Kurir</div>
-                <div class="card-body">
-                    <form th:action="@{/delivery/assign-kurir}" th:object="${delivery}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
-                        <input type="hidden" th:field="*{id_request_update_item}" />
+                <div class="card-body justify-content-center">
+                    <h3>Assign Delivery Kurir</h3>
+                    <form th:action="@{/delivery/assign-kurir/}+${idRequestUpdateItem}" th:object="${delivery}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
+<!--                        <input type="hidden" th:field="*{requestUpdate}" th:value="${idRequestUpdateItem}" />-->
                         <label>Daftar Kurir</label>
-                        <select name="id_kurir" class="form-control">
+                        <select name="pegawai" th:field="*{pegawai}" class="form-control">
                             <option selected value="">-- Pilih Kurir --</option>
-                            <option th:each="kurir : ${listKurir}" th:value="${kurir.idPegawai}" th:text="${kurir.nama}"></option>
+                            <option th:each="kurir : ${listKurir}"
+                                    th:value="${kurir.idPegawai}"
+                                    th:text="${kurir.nama}"></option>
                         </select>
                         <br>
                         <button type="submit" class="btn btn-warning">Simpan</button>

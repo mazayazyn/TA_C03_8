@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Item</title>
+    <title>Daftar Request Update Item</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
@@ -29,26 +29,26 @@
                     <table class="table table-striped">
                         <thead class="text-center">
                         <tr>
-                            <th>ID Request</th>
+<!--                            <th>ID Request</th>-->
                             <th>Tanggal Request</th>
-                            <th>ID Item</th>
+<!--                            <th>ID Item</th>-->
                             <th>Nama Item</th>
                             <th>Kategori</th>
                             <th>Stok Tambahan</th>
                             <th>Executed</th>
-                            <th>ID Produksi</th>
-                            <th>ID Delivery</th>
+<!--                            <th>ID Produksi</th>-->
+<!--                            <th>ID Delivery</th>-->
                             <th></th>
                         </tr>
                         </thead>
                         <tbody class="text-center">
                         <tr th:each="request : ${listRequest}" style="text-align: center">
-                            <td th:text="${request.idRequestUpdateItem}"></td>
+<!--                            <td th:text="${request.idRequestUpdateItem}"></td>-->
                             <td th:text="${request.tanggalRequest}"></td>
                             <td th:text="${request.idItem}"></td>
-                            <div th:each="item : ${listItem}">
-                                <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
-                            </div>
+<!--                            <div th:each="item : ${listItem}">-->
+<!--                                <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>-->
+<!--                            </div>-->
                             <td th:text="${request.idKategori}"></td>
                             <td th:text="${request.tambahanStok}"></td>
                             <td th:if="${request.executed} == false">&#10006;</td>
@@ -61,7 +61,11 @@
                             <td></td>
                             <td>
                                 <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template update-->
+                            <td>
+                                <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template update-->
                                 <a th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/request/update/} + ${request.idRequestUpdateItem}">Update</a>
+                                <a th:if="${request.executed} == true" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')" class="btn btn-sm btn-warning" th:href="@{/delivery/assign-kurir/} + ${request.idRequestUpdateItem}">Buat Delivery</a>
+                            </td>
                             </td>
                         </tr>
                         </tbody>
