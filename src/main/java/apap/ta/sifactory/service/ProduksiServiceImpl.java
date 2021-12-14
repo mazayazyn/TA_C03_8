@@ -27,7 +27,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         produksi.setIdKategori(produksiBaru.getIdKategori());
-        produksi.setIdRequestUpdateItem(null);
+//        produksi.setIdRequestUpdateItem(null);
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
         produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
         produksi.setMesin(produksiBaru.getMesin());
@@ -42,7 +42,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
 
         produksi.setIdKategori(req.getIdKategori());
-        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
+//        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);

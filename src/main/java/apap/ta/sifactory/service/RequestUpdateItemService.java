@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RequestUpdateItemService {
     List<RequestUpdateItemModel> getAllRequest();
+    RequestUpdateItemModel getRequestById (Integer id);
 }

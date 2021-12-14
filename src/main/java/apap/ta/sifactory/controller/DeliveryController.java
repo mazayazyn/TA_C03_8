@@ -2,8 +2,10 @@ package apap.ta.sifactory.controller;
 
 import apap.ta.sifactory.model.DeliveryModel;
 import apap.ta.sifactory.model.PegawaiModel;
+import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.service.DeliveryService;
 import apap.ta.sifactory.service.PegawaiService;
+import apap.ta.sifactory.service.RequestUpdateItemService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -22,40 +25,46 @@ public class DeliveryController {
     @Autowired
     private DeliveryService deliveryService;
 
+    @Autowired
+    private RequestUpdateItemService requestUpdateItemService;
+
     // @Autowired
     // private DeliveryRestService deliveryRestService;
 
     //Fitur 12
     //Daftar request update item kalo executed True ada button Buat Delivery
-    @GetMapping("/assign-kurir")
-            ///{id_request_update_item}")
+    @GetMapping("/assign-kurir/{idRequestUpdateItem}")
     private String assignKurirForm(
-            @PathVariable Integer id_request_update_item,
+            @PathVariable Integer idRequestUpdateItem,
             Model model
     ) {
-        //get request update item dulu, trus get si id cabang buat jadi hidden
         List<PegawaiModel> listKurir = pegawaiService.getKurir();
-        for (PegawaiModel k: listKurir) {
-            System.out.println(k.getNama());
-        }
         model.addAttribute("listKurir",listKurir);
-        model.addAttribute("id_request_update_item",id_request_update_item);
+        model.addAttribute("idRequestUpdateItem",idRequestUpdateItem);
         model.addAttribute("delivery", new DeliveryModel());
         return "form-assign-kurir";
     }
 
-    @PostMapping("/assign-kurir")
+    @PostMapping("/assign-kurir/{idRequestUpdateItem}")
     private String assignKurirPost(
-            @ModelAttribute DeliveryModel deliveryModel,
+            @ModelAttribute DeliveryModel delivery,
+            @PathVariable Integer idRequestUpdateItem,
             Model model
     ) {
-        //get request update item dulu, trus get si id cabang buat jadi hidden
-//        List<PegawaiModel> listKurir = pegawaiService.getKurir();
-        //save obj Delivery -> sent = false
-        //id kurir sesuai di form
+        RequestUpdateItemModel getRequest = requestUpdateItemService.getRequestById(idRequestUpdateItem);
+        getRequest.setDelivery(delivery);
+        delivery.setRequestUpdate(getRequest);
+        delivery.setIdCabang(delivery.getRequestUpdate().getIdCabang());
+        delivery.setSent(false);
+        delivery.getPegawai().getListDelivery().add(delivery);
+        delivery.setTanggalDibuat(LocalDate.now());
+        deliveryService.addDelivery(delivery);
+
         String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         pegawaiService.addCounterPegawai(nama);
-        return "home";
+        model.addAttribute("action", "assign delivery");
+        model.addAttribute("tipe", "kurir");
+        return "success-page";
     }
 
     //Fitur 13

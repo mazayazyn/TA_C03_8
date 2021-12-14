@@ -34,10 +34,6 @@ public class RoleModel {
     @Column(name = "base_wages", nullable = false)
     private Integer baseWages;
 
-//    //Relasi dengan Pegawai
-//    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-//    private List<PegawaiModel> listPegawai;
-
     //Relasi dengan Pegawai
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)

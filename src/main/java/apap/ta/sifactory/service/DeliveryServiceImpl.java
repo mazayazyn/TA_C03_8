@@ -21,9 +21,6 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Autowired
     private DeliveryRestService deliveryRestService;
 
-    // @Autowired
-    // private DeliveryService deliveryService;
-
     @Override
     public List<DeliveryModel> getAllDelivery() {
         return deliveryDB.findAll();
@@ -70,4 +67,8 @@ public class DeliveryServiceImpl implements DeliveryService{
         return null;
     }
 
+    @Override
+    public void addDelivery(DeliveryModel delivery) {
+        deliveryDB.save(delivery);
+    }
 }
