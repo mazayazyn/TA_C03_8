@@ -591,3 +591,19 @@ b, strong {
     vertical-align: top;
   }
 }
+
+@media screen and (max-width: 1882px) {
+  .logo {
+    margin-left: 0px
+  }
+
+  .image {
+    width: 600px;
+    height: 440px
+  }
+
+  .border-line {
+    border-right: none
+  }
+}
+
