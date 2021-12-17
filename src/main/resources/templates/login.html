@@ -33,10 +33,10 @@
             <div class="container">
                 <h1>Welcome to SI-Factory!</h1>
                 <h3>Please login to continue</h3>
-                <br>
                 <div class="card-body">
                     <div th:if="${param.error}">
                         <span style="color: red">Invalid username or password</span>
+                        <br><br>
                     </div>
                     <div class="justify-content-center">
                         <form th:action="@{/login}" method="POST">
