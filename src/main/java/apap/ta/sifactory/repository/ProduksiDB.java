@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface ProduksiDB extends JpaRepository<ProduksiModel, Integer>{
-    ProduksiModel findByIdItem(String req);
+    Optional<ProduksiModel> findByIdItem(String req);
     ProduksiModel findByIdProduksi(Integer idProduksi);
 }

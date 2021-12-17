@@ -55,14 +55,12 @@
                         </tr>
                         </thead>
                         <tbody class="text-center">
-                        <div th:if="*{detailProduksi != null}">
                             <tr th:each="produksi : ${detailProduksi}" style="text-align: center">
                                     <td th:text="${produksi.idProduksi}"></td>
                                     <td th:text="${produksi.tanggalProduksi}"></td>
                                 <!--                            <td th:text="${namaPegawai}"></td>-->
                                 <!--                            <td th:text="${namaMesin}"></td>-->
                             </tr>
-                        </div>
                         </tbody>
                     </table>
                     <div th:if="*{detailProduksi == null}">
