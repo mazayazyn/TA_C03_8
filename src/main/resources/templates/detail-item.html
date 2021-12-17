@@ -54,16 +54,14 @@
                             <th>Nama Mesin</th>
                         </tr>
                         </thead>
-                        <tbody class="text-center">
-                            <tr style="text-align: center">
-                                <div th:if="*{detailProduksi != null}">
-                                    <td th:text="${idProduksi}"></td>
-                                    <td th:text="${tanggalProduksi}"></td>
-                                <!--                            <td th:text="${namaPegawai}"></td>-->
-                                <!--                            <td th:text="${namaMesin}"></td>-->
-                                </div>
-                            </tr>
-                        </tbody>
+<!--                        <tbody class="text-center">-->
+<!--                            <tr th:each="produksi : ${detailProduksi}" style="text-align: center">-->
+<!--                                    <td th:text="${produksi.idProduksi}"></td>-->
+<!--                                    <td th:text="${produksi.tanggalProduksi}"></td>-->
+<!--                                    <td th:text="${namaPegawai}"></td>-->
+<!--                                    <td th:text="${namaMesin}"></td>-->
+<!--                            </tr>-->
+<!--                        </tbody>-->
                     </table>
 <!--                    <div th:if="*{detailProduksi == null}">-->
 <!--                        <p class="text-center">Tidak ada produksi pada item ini</p>-->

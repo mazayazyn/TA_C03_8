@@ -58,10 +58,8 @@ public class ProduksiServiceImpl implements ProduksiService {
     public ProduksiModel getProduksiByItem(String req) {
         Optional<ProduksiModel> produksi = produksiDB.findByIdItem(req);
         if (produksi.isPresent()) {
-            System.out.println("hjuh");
             return produksi.get();
         }
-        System.out.println("huh");
         return null;
     }
 
