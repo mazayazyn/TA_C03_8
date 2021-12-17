@@ -76,6 +76,22 @@ public class ItemController {
         return "list-item";
     }
 
+    //Fitur 6
+    @GetMapping("/view/{uuid}")
+    private String viewItem(
+            @PathVariable String uuid,
+            Model model
+    ){
+        ItemDetail item = itemRestService.getItemByUUID(uuid);
+        model.addAttribute("item", item);
+        model.addAttribute("detailProduksi", produksiService.getProduksiByItem(uuid));
+        if (produksiService.getProduksiByItem(uuid) != null) {
+            model.addAttribute("namaPegawai",  produksiService.getProduksiByItem(uuid).getPegawai().getNama());
+            model.addAttribute("namaMesin",  produksiService.getProduksiByItem(uuid).getMesin().getNama());
+        }
+        return "detail-item";
+    }
+
     //Fitur 7
     @GetMapping("/update/{uuid}")
     public String getFormUpdateItem(
