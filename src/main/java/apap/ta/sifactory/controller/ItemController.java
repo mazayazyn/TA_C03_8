@@ -84,13 +84,13 @@ public class ItemController {
     ){
         ItemDetail item = itemRestService.getItemByUUID(uuid);
         model.addAttribute("item", item);
-        if (produksiService.getProduksiByItem(uuid) != null) {
-            model.addAttribute("detailProduksi", produksiService.getProduksiByItem(uuid));
+//        if (produksiService.getProduksiByItem(uuid) != null) {
+//            model.addAttribute("detailProduksi", produksiService.getProduksiByItem(uuid));
               model.addAttribute("idProduksi",  produksiService.getProduksiByItem(uuid).getIdProduksi());
               model.addAttribute("tanggalProduksi",  produksiService.getProduksiByItem(uuid).getTanggalProduksi());
 //            model.addAttribute("namaPegawai",  produksiService.getProduksiByItem(uuid).getPegawai().getNama());
 //            model.addAttribute("namaMesin",  produksiService.getProduksiByItem(uuid).getMesin().getNama());
-        }
+//        }
         return "detail-item";
     }
 
