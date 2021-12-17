@@ -30,4 +30,15 @@ public class MesinServiceImpl implements MesinService{
             throw new NoSuchElementException();
         }
     }
+
+    @Override
+    public MesinModel getNamaMesinByIdMesin (Integer idMesin) {
+        Optional<MesinModel> mesin = mesinDB.findNamaMesinByIdMesin(idMesin);
+        if(mesin.isPresent()){
+            return mesin.get();
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
 }

@@ -11,4 +11,5 @@ import java.util.Optional;
 @Transactional
 public interface MesinDB extends JpaRepository<MesinModel, Integer>{
     Optional<MesinModel> findByIdMesin(Integer idMesin);
+    Optional<MesinModel> findNamaMesinByIdMesin(Integer idMesin);
 }

@@ -1,5 +1,6 @@
 package apap.ta.sifactory.service;
 
+import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.PegawaiDB;
@@ -10,6 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -50,4 +53,10 @@ public class ProduksiServiceImpl implements ProduksiService {
 
         return produksiDB.save(produksi);
     }
+
+    @Override
+    public ProduksiModel getProduksiByItem(String req) {
+        return produksiDB.findByIdItem(req);
+    }
+
 }
