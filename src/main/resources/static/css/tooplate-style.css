@@ -118,27 +118,27 @@ b, strong {
 }
 
 .animated-item-manager {
-  color: #ffc200;
+  color: #71965E;
   animation: BottomTotop 2s linear infinite 0s
 }
 
 .animated-item-admin {
-  color: #55917f;
+  color: #5C96F6;
   animation: BottomTotop 2s linear infinite 0s
 }
 
 .animated-item-gudang {
-  color: #457eac;
+  color: #68B7A1;
   animation: BottomTotop 2s linear infinite 0s
 }
 
 .animated-item-operasional {
-  color: #98473e;
+  color: #CF4A54;
   animation: BottomTotop 2s linear infinite 0s
 }
 
 .animated-item-kurir {
-  color: #843b62;
+  color: #457eac;
   animation: BottomTotop 2s linear infinite 0s
 }
 
@@ -505,6 +505,9 @@ b, strong {
 
   .about-image {
     margin-top: 4em;
+    width: 100%;
+    height: 400px;
+    transform: scale(1.5);
   }
 
   .mobile-mt-2,
