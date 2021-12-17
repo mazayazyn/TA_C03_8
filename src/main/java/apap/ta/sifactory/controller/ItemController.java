@@ -85,11 +85,11 @@ public class ItemController {
         ItemDetail item = itemRestService.getItemByUUID(uuid);
         model.addAttribute("item", item);
 //        model.addAttribute("detailProduksi", produksiService.getProduksiByItem(uuid));
-        if (produksiService.getProduksiByItem(uuid) != null) {
+//        if (produksiService.getProduksiByItem(uuid) != null) {
 //            model.addAttribute("namaPegawai",  produksiService.getProduksiByItem(uuid).getPegawai().getNama());
 //            model.addAttribute("namaMesin",  produksiService.getProduksiByItem(uuid).getMesin().getNama());
-            return "detail-item-with-produksi";
-        }
+//            return "detail-item-with-produksi";
+//        }
         return "detail-item-no-produksi";
     }
 
