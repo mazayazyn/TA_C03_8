@@ -56,7 +56,11 @@ public class ProduksiServiceImpl implements ProduksiService {
 
     @Override
     public ProduksiModel getProduksiByItem(String req) {
-        return produksiDB.findByIdItem(req);
+        Optional<ProduksiModel> produksi = produksiDB.findByIdItem(req);
+        if (produksi.isPresent()) {
+            return produksi.get();
+        }
+        return null;
     }
 
 }
