@@ -6,5 +6,5 @@ source 'https://rubygems.org'
 
 group :production do
   gem 'pg'   # If you plan to use PostgreSQL in your Heroku app
-  gem 'rails_12factor'
+  gem 'rails_12factor', group: :production
 end
