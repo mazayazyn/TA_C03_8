@@ -26,3 +26,12 @@
 | 1906399000 | Aisyah Indonesia Mazaya Zayn | 14 15 |
 | 1906399902 | Aisha Salsabila | 5 11 |
 ---
+**Kontrak Tahap 3 Tugas Akhir**
+
+| NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
+| ----------| --- | ---------- | 
+| 1906399650 | Hafiz Bhadrika Alamsyah | 8 |
+| 1906353580 | Herbiyona | 13 |
+| 1906399000 | Aisyah Indonesia Mazaya Zayn | 6 |
+| 1906399902 | Aisha Salsabila | 10 |
+---
