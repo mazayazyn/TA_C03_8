@@ -22,4 +22,8 @@ public enum JenisKategori {
         this.kategori=kategori;
     }
 
+    public String getKategori() {
+        return kategori;
+    }
+
 }

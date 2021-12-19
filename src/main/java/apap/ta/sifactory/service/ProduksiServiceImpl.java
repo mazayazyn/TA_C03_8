@@ -1,8 +1,10 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.MesinModel;
+import apap.ta.sifactory.model.PegawaiModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
+import apap.ta.sifactory.repository.MesinDB;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -23,6 +26,9 @@ public class ProduksiServiceImpl implements ProduksiService {
 
     @Autowired
     private PegawaiDB pegawaiDB;
+
+    @Autowired
+    private MesinDB mesinDB;
 
     @Override
     public ProduksiModel createProduksi(ProduksiModel produksiBaru) {
@@ -41,15 +47,20 @@ public class ProduksiServiceImpl implements ProduksiService {
     }
 
     @Override
-    public ProduksiModel createProduksiByRequest(RequestUpdateItemModel req) {
+    public ProduksiModel createProduksiByRequest(RequestUpdateItemModel req, Integer idMesin, String usernamePegawai) {
+        MesinModel mesin = mesinDB.getById(idMesin);
         ProduksiModel produksi = new ProduksiModel();
+        PegawaiModel pegawai = pegawaiDB.findByUsername(usernamePegawai);
 
-        produksi.setIdKategori(req.getIdKategori());
-//        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
-        produksi.setTambahanStok(req.getTambahanStok());
-        produksi.setTanggalProduksi(req.getTanggalRequest());
-        produksi.setMesin(null);
         produksi.setIdItem(req.getIdItem());
+        produksi.setIdKategori(req.getIdKategori());
+        produksi.setTambahanStok(req.getTambahanStok());
+        produksi.setTanggalProduksi(LocalDate.now());
+        produksi.setRequestUpdateItem(req);
+        produksi.setMesin(mesin);
+        produksi.setPegawai(pegawai);
+
+        mesin.setKapasitas(mesin.getKapasitas()-1);
 
         return produksiDB.save(produksi);
     }

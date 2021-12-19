@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Item By Request</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+</div>
+<br><br>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+            <br>
+            <div class="card">
+                <div class="card-body justify-content-center">
+                    <h3 style="text-align: center">Update Stok Item By Request Update</h3>
+                    <br>
+                    <form th:action="@{/request/updateItemByRequest/{id}(id=${idRequest})}" th:object="${requestUpdateItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
+                        <input type="hidden" th:field="*{idRequestUpdateItem}" />
+                        <input type="hidden" th:field="*{idItem}" />
+                        <input type="hidden" th:field="*{idKategori}" />
+                        <input type="hidden" th:field="*{idCabang}" />
+                        <input type="hidden" th:field="*{tambahanStok}" />
+                        <input type="hidden" th:field="*{tanggalRequest}" />
+                        <input type="hidden" th:field="*{executed}" />
+
+                        <div class="form-row" style="text-align: left">
+                            <label>Stok yang Ingin Ditambah</label>
+                            <input required class="form-control" type="text" name="tambahanStok" th:value="*{tambahanStok}" disabled />
+                        </div>
+                        <br>
+                        <div class="form-row" style="text-align: left">
+                            <label>Mesin yang Akan Digunakan</label>
+                            <select required name="mesin" class="form-control">
+                                <option hidden>-- Pilih Mesin --</option>
+                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
+                            </select>
+                        </div>
+                        <div style="margin-top: 2rem">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a th:href="@{/request/daftar-request}" class="btn btn-outline-primary">Kembali</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+<!--                <div class="card-header" th:text="'Update Stok Item &#39;' + ${namaItem} + '&#39; By Request Update"></div>-->
