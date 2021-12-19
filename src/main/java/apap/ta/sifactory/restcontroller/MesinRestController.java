@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -41,7 +40,19 @@ public class MesinRestController {
         BaseResponse<List<MesinDetail>> response = new BaseResponse<>();
         response.setStatus(200);
         response.setMessage("Success");
-        response.setResult(mesinRestService.getAllMesin());
+        List<MesinModel> listMesinModel = mesinService.getAllMesin();
+        List<MesinDetail> listMesinDetail= new ArrayList<>();
+        for (MesinModel m:listMesinModel){
+            MesinDetail detail = new MesinDetail();
+            detail.setIdMesin(m.getIdMesin());
+            detail.setNama(m.getNama());
+            detail.setIdKategori(m.getIdKategori());
+            detail.setTanggalDibuat(m.getTanggalDibuat());
+            detail.setKapasitas(m.getKapasitas());
+
+            listMesinDetail.add(detail);
+        }
+        response.setResult(listMesinDetail);
         return response;
     }
 

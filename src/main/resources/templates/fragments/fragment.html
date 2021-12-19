@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<nav th:fragment="navbar-admin" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar-admin" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i>  SI-Factory</a>
 
@@ -37,16 +37,16 @@
 
         <div class="collapse navbar-collapse" id="navbarNav-admin">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/daftar-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/daftar-item}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/isiguys') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/pegawai/daftar-pegawai') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/pegawai/daftar-pegawai}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/pegawai/add-pegawai') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/pegawai/add-pegawai}" class="nav-link"><span data-hover="Buat Pengguna">Buat Pengguna</span></a>
                 </li>
                 <li class="nav-item">
@@ -57,7 +57,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar-factory-manager" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar-factory-manager" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
 
@@ -68,16 +68,16 @@
 
         <div class="collapse navbar-collapse" id="navbarNav-factory-manager">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/daftar-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/daftar-item}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/isiguys') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/propose-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/propose-item}" class="nav-link"><span data-hover="Propose Item">Propose Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/pegawai/daftar-pegawai') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/pegawai/daftar-pegawai}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
                 </li>
                 <li class="nav-item">
@@ -88,7 +88,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar-staff-gudang" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar-staff-gudang" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
 
@@ -99,14 +99,14 @@
 
         <div class="collapse navbar-collapse" id="navbarNav-staff-gudang">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/daftar-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/daftar-item}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/isiguys') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
-                <li class="nav-item">
-                    <a th:href="@{/request/list}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
+                <li th:classappend="${#request.requestURI.contains('/request/daftar-request') ? 'active':''}" class="nav-item; font-color-black">
+                    <a th:href="@{/request/daftar-request}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
@@ -116,7 +116,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar-staff-kurir" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar-staff-kurir" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
 
@@ -127,16 +127,13 @@
 
         <div class="collapse navbar-collapse" id="navbarNav-staff-kurir">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/daftar-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/daftar-item}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/isiguys') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
-                <li class="nav-item">
-                    <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Pegawai">Daftar Pegawai</span></a>
-                </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/delivery/daftar-delivery') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/delivery/daftar-delivery}" class="nav-link"><span data-hover="Daftar Delivery">Daftar Delivery</span></a>
                 </li>
                 <li class="nav-item">
@@ -147,7 +144,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar-staff-operasional" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar-staff-operasional" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><i class='uil uil-user'></i> SI-Factory</a>
 
@@ -158,16 +155,16 @@
 
         <div class="collapse navbar-collapse" id="navbarNav-staff-operasional">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/item/daftar-item') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/item/daftar-item}" class="nav-link"><span data-hover="List Item">List Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/aaaa') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/}" class="nav-link"><span data-hover="Daftar Produksi">Daftar Produksi</span></a>
                 </li>
-                <li class="nav-item">
-                    <a th:href="@{/request/list}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
+                <li th:classappend="${#request.requestURI.contains('/request/daftar-request') ? 'active':''}" class="nav-item; font-color-black">
+                    <a th:href="@{/request/daftar-request}" class="nav-link"><span data-hover="Daftar Request Update Item">Daftar Request Update Item</span></a>
                 </li>
-                <li class="nav-item">
+                <li th:classappend="${#request.requestURI.contains('/delivery/daftar-delivery') ? 'active':''}" class="nav-item; font-color-black">
                     <a th:href="@{/delivery/daftar-delivery}" class="nav-link"><span data-hover="Daftar Delivery">Daftar Delivery</span></a>
                 </li>
                 <li class="nav-item">
@@ -183,7 +180,7 @@
         <div class="row">
 
             <div class="col-lg-12 col-12">
-                <p class="copyright-text text-center">Copyright &copy; 2021 SI-Factory . All rights reserved</p>
+                <p class="copyright-text text-center">Copyright &copy; 2021 SI-Factory. All rights reserved</p>
                 <p class="copyright-text text-center">Designed by <a rel="nofollow" href="/">Kelompok C03-8</a></p>
             </div>
 

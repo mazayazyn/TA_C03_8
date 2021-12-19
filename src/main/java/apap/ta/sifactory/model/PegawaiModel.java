@@ -55,7 +55,7 @@ public class PegawaiModel {
 
     @NotNull
     @Column(name = "counter", nullable = false)
-    @ColumnDefault(value = "0") //kepikiran ini di set 0, perlu ngga ya?
+    @ColumnDefault(value = "0")
     private Integer counter;
 
     //Relasi dengan Role

@@ -1,5 +1,6 @@
 package apap.ta.sifactory.service;
 
+import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.PegawaiDB;
@@ -10,6 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +30,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         produksi.setIdKategori(produksiBaru.getIdKategori());
-        produksi.setIdRequestUpdateItem(null);
+//        produksi.setIdRequestUpdateItem(null);
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
         produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
         produksi.setMesin(produksiBaru.getMesin());
@@ -42,7 +45,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
 
         produksi.setIdKategori(req.getIdKategori());
-        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
+//        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(req.getTanggalRequest());
         produksi.setMesin(null);
@@ -50,4 +53,14 @@ public class ProduksiServiceImpl implements ProduksiService {
 
         return produksiDB.save(produksi);
     }
+
+    @Override
+    public ProduksiModel getProduksiByItem(String req) {
+        Optional<ProduksiModel> produksi = produksiDB.findByIdItem(req);
+        if (produksi.isPresent()) {
+            return produksi.get();
+        }
+        return null;
+    }
+
 }

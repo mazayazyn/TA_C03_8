@@ -21,9 +21,6 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Autowired
     private DeliveryRestService deliveryRestService;
 
-    // @Autowired
-    // private DeliveryService deliveryService;
-
     @Override
     public List<DeliveryModel> getAllDelivery() {
         return deliveryDB.findAll();
@@ -37,11 +34,10 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Override
     public boolean checkCabang (Integer idCabang) throws JSONException {
         String s = deliveryRestService.getListIdCabang().share().block();
-        JSONObject jsonObject = new JSONObject(s);
-        JSONArray listDatabase = jsonObject.getJSONArray("listCabang");
+        JSONArray listDatabase = new JSONArray(s);
         for (int i=0; i<listDatabase.length(); i++){
             listDatabase.getJSONObject(i).get("alamat");
-            if (listDatabase.getJSONObject(i).get("id_cabang").equals(idCabang)){
+            if (listDatabase.getJSONObject(i).get("id").equals(idCabang)){
                 return true;
             }
         }
@@ -51,10 +47,9 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Override
     public String returnAlamat (Integer idCabang) throws JSONException {
         String s = deliveryRestService.getListIdCabang().share().block();
-        JSONObject jsonObject = new JSONObject(s);
-        JSONArray listDatabase = jsonObject.getJSONArray("listCabang");
+        JSONArray listDatabase = new JSONArray(s);
         for (int i=0; i<listDatabase.length(); i++){
-            if (listDatabase.getJSONObject(i).get("id_cabang").equals(idCabang)){
+            if (listDatabase.getJSONObject(i).get("id").equals(idCabang)){
                 return (String) listDatabase.getJSONObject(i).get("alamat");
             }
         }
@@ -70,4 +65,8 @@ public class DeliveryServiceImpl implements DeliveryService{
         return null;
     }
 
+    @Override
+    public void addDelivery(DeliveryModel delivery) {
+        deliveryDB.save(delivery);
+    }
 }

@@ -41,12 +41,10 @@ public class ProduksiModel implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalProduksi;
 
-//    @NotNull
-    @Column(name = "id_request_update_item", nullable = true)
-    private Integer idRequestUpdateItem;
 
     //Relasi dengan Request Update Item
-    @OneToOne(mappedBy = "produksi",fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_request_update_item", referencedColumnName = "id_request_update_item", nullable = false)
     private RequestUpdateItemModel requestUpdateItem;
 
     //Relasi dengan Mesin
