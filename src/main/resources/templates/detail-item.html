@@ -34,7 +34,8 @@
         </div>
         <div class="card-body">
             <div th:object="${item}" method="POST">
-                <input type="hidden" th:field="${item.uuid}">
+<!--                <input type="hidden" th:field="${item.uuid}">-->
+                <p th:text="'ID Item : ' + ${item.uuid}"></p>
                 <p th:text="'Nama : ' + ${item.nama}"></p>
                 <p th:text="'Harga : ' + ${item.harga}"></p>
                 <p th:text="'Stok : ' + ${item.stok}"></p>
@@ -69,6 +70,8 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <a class="btn btn-primary" th:href="@{/item/daftar-item}" th:text="Kembali"></a>
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@ public class ItemRestController {
             return itemRestService.getAllItem();
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "List item not found"
+                    HttpStatus.NOT_FOUND, "Daftar item not found"
             );
         }
     }
