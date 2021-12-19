@@ -21,7 +21,7 @@ public class SifactoryRestController {
     @Autowired
     private ItemService itemService;
 
-    @PostMapping(value="/request-update-item")
+    @PostMapping(value= "/request-update-item")
     private RequestUpdateItemModel requestUpdateItem(@Valid @RequestBody RequestUpdateItemModel req, BindingResult bindingResult ) {
 
         if(bindingResult.hasFieldErrors()) {
