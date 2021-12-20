@@ -59,7 +59,6 @@ public class ProduksiServiceImpl implements ProduksiService {
 
         produksi.setIdItem(req.getIdItem());
         produksi.setIdKategori(req.getIdKategori());
-        // produksi.setRequestUpdateItem(requestUpdateItemDB.getRequestUpdateItemById(req.getIdRequestUpdateItem()));
         produksi.setRequestUpdateItem(requestUpdateItemModel.get());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(LocalDate.now());

@@ -26,7 +26,7 @@ public class ItemServiceImpl implements ItemService {
         RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
         ReqSave.setDelivery(null);
         ReqSave.setProduksi(null);
-//        produksiService.createProduksiByRequest(ReqSave);
+    //    produksiService.createProduksiByRequest(ReqSave, ReqSave.get);
         return ReqSave;
     }
 

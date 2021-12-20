@@ -5,7 +5,6 @@ import apap.ta.sifactory.model.PegawaiModel;
 import apap.ta.sifactory.repository.DeliveryDB;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;

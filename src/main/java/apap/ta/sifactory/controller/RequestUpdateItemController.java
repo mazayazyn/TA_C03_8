@@ -4,7 +4,6 @@ import apap.ta.sifactory.model.*;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.*;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
