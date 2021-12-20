@@ -55,10 +55,12 @@ public class ProduksiServiceImpl implements ProduksiService {
         MesinModel mesin = mesinDB.getById(idMesin);
         ProduksiModel produksi = new ProduksiModel();
         PegawaiModel pegawai = pegawaiDB.findByUsername(usernamePegawai);
+        Optional<RequestUpdateItemModel> requestUpdateItemModel = requestUpdateItemDB.findByIdRequestUpdateItem(req.getIdRequestUpdateItem());
 
         produksi.setIdItem(req.getIdItem());
         produksi.setIdKategori(req.getIdKategori());
-        produksi.setRequestUpdateItem(requestUpdateItemDB.getRequestUpdateItemById(req.getIdRequestUpdateItem()));
+        // produksi.setRequestUpdateItem(requestUpdateItemDB.getRequestUpdateItemById(req.getIdRequestUpdateItem()));
+        produksi.setRequestUpdateItem(requestUpdateItemModel.get());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(LocalDate.now());
         produksi.setRequestUpdateItem(req);
