@@ -5,6 +5,8 @@ import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
+import apap.ta.sifactory.repository.RequestUpdateItemDB;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +22,9 @@ public class ProduksiServiceImpl implements ProduksiService {
 
     @Autowired
     private ProduksiDB produksiDB;
+    
+    @Autowired
+    private RequestUpdateItemDB requestUpdateItemDB;
 
     @Autowired
     private PegawaiDB pegawaiDB;
@@ -45,6 +50,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
 
         produksi.setIdKategori(req.getIdKategori());
+        produksi.setRequestUpdateItem(requestUpdateItemDB.findByIdRequestUpdateItem(req.getIdRequestUpdateItem()));
 //        produksi.setIdRequestUpdateItem(req.getIdRequestUpdateItem());
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(req.getTanggalRequest());
