@@ -26,49 +26,53 @@
         <div class="card-body">
             <div class="d-flex justify-content-center">
                 <div class="justify-content-center">
-                    <table class="table table-striped">
-                        <thead class="text-center">
-                        <tr>
-                            <th>ID Request</th>
-                            <th>Tanggal Request</th>
-<!--                            <th>ID Item</th>-->
-                            <th>Nama Item</th>
-                            <th>Kategori</th>
-                            <th>Stok Tambahan</th>
-                            <th>Executed</th>
-                            <th>ID Produksi</th>
-                            <th>ID Delivery</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody class="text-center">
-                        <tr th:each="request : ${listRequest}" style="text-align: center">
-                            <td th:text="${request.idRequestUpdateItem}"></td>
-                            <td th:text="${request.tanggalRequest}"></td>
-<!--                            <td th:text="${request.idItem}"></td>-->
-                            <div th:each="item : ${listItem}">
-                                <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
-                                <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.kategori}"></td>
-                            </div>
-                            <td th:text="${request.tambahanStok}"></td>
-                            <td th:if="${request.executed} == false">&#10006;</td>
-                            <td th:if="${request.executed} == true">&#10004;</td>
-                            <td th:if="${request.produksi} == null">&#45;</td>
-                            <td th:if="${request.produksi} != null" th:text="${request.produksi.idProduksi}"></td>
-                            <td th:if="${request.executed} == true and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')"><a class="btn btn-sm btn-warning" th:href="@{/delivery/assign-kurir/} + ${request.idRequestUpdateItem}">Buat Delivery</a></td>
-                            <td th:if="${request.executed} == false and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">&#45;</td>
-                            <td th:if="${request.executed} == true and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&#45;</td>
-                            <td th:if="${request.executed} == false and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&#45;</td>
-                            <td th:if="${request.delivery} != null" th:text="${request.delivery.idDelivery}"></td>
-<!--                            <td th:unless="${request.delivery} != null" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">&#45;</td>-->
-                            <td th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-                                <!--                            TODO: sinkronkan href dgn mapping di controller yang merender template update-->
-                                <a class="btn btn-sm btn-warning" th:href="@{/request/updateItemByRequest/} + ${request.idRequestUpdateItem}">Update</a>
-                            </td>
-                            <td th:unless="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&nbsp;</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div th:if="*{listRequest.size() != 0}">
+                        <table class="table table-striped">
+                            <thead class="text-center">
+                            <tr>
+                                <th>ID Request</th>
+                                <th>Tanggal Request</th>
+                                <th>Nama Item</th>
+                                <th>Kategori</th>
+                                <th>Stok Tambahan</th>
+                                <th>Executed</th>
+                                <th>ID Produksi</th>
+                                <th>ID Delivery</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            <tr th:each="request : ${listRequest}" style="text-align: center">
+                                <td th:text="${request.idRequestUpdateItem}"></td>
+                                <td th:text="${request.tanggalRequest}"></td>
+                                <div th:each="item : ${listItem}">
+                                    <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
+                                    <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.kategori}"></td>
+                                </div>
+                                <td th:text="${request.tambahanStok}"></td>
+                                <td th:if="${request.executed} == false">&#10006;</td>
+                                <td th:if="${request.executed} == true">&#10004;</td>
+                                <td th:if="${request.produksi} == null">&#45;</td>
+                                <td th:if="${request.produksi} != null" th:text="${request.produksi.idProduksi}"></td>
+                                <td th:if="${request.executed} == true and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')"><a class="btn btn-sm btn-warning" th:href="@{/delivery/assign-kurir/} + ${request.idRequestUpdateItem}">Buat Delivery</a></td>
+                                <td th:if="${request.executed} == false and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">&#45;</td>
+                                <td th:if="${request.executed} == true and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&#45;</td>
+                                <td th:if="${request.executed} == false and ${request.delivery} == null" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&#45;</td>
+                                <td th:if="${request.delivery} != null" th:text="${request.delivery.idDelivery}"></td>
+                                <td th:if="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+                                    <a class="btn btn-sm btn-warning" th:href="@{/request/updateItemByRequest/} + ${request.idRequestUpdateItem}">Update</a>
+                                </td>
+                                <td th:unless="${request.executed} == false" sec:authorize="hasAnyAuthority('STAFF_GUDANG')">&nbsp;</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:unless="*{listRequest.size() != 0}" style="text-align: center">
+                        <br><br>
+                        <img th:src="@{/images/undraw/no-data.svg}" class="img-fluid" alt="svg image" style="max-width: 100%; height: auto" width="200">
+                        <br><br>
+                        <h5 th:text="'Tidak ada request yang tersedia'" style="color: #6c757d"></h5>
+                    </div>
                 </div>
             </div>
         </div>
