@@ -7,6 +7,8 @@ import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.MesinDB;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
+import apap.ta.sifactory.repository.RequestUpdateItemDB;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,9 @@ public class ProduksiServiceImpl implements ProduksiService {
 
     @Autowired
     private ProduksiDB produksiDB;
+    
+    @Autowired
+    private RequestUpdateItemDB requestUpdateItemDB;
 
     @Autowired
     private PegawaiDB pegawaiDB;
@@ -54,6 +58,7 @@ public class ProduksiServiceImpl implements ProduksiService {
 
         produksi.setIdItem(req.getIdItem());
         produksi.setIdKategori(req.getIdKategori());
+        produksi.setRequestUpdateItem(requestUpdateItemDB.getRequestUpdateItemById(req.getIdRequestUpdateItem()));
         produksi.setTambahanStok(req.getTambahanStok());
         produksi.setTanggalProduksi(LocalDate.now());
         produksi.setRequestUpdateItem(req);

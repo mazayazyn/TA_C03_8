@@ -56,6 +56,6 @@ public class RequestUpdateItemModel implements Serializable{
 
     //Relasi dengan Delivery
     @OneToOne(mappedBy = "requestUpdate", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = false)
+    @JoinColumn(name = "id_delivery", referencedColumnName = "id_delivery", nullable = true)
     private DeliveryModel delivery;
 }

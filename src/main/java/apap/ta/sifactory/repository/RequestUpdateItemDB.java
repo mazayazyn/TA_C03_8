@@ -11,4 +11,5 @@ import java.util.Optional;
 @Transactional
 public interface RequestUpdateItemDB extends JpaRepository<RequestUpdateItemModel, Integer>{
     Optional<RequestUpdateItemModel> findByIdRequestUpdateItem(Integer id);
+    RequestUpdateItemModel getRequestUpdateItemById(Integer id);
 }
