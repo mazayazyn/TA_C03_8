@@ -16,9 +16,9 @@
     <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
         <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
     </div>
-    <br><br><br>
-    <div class="card mx-auto" >
-        <div class="card-header">
+    <br><br>
+    <div class="card mx-auto m-4 p-4" >
+        <div class="card-body">
             <div class="d-flex justify-content-center">
                 <h2>Daftar Request Update Item</h2>
             </div>
@@ -38,7 +38,7 @@
                                 <th>Executed</th>
                                 <th>ID Produksi</th>
                                 <th>ID Delivery</th>
-                                <th></th>
+                                <th sec:authorize="hasAnyAuthority('STAFF_GUDANG')"></th>
                             </tr>
                             </thead>
                             <tbody class="text-center">
