@@ -75,7 +75,6 @@ public class DeliveryController {
         //get rolenya dulu, kalo staff op dia get all delivery
         //kalo kurir, get delivery yang id kurirnya dia
         String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
-        System.out.println(role);
         if (role.equals("[STAFF_OPERASIONAL]")){
             List<DeliveryModel> listDelivery = deliveryService.getAllDelivery();
             model.addAttribute("listDelivery", listDelivery);
