@@ -24,7 +24,7 @@ public class ProduksiServiceImpl implements ProduksiService {
 
     @Autowired
     private ProduksiDB produksiDB;
-    
+
     @Autowired
     private RequestUpdateItemDB requestUpdateItemDB;
 
