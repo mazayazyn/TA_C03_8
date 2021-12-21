@@ -21,17 +21,8 @@ public class SifactoryRestController {
     @Autowired
     private ItemService itemService;
 
-    @PostMapping(value="/request-update-item")
+    @PostMapping(value= "/request-update-item")
     private RequestUpdateItemModel requestUpdateItem(@Valid @RequestBody RequestUpdateItemModel req, BindingResult bindingResult ) {
-//        try {
-//            itemService.createRequest(req);
-//            return ResponseEntity.ok("Request berhasil dilakukan");
-//        } catch (UnsupportedOperationException e) {
-//            throw new ResponseStatusException(
-//                    HttpStatus.BAD_REQUEST, "Mohon maaf request tidak dapat dilakukan"
-//            );
-//        }
-
         if(bindingResult.hasFieldErrors()) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field." + bindingResult

@@ -33,7 +33,7 @@
                         <th>Tanggal Dikirim</th>
                         <th>Status Dikirim</th>
                         <div th:if="${role == '[STAFF_KURIR]'}">
-                            <th>Kirim</th>
+                            <th></th>
                         </div>
                     </tr>
                     </thead>
@@ -43,9 +43,9 @@
                         <td th:text="${delivery.idCabang}"></td>
                         <td th:text="${delivery.tanggalDibuat}"></td>
                         <td th:text="${delivery.tanggalDikirim}"></td>
+                        <td th:if="${delivery.sent} == false">Belum Dikirim</td>
+                        <td th:if="${delivery.sent} == true">Terkirim</td>
                         <div th:if="${role == '[STAFF_KURIR]'}">
-                            <td th:if="${delivery.sent} == false">Belum Dikirim</td>
-                            <td th:if="${delivery.sent} == true">Terkirim</td>
                             <td th:if="${delivery.sent} == false">
                                 <a class="btn btn-primary" th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}">Kirim</a>
                             </td>

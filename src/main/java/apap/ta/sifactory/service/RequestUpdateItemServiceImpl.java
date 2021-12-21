@@ -1,6 +1,5 @@
 package apap.ta.sifactory.service;
 
-import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import apap.ta.sifactory.repository.RequestUpdateItemDB;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,7 @@
 package apap.ta.sifactory.service;
 
-import apap.ta.sifactory.rest.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 import javax.transaction.Transactional;
-import java.util.List;
 
 
 @Service
