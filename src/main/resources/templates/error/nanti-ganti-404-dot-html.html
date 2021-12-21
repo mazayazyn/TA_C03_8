@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 404 Not Found </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/tooplate-style.css">
+</head>
+
+<body>
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">
+    <br><br><br>
+    <div class="row d-flex">
+        <div class="col-lg-6">
+            <div class="card1 pb-5">
+                <br>
+                <div class="about-image svg">
+                    <img th:src="@{/images/undraw/foto-error.png}" class="img-fluid" alt="svg image">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" >
+            <br><br><br><br><br>
+            <div class="container">
+                <h1>404 Not Found</h1>
+                <h3>URL yang Anda cari tidak ditemukan</h3>
+                <h3>pada server ini. </h3>
+                <br>
+                <div>
+                    <a th:href="@{/}" style="width:200px !important" class="btn mr-lg-0 custom-btn">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

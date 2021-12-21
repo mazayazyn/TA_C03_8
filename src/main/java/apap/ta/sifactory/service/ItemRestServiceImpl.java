@@ -1,11 +1,17 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
+import apap.ta.sifactory.model.ProduksiModel;
+import apap.ta.sifactory.model.RequestUpdateItemModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import apap.ta.sifactory.rest.ListItemDetail;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
 import java.util.*;
@@ -17,6 +23,9 @@ import apap.ta.sifactory.rest.ItemDetail;
 public class ItemRestServiceImpl implements ItemRestService{
     private final WebClient webClient;
     private final WebClient siBusinessWeb;
+
+    @Autowired
+    private ProduksiService produksiService;
 
     public ItemRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.siItemUrl).build();
@@ -33,7 +42,7 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
-    //Fitur 4
+    //Fitur 4 dan 6
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
@@ -81,6 +90,19 @@ public class ItemRestServiceImpl implements ItemRestService{
         System.out.println(statusCode);
 
         return statusCode;
+    }
+
+    //Fitur 11
+    @Override
+    public HttpStatus executeUpdateByRequest(RequestUpdateItemModel req, ItemDetail item) {
+        Integer stokTambahan = item.getStok() + req.getTambahanStok();
+        Map<String, Object> data = new HashMap<>();
+        data.put("nama", item.getNama());
+        data.put("harga", item.getHarga());
+        data.put("stok", stokTambahan);
+        data.put("kategori", item.getKategori());
+
+        return Optional.of(this.webClient.put().uri("/" + item.getUuid()).body(BodyInserters.fromValue(data)).retrieve().toBodilessEntity().block().getStatusCode()).get(); //put ke web service dan get hasil nya (status code)
     }
 
 }

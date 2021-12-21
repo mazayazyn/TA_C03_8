@@ -19,7 +19,7 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="d-flex justify-content-center">
-            <h2>Daftar Delivery</h2>
+                <h2>Daftar Delivery</h2>
             </div>
         </div>
         <div class="card-body">
@@ -32,7 +32,9 @@
                         <th>Tanggal Dibuat</th>
                         <th>Tanggal Dikirim</th>
                         <th>Status Dikirim</th>
-                        <th>Kirim</th>
+                        <div th:if="${role == '[STAFF_KURIR]'}">
+                            <th>Kirim</th>
+                        </div>
                     </tr>
                     </thead>
                     <tbody class="text-center">
@@ -41,11 +43,13 @@
                         <td th:text="${delivery.idCabang}"></td>
                         <td th:text="${delivery.tanggalDibuat}"></td>
                         <td th:text="${delivery.tanggalDikirim}"></td>
-                        <td th:if="${delivery.sent} == false">Belum Dikirim</td>
-                        <td th:if="${delivery.sent} == true">Terkirim</td>
+                        <div th:if="${role == '[STAFF_KURIR]'}">
+                            <td th:if="${delivery.sent} == false">Belum Dikirim</td>
+                            <td th:if="${delivery.sent} == true">Terkirim</td>
                             <td th:if="${delivery.sent} == false">
                                 <a class="btn btn-primary" th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}">Kirim</a>
                             </td>
+                        </div>
                     </tr>
                     </tbody>
                 </table>

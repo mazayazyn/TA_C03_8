@@ -34,11 +34,10 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Override
     public boolean checkCabang (Integer idCabang) throws JSONException {
         String s = deliveryRestService.getListIdCabang().share().block();
-        JSONObject jsonObject = new JSONObject(s);
-        JSONArray listDatabase = jsonObject.getJSONArray("listCabang");
+        JSONArray listDatabase = new JSONArray(s);
         for (int i=0; i<listDatabase.length(); i++){
             listDatabase.getJSONObject(i).get("alamat");
-            if (listDatabase.getJSONObject(i).get("id_cabang").equals(idCabang)){
+            if (listDatabase.getJSONObject(i).get("id").equals(idCabang)){
                 return true;
             }
         }
@@ -48,10 +47,9 @@ public class DeliveryServiceImpl implements DeliveryService{
     @Override
     public String returnAlamat (Integer idCabang) throws JSONException {
         String s = deliveryRestService.getListIdCabang().share().block();
-        JSONObject jsonObject = new JSONObject(s);
-        JSONArray listDatabase = jsonObject.getJSONArray("listCabang");
+        JSONArray listDatabase = new JSONArray(s);
         for (int i=0; i<listDatabase.length(); i++){
-            if (listDatabase.getJSONObject(i).get("id_cabang").equals(idCabang)){
+            if (listDatabase.getJSONObject(i).get("id").equals(idCabang)){
                 return (String) listDatabase.getJSONObject(i).get("alamat");
             }
         }

@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Repository
 @Transactional
 public interface RequestUpdateItemDB extends JpaRepository<RequestUpdateItemModel, Integer>{
-    RequestUpdateItemModel findByIdRequestUpdateItem(Integer id);
+    Optional<RequestUpdateItemModel> findByIdRequestUpdateItem(Integer id);
 }

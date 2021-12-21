@@ -13,12 +13,12 @@ public class DeliveryRestServiceImpl implements DeliveryRestService {
     private final WebClient webClient;
 
     public DeliveryRestServiceImpl(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Setting.listAlamatSiBusiness).build();
+        this.webClient = webClientBuilder.baseUrl(Setting.listAlamatSiRetail).build();
     }
 
     @Override
     public Mono<String> getListIdCabang() {
-        return this.webClient.get().uri("/rest/retail/getListIdCabang")
+        return this.webClient.get().uri("/")
                 .retrieve()
                 .bodyToMono(String.class);
     }
