@@ -34,9 +34,9 @@ public class PegawaiServiceImpl implements PegawaiService{
 
     @Override
     public void addCounterPegawai(String username) {
-        PegawaiModel pegawai = getPegawai(username);
-        Integer counterb = pegawai.getCounter();
-        pegawai.setCounter(counterb+1);
+//        PegawaiModel pegawai = getPegawai(username);
+//        Integer counterb = pegawai.getCounter();
+//        pegawai.setCounter(counterb+1);
     }
 
     @Override
