@@ -7,12 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import apap.ta.sifactory.rest.ListItemDetail;
 
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
+import apap.ta.sifactory.rest.StokDetail;
+import reactor.core.publisher.Mono;
+
 import java.util.*;
 import apap.ta.sifactory.rest.GetItem;
 import apap.ta.sifactory.rest.ItemDetail;
@@ -50,6 +55,18 @@ public class ItemRestServiceImpl implements ItemRestService{
                 .bodyToMono(ListItemDetail.class)
                 .block();
         return getSiItem.getListItem();
+    }
+
+
+    @Override
+    public Mono<StokDetail> updateItem(String uuid) {
+        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+        data.add("namaBioskop","Bioskop Mock Server");
+
+        return this.webClient.post().uri(uuid)
+                .syncBody(data)
+                .retrieve()
+                .bodyToMono(StokDetail.class);
     }
 
     //Fitur 4 dan 6

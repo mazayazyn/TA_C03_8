@@ -17,8 +17,12 @@
                 <div class="card">
                     <div class="card-body justify-content-center">
                         <h3>Update Stok Item</h3>
-                        <p th:text="${item.nama}"></p>
-                        <form th:action="@{/item/propose-item}" th:object="${proposeItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menambah jumlah item?');">
+                        <form th:action="@{/item/update/}" th:object="${produksi}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menambah jumlah item?');">
+                          <div class="py-4">
+
+                            <input type="text" name="nama" class="form-control" th:placeholder="${item.uuid}" th:field="*{idItem}" hidden />
+
+
                             <label>Nama Item</label>
                             <input required type="text" name="nama" class="form-control" th:placeholder="${item.nama}" disabled />
     
@@ -26,19 +30,13 @@
                             <input required type="number" name="harga" class="form-control" th:placeholder="${item.harga}" disabled/>
     
                             <label>Stok Item</label>
-                            <input required type="number" name="stok" class="form-control" placeholder="Masukkan Jumlah Stok yang ingin ditambahkan" />
+                            <input required type="number" name="stok" class="form-control" th:field="*{tambahanStok}" placeholder="Masukkan Jumlah Stok yang ingin ditambahkan" />
     
                             <label>Mesin</label>
-                            <select name="kategori" class="form-control">
-                                <option selected value="">-- Pilih Kategori --</option>
-                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
+                            <select name="idMesin" class="form-control">
+                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin}" th:field="*{mesin}"></option>
                             </select>
-                            <br>
-    
-                            <label>Cluster Item</label>
-                            <input disabled type="text" name="cluster" class="form-control" value="C03"/>
-    
-                            <br>
+                          </div>  
                             <button class="btn btn-outline-primary" href="/">Kembali</button>
                             <button type="submit" class="btn btn-warning">Simpan</button>
                         </form>

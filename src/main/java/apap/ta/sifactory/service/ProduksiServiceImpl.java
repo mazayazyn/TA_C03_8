@@ -39,13 +39,20 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        //idKategori dan idMesin belum
         produksi.setIdKategori(produksiBaru.getIdKategori());
-//        produksi.setIdRequestUpdateItem(null);
+        produksi.setRequestUpdateItem(null);
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
-        produksi.setTanggalProduksi(produksiBaru.getTanggalProduksi());
+        LocalDate waktu = LocalDate.now();
+        produksi.setTanggalProduksi(waktu);
         produksi.setMesin(produksiBaru.getMesin());
+        Integer kapasitasMesin = mesinDB.getById(produksiBaru.getMesin().getIdMesin()).getKapasitas();
+        kapasitasMesin--;
+        mesinDB.getById(produksiBaru.getMesin().getIdMesin()).setKapasitas(kapasitasMesin);
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
         produksi.setIdItem(produksiBaru.getIdItem());
+
+        //panggil counter nya
 
         return produksiDB.save(produksi);
     }

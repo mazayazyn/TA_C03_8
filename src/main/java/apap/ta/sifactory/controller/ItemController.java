@@ -100,21 +100,16 @@ public class ItemController {
         Model model
     ) {
         ItemDetail item = itemRestService.getItemByUUID(uuid);
-        List<MesinModel> listMesin2 = mesinService.getAllMesin();
         List<String> list = Arrays.asList("BUKU", "DAPUR","MAKANAN & MINUMAN","ELEKTRONIK","FASHION","KECANTIKAN & PERAWATAN DIRI","FILM & MUSIK","GAMING","GADGET","KESEHATAN","RUMAH TANGGA","FURNITURE","ALAT & PERANGKAT KERAS","WEDDING");
-        int angka = 1;
         for (int i = 0; i < list.size(); i++) {
             if(item.getKategori().equals(list.get(i))) {
-                angka++;
-                List<ItemDetail> list_item = itemRestService.getListKategori(angka);
                 List<MesinModel> listMesin = mesinService.getAllMesinByKategoriItem(item.getKategori());
                 model.addAttribute("listMesin",listMesin);
             }
         }
-        //get kategory by id kategori
-
+        model.addAttribute("produksi",new ProduksiModel());
+        model.addAttribute("mesin",new MesinModel());
         model.addAttribute("item",item);
-        
         return "form-update-item";
     }
 
@@ -122,8 +117,14 @@ public class ItemController {
     @PostMapping("/update/")
     public String postFormUpdateItem(
             Model model,
-            @ModelAttribute ProduksiModel produksi) {
-        produksiService.createProduksi(produksi);
+            @ModelAttribute ProduksiModel produksi
+    ) {
+        //mesin blm masuk
+        itemRestService.updateItem(produksi.getIdItem());
+        // System.out.println(produksi.getMesin());
+
+        ProduksiModel prod = produksiService.createProduksi(produksi);
+        itemRestService.updateItem(produksi.getIdItem());
         model.addAttribute("produksi", "produksi");
         return "respon-update-item";
     }
