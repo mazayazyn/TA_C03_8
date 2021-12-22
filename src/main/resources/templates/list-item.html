@@ -43,7 +43,7 @@
                         <th>Stok</th>
                         <th>Kategori</th>
                         <th></th>
-                        <th></th>
+                        <th sec:authorize="hasAnyAuthority('STAFF_GUDANG')"></th>
                     </tr>
                     </thead>
                     <tbody class="text-center">
@@ -54,11 +54,10 @@
                         <td th:text="${item.stok}"></td>
                         <td th:text="${item.kategori}"></td>
                         <td>
-                            <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
                             <a class="btn btn-sm btn-primary" th:href="@{/item/view/} + ${item.uuid}">Detail</a>
                             </td>
-                        <td>
-                            <a sec:authorize="hasAnyAuthority('STAFF_GUDANG')" class="btn btn-sm btn-warning" th:href="@{/item/update/} + ${item.uuid}">Update</a>
+                        <td sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+                            <a class="btn btn-sm btn-warning" th:href="@{/item/update/} + ${item.uuid}">Update</a>
                         </td>
                     </tr>
                     </tbody>
