@@ -9,26 +9,44 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+  
+      <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6">
+                <br>
+                <div class="card">
+                    <div class="card-body justify-content-center">
+                        <h3>Update Stok Item</h3>
+                        <p th:text="${item.nama}"></p>
+                        <form th:action="@{/item/propose-item}" th:object="${proposeItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menambah jumlah item?');">
+                            <label>Nama Item</label>
+                            <input required type="text" name="nama" class="form-control" th:placeholder="${item.nama}" disabled />
     
-    <div class="d-flex justify-content-center pt-5">
-
-        <div class="d-flex flex-column justify-content-center w-75 d-grid gap-3">
-          <!-- Konten isi disini -->
-          <h1 class="text-center pb-3 text-center">Update Stok Item</h1>
-          <p th:text=${item.uuid}></p>
-          <p th:text=${item.nama}></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-
-  
+                            <label>Harga Item</label>
+                            <input required type="number" name="harga" class="form-control" th:placeholder="${item.harga}" disabled/>
+    
+                            <label>Stok Item</label>
+                            <input required type="number" name="stok" class="form-control" placeholder="Masukkan Jumlah Stok yang ingin ditambahkan" />
+    
+                            <label>Mesin</label>
+                            <select name="kategori" class="form-control">
+                                <option selected value="">-- Pilih Kategori --</option>
+                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
+                            </select>
+                            <br>
+    
+                            <label>Cluster Item</label>
+                            <input disabled type="text" name="cluster" class="form-control" value="C03"/>
+    
+                            <br>
+                            <button class="btn btn-outline-primary" href="/">Kembali</button>
+                            <button type="submit" class="btn btn-warning">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-  
-      </div>
+    </div>
 
 </body>
 </html>

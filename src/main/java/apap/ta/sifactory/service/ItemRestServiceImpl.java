@@ -11,7 +11,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import apap.ta.sifactory.rest.ListItemDetail;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
 import java.util.*;
@@ -36,6 +35,17 @@ public class ItemRestServiceImpl implements ItemRestService{
     @Override
     public List<ItemDetail> getAllItem() {
         ListItemDetail getSiItem = this.webClient.get().uri("/")
+                .retrieve()
+                .bodyToMono(ListItemDetail.class)
+                .block();
+        return getSiItem.getListItem();
+    }
+
+    //Fitur 11
+    @Override
+    public List<ItemDetail> getListKategori(Integer idKategori) {
+        String id_kategori = "/kategori/" + idKategori;
+        ListItemDetail getSiItem = this.webClient.get().uri(id_kategori)
                 .retrieve()
                 .bodyToMono(ListItemDetail.class)
                 .block();
