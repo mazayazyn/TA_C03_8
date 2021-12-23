@@ -63,7 +63,7 @@
                       <a
                         sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
                         class="btn btn-sm btn-warning"
-                        th:href="@{/item/update/} + ${item.uuid}"
+                        th:href="@{/request/updateItemByRequest/} + ${produksi.idItem}"
                         >Update</a
                       >
                     </td>
