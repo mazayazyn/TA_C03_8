@@ -10,14 +10,14 @@
 
 <body>
 <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-    <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+<nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
 </div>
-<br /><br />
+<br><br>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 th:text="'Anda telah berhasil melakukan ' + ${action} + ' untuk ' + ${tipe}"></h2>
+                <h2 th:utext="'Anda telah berhasil melakukan ' + ${action} + ' untuk ' + ${tipe}"></h2>
                 <br>
                 <a class="btn btn-primary" th:href="@{${url}}" th:text="'Kembali ke ' + ${pageTitle}"></a>
             </div>
@@ -26,7 +26,7 @@
     <!-- FOOTER -->
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
-
+<footer th:replace="fragments/fragment :: footer"></footer>
 </body>
 
 </html>
