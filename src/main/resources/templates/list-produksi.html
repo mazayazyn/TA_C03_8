@@ -6,7 +6,7 @@
 >
   <head>
     <meta charset="UTF-8" />
-    <title>Daftar Item</title>
+    <title>Daftar Produksi</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
@@ -30,38 +30,47 @@
       <br /><br />
       <div class="card m-4 p-4">
         <div class="card-body">
-          <h2>Daftar Item</h2>
+          <h2>Daftar Produksi</h2>
           <div class="d-flex justify-content-center">
             <div>
               <table class="table table-striped">
                 <thead class="text-center">
                   <tr>
                     <th>No</th>
-                    <th>Nama Item</th>
-                    <th>Harga</th>
-                    <th>Stok</th>
-                    <th>Kategori</th>
-                    <th></th>
-                    <th></th>
+                    <th>Id Kategori</th>
+                    <th>Id Request Update Item</th>
+                    <th>Tambahan Stok</th>
+                    <th>Tanggal Produksi</th>
+                    <th>Id Mesin</th>
+                    <th>Nama Pegawai</th>
+                    <th>Id Item</th>
                   </tr>
                 </thead>
                 <tbody class="text-center">
                   <tr
-                    th:each="item, iterationStatus : ${listItem}"
+                    th:each="produksi, iterationStatus : ${listProduksi}"
                     style="text-align: center"
                   >
                     <td th:text="${iterationStatus.count}"></td>
-                    <td th:text="${item.nama}"></td>
-                    <td th:text="${item.harga}"></td>
-                    <td th:text="${item.stok}"></td>
-                    <td th:text="${item.kategori}"></td>
+                    <td th:text="${produksi.idKategori}"></td>
+                    <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                    <td
+                      th:unless="${produksi.requestUpdateItem == NULL}"
+                      th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                    ></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.idMesin}"></td>
+                    <td th:text="${produksi.pegawai.nama}"></td>
+                    <td th:text="${produksi.idItem}"></td>
+
                     <td>
                       <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                      <a
+                      <!-- <a
                         class="btn btn-sm btn-primary"
                         th:href="@{/item/view/} + ${item.uuid}"
                         >Detail</a
-                      >
+                      > -->
                     </td>
                     <td>
                       <a
