@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -75,12 +76,8 @@ public class ProduksiServiceImpl implements ProduksiService {
     }
 
     @Override
-    public ProduksiModel getProduksiByItem(String req) {
-        Optional<ProduksiModel> produksi = produksiDB.findByIdItem(req);
-        if (produksi.isPresent()) {
-            return produksi.get();
-        }
-        return null;
+    public List<ProduksiModel> getProduksiByItem(String req) {
+        return produksiDB.findAllByIdItem(req);
     }
 
 }
