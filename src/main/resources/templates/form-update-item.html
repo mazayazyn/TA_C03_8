@@ -12,6 +12,7 @@
     <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
       <!-- MENU -->
       <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+      <br><br>
       <div class="container">
         <div class="d-flex justify-content-center">
           <div class="col-md-6">
@@ -164,7 +165,6 @@
           <h3>Mohon maaf anda tidak memiliki akses</h3>
         </div>
       </div>
-  
   
       <!-- FOOTER -->
       <footer th:replace="fragments/fragment :: footer"></footer>
