@@ -92,10 +92,69 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="d-flex justify-content-center">
-        <h3>Mohon maaf anda tidak memiliki akses</h3>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
       </div>
-    </div>
+
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+
   </body>
 </html>
