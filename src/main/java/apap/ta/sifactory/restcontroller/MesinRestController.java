@@ -3,7 +3,6 @@ package apap.ta.sifactory.restcontroller;
 import apap.ta.sifactory.model.MesinModel;
 import apap.ta.sifactory.rest.BaseResponse;
 import apap.ta.sifactory.rest.MesinDetail;
-import apap.ta.sifactory.service.MesinRestService;
 import apap.ta.sifactory.service.MesinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +20,6 @@ public class MesinRestController {
     @Autowired
     private MesinService mesinService;
 
-    @Autowired
-    private MesinRestService mesinRestService;
 
     @GetMapping(value = "/mesin/{idMesin}")
     private MesinModel retrieveMesin(@PathVariable("idMesin") Integer idMesin) {

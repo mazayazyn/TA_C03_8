@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/api/**").permitAll()
+                .antMatchers("/item/update").hasAnyAuthority("STAFF_GUDANG")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -44,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder())
-//                .withUser("admin1").password(encoder().encode("admin1"))
+//                .withUser("admin").password(encoder().encode("admin"))
 //                .roles("ADMIN");
 //    }
 

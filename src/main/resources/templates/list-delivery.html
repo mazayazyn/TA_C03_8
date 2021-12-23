@@ -9,48 +9,13 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<div class="container" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+<div class="container" sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL','STAFF_KURIR')">
     <div th:if="${role == '[STAFF_OPERASIONAL]'}">
         <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
     </div>
-    <br><br>
-    <div class="card m-4 p-4">
-        <div class="card-body">
-            <div class="d-flex justify-content-center">
-            <h2>Daftar Delivery</h2>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="d-flex justify-content-center">
-                <table class="table table-striped">
-                    <thead class="text-center">
-                    <tr>
-                        <th>Nama Kurir</th>
-                        <th>Id Cabang</th>
-                        <th>Tanggal Dibuat</th>
-                        <th>Tanggal Dikirim</th>
-                        <th>Status Dikirim</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    <tr th:each="delivery : ${listDelivery}" class="table-striped">
-                        <td th:text="${delivery.pegawai.nama}"></td>
-                        <td th:text="${delivery.idCabang}"></td>
-                        <td th:text="${delivery.tanggalDibuat}"></td>
-                        <td th:text="${delivery.tanggalDikirim}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container" sec:authorize="hasAnyAuthority('STAFF_KURIR')">
     <div th:if="${role == '[STAFF_KURIR]'}">
         <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
     </div>
-    <br><br>
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="d-flex justify-content-center">
@@ -59,31 +24,43 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <table class="table table-striped">
-                    <thead class="text-center">
-                    <tr>
-                        <th>Nama Kurir</th>
-                        <th>Id Cabang</th>
-                        <th>Tanggal Dibuat</th>
-                        <th>Tanggal Dikirim</th>
-                        <th>Status Dikirim</th>
-                        <th>Kirim</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    <tr th:each="delivery : ${listDelivery}" class="table-striped">
-                        <td th:text="${delivery.pegawai.nama}"></td>
-                        <td th:text="${delivery.idCabang}"></td>
-                        <td th:text="${delivery.tanggalDibuat}"></td>
-                        <td th:text="${delivery.tanggalDikirim}"></td>
-                        <td th:if="${delivery.sent} == false">Belum Dikirim</td>
-                        <td th:if="${delivery.sent} == true">Terkirim</td>
-                        <td>
-                            <a  th:if="${delivery.sent} == false" class="btn btn-primary" th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}">Kirim</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div th:if="*{listDelivery.size() != 0}">
+                    <table class="table table-striped">
+                        <thead class="text-center">
+                        <tr>
+                            <th>Nama Kurir</th>
+                            <th>Id Cabang</th>
+                            <th>Tanggal Dibuat</th>
+                            <th>Tanggal Dikirim</th>
+                            <th>Status Dikirim</th>
+                            <div th:if="${role == '[STAFF_KURIR]'}">
+                                <th></th>
+                            </div>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        <tr th:each="delivery : ${listDelivery}" class="table-striped">
+                            <td th:text="${delivery.pegawai.nama}"></td>
+                            <td th:text="${delivery.idCabang}"></td>
+                            <td th:text="${delivery.tanggalDibuat}"></td>
+                            <td th:text="${delivery.tanggalDikirim}"></td>
+                            <td th:if="${delivery.sent} == false">Belum Dikirim</td>
+                            <td th:if="${delivery.sent} == true">Terkirim</td>
+                            <div th:if="${role == '[STAFF_KURIR]'}">
+                                <td th:if="${delivery.sent} == false">
+                                    <a class="btn btn-primary" th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}">Kirim</a>
+                                </td>
+                            </div>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:unless="*{listDelivery.size() != 0}" style="text-align: center">
+                    <br><br>
+                    <img th:src="@{/images/undraw/no-data.svg}" class="img-fluid" alt="svg image" style="max-width: 100%; height: auto" width="200">
+                    <br><br>
+                    <h5 th:text="'Tidak ada delivery yang tersedia'" style="color: #6c757d"></h5>
+                </div>
             </div>
         </div>
     </div>

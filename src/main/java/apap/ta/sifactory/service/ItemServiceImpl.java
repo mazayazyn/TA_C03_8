@@ -26,7 +26,6 @@ public class ItemServiceImpl implements ItemService {
         RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
         ReqSave.setDelivery(null);
         ReqSave.setProduksi(null);
-    //    produksiService.createProduksiByRequest(ReqSave, ReqSave.get);
         return ReqSave;
     }
 
@@ -41,6 +40,8 @@ public class ItemServiceImpl implements ItemService {
         }
         return listKategori;
     }
+
+    
 
 
 }

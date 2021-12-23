@@ -1,34 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Si Factory</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-</head>
-<body>
-    
-    <div class="d-flex justify-content-center pt-5">
+  </head>
+  <body>
+    <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="col-md-6">
+            <br />
+            <div class="card">
+              <div class="card-body justify-content-center">
+                <h3>Update Stok Item</h3>
+                <form
+                  th:action="@{/item/update/}"
+                  th:object="${produksi}"
+                  method="POST"
+                  onsubmit="return confirm('Apakah Anda yakin ingin menambah jumlah item?');"
+                >
+                  <div class="py-4">
+                    <input
+                      type="hidden"
+                      th:field="*{idItem}"
+                      th:value="${item.uuid}"
+                      name="idItem"
+                    />
+                    <input
+                      type="hidden"
+                      th:field="*{idKategori}"
+                      name="idKategori"
+                    />
 
-        <div class="d-flex flex-column justify-content-center w-75 d-grid gap-3">
-          <!-- Konten isi disini -->
-          <h1 class="text-center pb-3 text-center">Update Stok Item</h1>
-          <p th:text=${item.uuid}></p>
-          <p th:text=${item.nama}></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+                    <label>Nama Item</label>
+                    <input
+                      required
+                      type="text"
+                      name="nama"
+                      class="form-control"
+                      th:placeholder="${item.nama}"
+                      disabled
+                    />
 
-  
+                    <label>Harga Item</label>
+                    <input
+                      required
+                      type="number"
+                      name="harga"
+                      class="form-control"
+                      th:placeholder="${item.harga}"
+                      disabled
+                    />
+
+                    <label>Stok Item</label>
+                    <input
+                      required
+                      type="number"
+                      name="stok"
+                      class="form-control"
+                      th:field="*{tambahanStok}"
+                      placeholder="Masukkan Jumlah Stok yang ingin ditambahkan"
+                    />
+
+                    <label>Mesin</label>
+                    <select
+                      name="mesin"
+                      class="form-control"
+                      th:field="*{mesin}"
+                    >
+                      <option
+                        th:each="mesin : ${listMesin}"
+                        th:value="${mesin.idMesin}"
+                        th:text="${mesin.nama}"
+                      ></option>
+                    </select>
+                  </div>
+                  <button class="btn btn-outline-primary" href="/">
+                    Kembali
+                  </button>
+                  <button type="submit" class="btn btn-warning">Simpan</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <footer th:replace="fragments/fragment :: footer"></footer>
+
+    </div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-admin"></nav>
   
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
       </div>
 
-</body>
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="d-flex justify-content-center">
+          <h3>Mohon maaf anda tidak memiliki akses</h3>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+
+  </body>
 </html>

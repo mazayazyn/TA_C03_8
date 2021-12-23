@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,8 +24,7 @@ public class RequestUpdateItemModel implements Serializable{
 
     //merujuk ke siitem
     @NotNull
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "id_item", nullable = false)
     private String idItem;
 
     @NotNull

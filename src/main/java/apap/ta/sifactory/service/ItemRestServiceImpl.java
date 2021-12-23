@@ -1,7 +1,6 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
-import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +10,10 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import apap.ta.sifactory.rest.ListItemDetail;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
+import apap.ta.sifactory.rest.StokDetail;
+
 import java.util.*;
 import apap.ta.sifactory.rest.GetItem;
 import apap.ta.sifactory.rest.ItemDetail;
@@ -42,16 +42,42 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
+    //Fitur 11
+    @Override
+    public List<ItemDetail> getListKategori(Integer idKategori) {
+        String id_kategori = "/kategori/" + idKategori;
+        ListItemDetail getSiItem = this.webClient.get().uri(id_kategori)
+                .retrieve()
+                .bodyToMono(ListItemDetail.class)
+                .block();
+        return getSiItem.getListItem();
+    }
+
+
+    @Override
+    public StokDetail updateItem(String uuid, Integer tambahanStok, Integer stokItem) {
+        HashMap data = new HashMap();
+        data.put("stok", tambahanStok+stokItem);
+
+        String uuid_item = "/" + uuid;
+        StokDetail postItem = this.webClient.put().uri(uuid_item)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.ALL)
+                .syncBody(data)
+                .retrieve()
+                .bodyToMono(StokDetail.class).block();
+                
+        return postItem;
+    }
+
     //Fitur 4 dan 6
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
-        System.out.print(uuid_dicari);
         GetItem getSiItem = this.webClient.get().uri(uuid_dicari)
                 .retrieve()
                 .bodyToMono(GetItem.class)
                 .block();
-        System.out.print(getSiItem);
         return getSiItem.getItem();
     }
 
@@ -79,15 +105,10 @@ public class ItemRestServiceImpl implements ItemRestService{
                 .syncBody(data)
                 .retrieve()
                 .bodyToMono(String.class).block();
-        System.out.println("hasil");
-        System.out.println(hasil);
 
         hasil = hasil.substring(1, hasil.length()-1);
-        System.out.println(hasil);
         String getStatus = hasil.split(",")[1];   //split to get response status
-        System.out.println(getStatus);
         String statusCode = getStatus.split(":")[1];
-        System.out.println(statusCode);
 
         return statusCode;
     }

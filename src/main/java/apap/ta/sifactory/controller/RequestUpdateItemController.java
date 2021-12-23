@@ -72,8 +72,6 @@ public class RequestUpdateItemController {
 
         String usernamePegawai = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
         ItemDetail item = itemRestService.getItemByUUID(requestUpdateItem.getIdItem());
-        System.out.println(item.getNama());
-        System.out.println(item.getUuid());
         HttpStatus status = itemRestService.executeUpdateByRequest(requestUpdateItem, item);
         String namaItem = item.getNama();
 
