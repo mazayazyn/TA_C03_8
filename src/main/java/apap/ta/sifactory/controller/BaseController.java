@@ -4,7 +4,10 @@ import apap.ta.sifactory.model.PegawaiModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
+import apap.ta.sifactory.rest.ItemDetail;
+import apap.ta.sifactory.service.ItemRestService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class BaseController {
     @Autowired
     private ProduksiDB produksiDB;
 
+    @Autowired
+    private ItemRestService itemRestService;
+
     @RequestMapping("/")
     private String home(Model model, @AuthenticationPrincipal UserDetails currentUser) {
         PegawaiModel pegawai = (PegawaiModel) pegawaiDB.findByUsername(currentUser.getUsername());
@@ -38,7 +44,14 @@ public class BaseController {
     @GetMapping("/produksi/daftar-produksi")
     public String listItem(Model model) {
         List<ProduksiModel> listProduksi = produksiDB.findAll();
+        List<String> listItemSaring = new ArrayList<>();
+
+        for (int i = 0; i < listProduksi.size(); i++) {
+            listItemSaring.add(itemRestService.getItemByUUID(listProduksi.get(i).getIdItem()).getNama());
+        }
+
         model.addAttribute("listProduksi", listProduksi);
+        model.addAttribute("listItemSaring", listItemSaring);
         return "list-produksi";
     }
 }
