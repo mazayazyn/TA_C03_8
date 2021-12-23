@@ -12,21 +12,7 @@
   </head>
   <body>
     <div class="container">
-      <div sec:authorize="hasAnyAuthority('ADMIN')">
-        <nav th:replace="fragments/fragment :: navbar-admin"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
-        <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
-        <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
-        <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-        <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
-      </div>
+
       <br /><br />
       <div class="card m-4 p-4">
         <div class="card-body">
@@ -44,6 +30,7 @@
                     <th>Id Mesin</th>
                     <th>Nama Pegawai</th>
                     <th>Id Item</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody class="text-center">
@@ -63,15 +50,15 @@
                     <td th:text="${produksi.mesin.idMesin}"></td>
                     <td th:text="${produksi.pegawai.nama}"></td>
                     <td th:text="${produksi.idItem}"></td>
-
+<!-- 
                     <td>
-                      <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                      <!-- <a
+                                                 TODO: sinkronkan href ke mapping di controller yang render template detail & update
+                      <a
                         class="btn btn-sm btn-primary"
                         th:href="@{/item/view/} + ${item.uuid}"
                         >Detail</a
-                      > -->
-                    </td>
+                      >
+                    </td> -->
                     <td>
                       <a
                         sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
