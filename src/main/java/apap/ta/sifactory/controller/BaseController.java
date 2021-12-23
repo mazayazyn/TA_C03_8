@@ -8,6 +8,7 @@ import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +46,22 @@ public class BaseController {
     public String listItem(Model model) {
         List<ProduksiModel> listProduksi = produksiDB.findAll();
         List<String> listItemSaring = new ArrayList<>();
+        List<String> listKategoriSaring = new ArrayList<>();
+        List<String> list = Arrays.asList("BUKU", "DAPUR","MAKANAN & MINUMAN","ELEKTRONIK","FASHION","KECANTIKAN & PERAWATAN DIRI","FILM & MUSIK","GAMING","GADGET","KESEHATAN","RUMAH TANGGA","FURNITURE","ALAT & PERANGKAT KERAS","WEDDING");
 
+        for (int i = 0; i < list.size(); i++) {
+            
+        }
         for (int i = 0; i < listProduksi.size(); i++) {
             listItemSaring.add(itemRestService.getItemByUUID(listProduksi.get(i).getIdItem()).getNama());
+            listKategoriSaring.add(itemRestService.getItemByUUID(listProduksi.get(i).getIdItem()).getKategori());
+
+
         }
 
         model.addAttribute("listProduksi", listProduksi);
         model.addAttribute("listItemSaring", listItemSaring);
+        model.addAttribute("listKategoriSaring", listKategoriSaring);
         return "list-produksi";
     }
 }

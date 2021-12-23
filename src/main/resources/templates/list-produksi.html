@@ -26,15 +26,16 @@
               <div>
                 <table class="table table-striped">
                   <thead class="text-center">
-                    <tr>
+                    <tr style="background-color: darkgray;">
                       <th>No</th>
-                      <th>Id Kategori</th>
-                      <th>Id Request Update Item</th>
+                      <th>Nama Item</th>
+                      <th>Nama Kategori</th>
                       <th>Tambahan Stok</th>
                       <th>Tanggal Produksi</th>
-                      <th>Id Mesin</th>
+                      <th>Nama Mesin</th>
                       <th>Nama Pegawai</th>
-                      <th>Nama Item</th>
+                      <th>Id Request Update Item</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -42,19 +43,18 @@
                       th:each="produksi, iterationStatus : ${listProduksi}"
                       style="text-align: center"
                     >
-                      <td th:text="${iterationStatus.count}"></td>
-                      <td th:text="${produksi.idKategori}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+                    <td th:text="${listKategoriSaring[iterationStatus.index]}"></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
                       <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
                       <td
                         th:unless="${produksi.requestUpdateItem == NULL}"
                         th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
                       ></td>
-                      <td th:text="${produksi.tambahanStok}"></td>
-                      <td th:text="${produksi.tanggalProduksi}"></td>
-                      <td th:text="${produksi.mesin.nama}"></td>
-                      <td th:text="${produksi.pegawai.nama}"></td>
-                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
-  
                     </tr>
                   </tbody>
                 </table>
@@ -84,15 +84,16 @@
               <div>
                 <table class="table table-striped">
                   <thead class="text-center">
-                    <tr>
+                    <tr style="background-color: darkgray;">
                       <th>No</th>
-                      <th>Id Kategori</th>
-                      <th>Id Request Update Item</th>
+                      <th>Nama Item</th>
+                      <th>Nama Kategori</th>
                       <th>Tambahan Stok</th>
                       <th>Tanggal Produksi</th>
-                      <th>Id Mesin</th>
+                      <th>Nama Mesin</th>
                       <th>Nama Pegawai</th>
-                      <th>Nama Item</th>
+                      <th>Id Request Update Item</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -100,19 +101,18 @@
                       th:each="produksi, iterationStatus : ${listProduksi}"
                       style="text-align: center"
                     >
-                      <td th:text="${iterationStatus.count}"></td>
-                      <td th:text="${produksi.idKategori}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+                    <td th:text="${listKategoriSaring[iterationStatus.index]}"></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
                       <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
                       <td
                         th:unless="${produksi.requestUpdateItem == NULL}"
                         th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
                       ></td>
-                      <td th:text="${produksi.tambahanStok}"></td>
-                      <td th:text="${produksi.tanggalProduksi}"></td>
-                      <td th:text="${produksi.mesin.nama}"></td>
-                      <td th:text="${produksi.pegawai.nama}"></td>
-                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
-  
                     </tr>
                   </tbody>
                 </table>
@@ -143,15 +143,16 @@
               <div>
                 <table class="table table-striped">
                   <thead class="text-center">
-                    <tr>
+                    <tr style="background-color: darkgray;">
                       <th>No</th>
-                      <th>Id Kategori</th>
-                      <th>Id Request Update Item</th>
+                      <th>Nama Item</th>
+                      <th>Nama Kategori</th>
                       <th>Tambahan Stok</th>
                       <th>Tanggal Produksi</th>
-                      <th>Id Mesin</th>
+                      <th>Nama Mesin</th>
                       <th>Nama Pegawai</th>
-                      <th>Nama Item</th>
+                      <th>Id Request Update Item</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -159,19 +160,18 @@
                       th:each="produksi, iterationStatus : ${listProduksi}"
                       style="text-align: center"
                     >
-                      <td th:text="${iterationStatus.count}"></td>
-                      <td th:text="${produksi.idKategori}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+                    <td th:text="${listKategoriSaring[iterationStatus.index]}"></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
                       <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
                       <td
                         th:unless="${produksi.requestUpdateItem == NULL}"
                         th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
                       ></td>
-                      <td th:text="${produksi.tambahanStok}"></td>
-                      <td th:text="${produksi.tanggalProduksi}"></td>
-                      <td th:text="${produksi.mesin.nama}"></td>
-                      <td th:text="${produksi.pegawai.nama}"></td>
-                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
-  
                     </tr>
                   </tbody>
                 </table>
@@ -201,15 +201,16 @@
               <div>
                 <table class="table table-striped">
                   <thead class="text-center">
-                    <tr>
+                    <tr style="background-color: darkgray;">
                       <th>No</th>
-                      <th>Id Kategori</th>
-                      <th>Id Request Update Item</th>
+                      <th>Nama Item</th>
+                      <th>Nama Kategori</th>
                       <th>Tambahan Stok</th>
                       <th>Tanggal Produksi</th>
-                      <th>Id Mesin</th>
+                      <th>Nama Mesin</th>
                       <th>Nama Pegawai</th>
-                      <th>Nama Item</th>
+                      <th>Id Request Update Item</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -217,19 +218,18 @@
                       th:each="produksi, iterationStatus : ${listProduksi}"
                       style="text-align: center"
                     >
-                      <td th:text="${iterationStatus.count}"></td>
-                      <td th:text="${produksi.idKategori}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+                    <td th:text="${listKategoriSaring[iterationStatus.index]}"></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
                       <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
                       <td
                         th:unless="${produksi.requestUpdateItem == NULL}"
                         th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
                       ></td>
-                      <td th:text="${produksi.tambahanStok}"></td>
-                      <td th:text="${produksi.tanggalProduksi}"></td>
-                      <td th:text="${produksi.mesin.nama}"></td>
-                      <td th:text="${produksi.pegawai.nama}"></td>
-                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
-  
                     </tr>
                   </tbody>
                 </table>
@@ -260,15 +260,16 @@
               <div>
                 <table class="table table-striped">
                   <thead class="text-center">
-                    <tr>
+                    <tr style="background-color: darkgray;">
                       <th>No</th>
-                      <th>Id Kategori</th>
-                      <th>Id Request Update Item</th>
+                      <th>Nama Item</th>
+                      <th>Nama Kategori</th>
                       <th>Tambahan Stok</th>
                       <th>Tanggal Produksi</th>
-                      <th>Id Mesin</th>
+                      <th>Nama Mesin</th>
                       <th>Nama Pegawai</th>
-                      <th>Nama Item</th>
+                      <th>Id Request Update Item</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -276,19 +277,18 @@
                       th:each="produksi, iterationStatus : ${listProduksi}"
                       style="text-align: center"
                     >
-                      <td th:text="${iterationStatus.count}"></td>
-                      <td th:text="${produksi.idKategori}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+                    <td th:text="${listKategoriSaring[iterationStatus.index]}"></td>
+                    <td th:text="${produksi.tambahanStok}"></td>
+                    <td th:text="${produksi.tanggalProduksi}"></td>
+                    <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
                       <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
                       <td
                         th:unless="${produksi.requestUpdateItem == NULL}"
                         th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
                       ></td>
-                      <td th:text="${produksi.tambahanStok}"></td>
-                      <td th:text="${produksi.tanggalProduksi}"></td>
-                      <td th:text="${produksi.mesin.nama}"></td>
-                      <td th:text="${produksi.pegawai.nama}"></td>
-                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
-  
                     </tr>
                   </tbody>
                 </table>
