@@ -10,83 +10,300 @@
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
-  <body>
-    <div class="container">
-      <div sec:authorize="hasAnyAuthority('ADMIN')">
-        <nav th:replace="fragments/fragment :: navbar-admin"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
-        <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
-        <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
-        <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-        <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
-      </div>
-      <br /><br />
-      <div class="card m-4 p-4">
-        <div class="card-body">
-          <h2>Daftar Produksi</h2>
-          <div class="d-flex justify-content-center">
-            <div>
-              <table class="table table-striped">
-                <thead class="text-center">
-                  <tr>
-                    <th>No</th>
-                    <th>Id Kategori</th>
-                    <th>Id Request Update Item</th>
-                    <th>Tambahan Stok</th>
-                    <th>Tanggal Produksi</th>
-                    <th>Id Mesin</th>
-                    <th>Nama Pegawai</th>
-                    <th>Id Item</th>
-                  </tr>
-                </thead>
-                <tbody class="text-center">
-                  <tr
-                    th:each="produksi, iterationStatus : ${listProduksi}"
-                    style="text-align: center"
-                  >
-                    <td th:text="${iterationStatus.count}"></td>
-                    <td th:text="${produksi.idKategori}"></td>
-                    <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
-                    <td
-                      th:unless="${produksi.requestUpdateItem == NULL}"
-                      th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
-                    ></td>
-                    <td th:text="${produksi.tambahanStok}"></td>
-                    <td th:text="${produksi.tanggalProduksi}"></td>
-                    <td th:text="${produksi.mesin.idMesin}"></td>
-                    <td th:text="${produksi.pegawai.nama}"></td>
-                    <td th:text="${produksi.idItem}"></td>
 
-                    <td>
-                      <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                      <!-- <a
-                        class="btn btn-sm btn-primary"
-                        th:href="@{/item/view/} + ${item.uuid}"
-                        >Detail</a
-                      > -->
-                    </td>
-                    <td>
-                      <a
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                        class="btn btn-sm btn-warning"
-                        th:href="@{/item/update/} + ${item.uuid}"
-                        >Update</a
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+  <body>
+    <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="card m-4 p-4">
+          <div class="card-body">
+            <h2>Daftar Produksi</h2>
+            <div class="d-flex justify-content-center">
+              <div>
+                <table class="table table-striped">
+                  <thead class="text-center">
+                    <tr>
+                      <th>No</th>
+                      <th>Id Kategori</th>
+                      <th>Id Request Update Item</th>
+                      <th>Tambahan Stok</th>
+                      <th>Tanggal Produksi</th>
+                      <th>Id Mesin</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Item</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr
+                      th:each="produksi, iterationStatus : ${listProduksi}"
+                      style="text-align: center"
+                    >
+                      <td th:text="${iterationStatus.count}"></td>
+                      <td th:text="${produksi.idKategori}"></td>
+                      <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                      <td
+                        th:unless="${produksi.requestUpdateItem == NULL}"
+                        th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                      ></td>
+                      <td th:text="${produksi.tambahanStok}"></td>
+                      <td th:text="${produksi.tanggalProduksi}"></td>
+                      <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
+                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <footer th:replace="fragments/fragment :: footer"></footer>
+
     </div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-admin"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="card m-4 p-4">
+          <div class="card-body">
+            <h2>Daftar Produksi</h2>
+            <div class="d-flex justify-content-center">
+              <div>
+                <table class="table table-striped">
+                  <thead class="text-center">
+                    <tr>
+                      <th>No</th>
+                      <th>Id Kategori</th>
+                      <th>Id Request Update Item</th>
+                      <th>Tambahan Stok</th>
+                      <th>Tanggal Produksi</th>
+                      <th>Id Mesin</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Item</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr
+                      th:each="produksi, iterationStatus : ${listProduksi}"
+                      style="text-align: center"
+                    >
+                      <td th:text="${iterationStatus.count}"></td>
+                      <td th:text="${produksi.idKategori}"></td>
+                      <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                      <td
+                        th:unless="${produksi.requestUpdateItem == NULL}"
+                        th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                      ></td>
+                      <td th:text="${produksi.tambahanStok}"></td>
+                      <td th:text="${produksi.tanggalProduksi}"></td>
+                      <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
+                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="card m-4 p-4">
+          <div class="card-body">
+            <h2>Daftar Produksi</h2>
+            <div class="d-flex justify-content-center">
+              <div>
+                <table class="table table-striped">
+                  <thead class="text-center">
+                    <tr>
+                      <th>No</th>
+                      <th>Id Kategori</th>
+                      <th>Id Request Update Item</th>
+                      <th>Tambahan Stok</th>
+                      <th>Tanggal Produksi</th>
+                      <th>Id Mesin</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Item</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr
+                      th:each="produksi, iterationStatus : ${listProduksi}"
+                      style="text-align: center"
+                    >
+                      <td th:text="${iterationStatus.count}"></td>
+                      <td th:text="${produksi.idKategori}"></td>
+                      <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                      <td
+                        th:unless="${produksi.requestUpdateItem == NULL}"
+                        th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                      ></td>
+                      <td th:text="${produksi.tambahanStok}"></td>
+                      <td th:text="${produksi.tanggalProduksi}"></td>
+                      <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
+                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="card m-4 p-4">
+          <div class="card-body">
+            <h2>Daftar Produksi</h2>
+            <div class="d-flex justify-content-center">
+              <div>
+                <table class="table table-striped">
+                  <thead class="text-center">
+                    <tr>
+                      <th>No</th>
+                      <th>Id Kategori</th>
+                      <th>Id Request Update Item</th>
+                      <th>Tambahan Stok</th>
+                      <th>Tanggal Produksi</th>
+                      <th>Id Mesin</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Item</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr
+                      th:each="produksi, iterationStatus : ${listProduksi}"
+                      style="text-align: center"
+                    >
+                      <td th:text="${iterationStatus.count}"></td>
+                      <td th:text="${produksi.idKategori}"></td>
+                      <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                      <td
+                        th:unless="${produksi.requestUpdateItem == NULL}"
+                        th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                      ></td>
+                      <td th:text="${produksi.tambahanStok}"></td>
+                      <td th:text="${produksi.tanggalProduksi}"></td>
+                      <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
+                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+  
+  <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+  
+      <!-- ABOUT -->
+      <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <div class="card m-4 p-4">
+          <div class="card-body">
+            <h2>Daftar Produksi</h2>
+            <div class="d-flex justify-content-center">
+              <div>
+                <table class="table table-striped">
+                  <thead class="text-center">
+                    <tr>
+                      <th>No</th>
+                      <th>Id Kategori</th>
+                      <th>Id Request Update Item</th>
+                      <th>Tambahan Stok</th>
+                      <th>Tanggal Produksi</th>
+                      <th>Id Mesin</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Item</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr
+                      th:each="produksi, iterationStatus : ${listProduksi}"
+                      style="text-align: center"
+                    >
+                      <td th:text="${iterationStatus.count}"></td>
+                      <td th:text="${produksi.idKategori}"></td>
+                      <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                      <td
+                        th:unless="${produksi.requestUpdateItem == NULL}"
+                        th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                      ></td>
+                      <td th:text="${produksi.tambahanStok}"></td>
+                      <td th:text="${produksi.tanggalProduksi}"></td>
+                      <td th:text="${produksi.mesin.nama}"></td>
+                      <td th:text="${produksi.pegawai.nama}"></td>
+                      <td th:text="${listItemSaring[iterationStatus.index]}"></td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
+  </div>
+
   </body>
+
+  
 </html>
