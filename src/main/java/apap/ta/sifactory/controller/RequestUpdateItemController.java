@@ -77,7 +77,7 @@ public class RequestUpdateItemController {
 
         if(status.is2xxSuccessful()) {
             pegawaiService.addCounterPegawai(usernamePegawai);
-            ProduksiModel produksi = produksiService.createProduksiByRequest(requestUpdateItem, idMesin, usernamePegawai);
+            produksiService.createProduksiByRequest(requestUpdateItem, idMesin, usernamePegawai);
             requestUpdateItem.setExecuted(true);
             requestUpdateItemDB.save(requestUpdateItem);
             model.addAttribute("action", "update stok item berdasarkan request");

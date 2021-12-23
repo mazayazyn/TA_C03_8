@@ -1,60 +1,95 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="en"
+  xmlns:th="http://thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>Add Pegawai</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-</head>
-<body>
-<div sec:authorize="hasAnyAuthority('ADMIN')">
-    <nav th:replace="fragments/fragment :: navbar-admin"></nav>
-</div>
-<br><br>
-<div class="container">
-    <div class="d-flex justify-content-center">
-    <div class="col-md-6">
-        <br>
-            <div class="card">
-                <div class="card-body justify-content-center">
-                    <h3>Tambah User Baru</h3>
-                    <form th:action="@{/pegawai/add-pegawai}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
-                        <label>Nama</label><br>
-                        <input required type="text" name="nama" class="form-control" />
-                        <br>
-
-                        <label>Tanggal Lahir</label><br>
-                        <input required type="date" name="tanggalLahir" class="form-control" />
-                        <br>
-
-                        <label>Username</label><br>
-                        <input required type="text" name="username" class="form-control" />
-                        <br>
-
-                        <label>Email</label><br>
-                        <input required type="email" name="email" class="form-control" />
-                        <br>
-
-                        <label>Password</label><br>
-                        <input required type="password" name="password" class="form-control"/>
-                        <br>
-
-                        <label>Role</label><br>
-                        <select required name="role" class="form-control">
-                            <option selected value="">-- Pilih Role --</option>
-                            <option th:each="role : ${listRole}" th:value="${role.idRole}" th:text="${role.namaRole}"></option>
-                        </select>
-                        <br>
-                        <button type="submit" class="btn btn-warning">Simpan</button>
-                    </form>
-                    <a class="btn btn-link" th:href="@{/}">Kembali</a>
-                </div>
-            </div>
-        </div>
+  </head>
+  <body>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+      <nav th:replace="fragments/fragment :: navbar-admin"></nav>
     </div>
-</div>
-<br><br>
-</body>
+    <br /><br />
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+          <br />
+          <div class="card">
+            <div class="card-body justify-content-center">
+              <h3>Tambah User Baru</h3>
+              <form
+                th:action="@{/pegawai/add-pegawai}"
+                method="POST"
+                onsubmit="return confirm('Apakah Anda yakin ingin submit form?');"
+              >
+                <label>Nama</label><br />
+                <input required type="text" name="nama" class="form-control" />
+                <br />
+
+                <label>Tanggal Lahir</label><br />
+                <input
+                  required
+                  type="date"
+                  name="tanggalLahir"
+                  class="form-control"
+                />
+                <br />
+
+                <label>Username</label><br />
+                <input
+                  required
+                  type="text"
+                  name="username"
+                  class="form-control"
+                />
+                <br />
+
+                <label>Email</label><br />
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  class="form-control"
+                />
+                <br />
+
+                <label>Password</label><br />
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  class="form-control"
+                />
+                <br />
+
+                <label>Role</label><br />
+                <select required name="role" class="form-control">
+                  <option selected value="">-- Pilih Role --</option>
+                  <option
+                    th:each="role : ${listRole}"
+                    th:value="${role.idRole}"
+                    th:text="${role.namaRole}"
+                  ></option>
+                </select>
+                <br />
+                <div class="d-flex">
+                  <a class="btn btn-outline-primary px-2" th:href="@{/}"
+                    >Kembali</a
+                  >
+                  <button type="submit" class="btn btn-warning ml-2">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer th:replace="fragments/fragment :: footer"></footer>
+    </div>
+    <br /><br />
+  </body>
 </html>

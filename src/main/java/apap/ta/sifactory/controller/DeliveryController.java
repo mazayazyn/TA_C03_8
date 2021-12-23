@@ -28,9 +28,6 @@ public class DeliveryController {
     @Autowired
     private RequestUpdateItemService requestUpdateItemService;
 
-    // @Autowired
-    // private DeliveryRestService deliveryRestService;
-
     //Fitur 12
     //Daftar request update item kalo executed True ada button Buat Delivery
     @GetMapping("/assign-kurir/{idRequestUpdateItem}")
