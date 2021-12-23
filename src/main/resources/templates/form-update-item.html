@@ -20,9 +20,9 @@
                         <form th:action="@{/item/update/}" th:object="${produksi}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menambah jumlah item?');">
                           <div class="py-4">
 
-                            <input type="text" name="nama" class="form-control" th:placeholder="${item.uuid}" th:field="*{idItem}" hidden />
-
-
+                            <input type="hidden" th:field="*{idItem}"  th:value="${item.uuid}" name="idItem" />
+                            <input type="hidden" th:field="*{idKategori}" name="idKategori" />
+                            
                             <label>Nama Item</label>
                             <input required type="text" name="nama" class="form-control" th:placeholder="${item.nama}" disabled />
     
@@ -33,8 +33,8 @@
                             <input required type="number" name="stok" class="form-control" th:field="*{tambahanStok}" placeholder="Masukkan Jumlah Stok yang ingin ditambahkan" />
     
                             <label>Mesin</label>
-                            <select name="idMesin" class="form-control">
-                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin}" th:field="*{mesin}"></option>
+                            <select name="mesin" class="form-control" th:field="*{mesin}">
+                                <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}" ></option>
                             </select>
                           </div>  
                             <button class="btn btn-outline-primary" href="/">Kembali</button>

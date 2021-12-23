@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,8 +23,7 @@ public class ProduksiModel implements Serializable{
 
     //merujuk ke siitem
     @NotNull
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "id_item", nullable = false)
     private String idItem;
 
     @NotNull
@@ -44,7 +42,7 @@ public class ProduksiModel implements Serializable{
 
     //Relasi dengan Request Update Item
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_request_update_item", referencedColumnName = "id_request_update_item", nullable = false)
+    @JoinColumn(name = "id_request_update_item", referencedColumnName = "id_request_update_item", nullable = true)
     private RequestUpdateItemModel requestUpdateItem;
 
     //Relasi dengan Mesin

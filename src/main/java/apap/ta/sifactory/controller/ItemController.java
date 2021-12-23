@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -99,15 +98,21 @@ public class ItemController {
         @PathVariable String uuid,
         Model model
     ) {
+        ProduksiModel produksi = new ProduksiModel();
         ItemDetail item = itemRestService.getItemByUUID(uuid);
         List<String> list = Arrays.asList("BUKU", "DAPUR","MAKANAN & MINUMAN","ELEKTRONIK","FASHION","KECANTIKAN & PERAWATAN DIRI","FILM & MUSIK","GAMING","GADGET","KESEHATAN","RUMAH TANGGA","FURNITURE","ALAT & PERANGKAT KERAS","WEDDING");
+        Integer angka = 1;
         for (int i = 0; i < list.size(); i++) {
             if(item.getKategori().equals(list.get(i))) {
+                angka++;
                 List<MesinModel> listMesin = mesinService.getAllMesinByKategoriItem(item.getKategori());
                 model.addAttribute("listMesin",listMesin);
+                
             }
         }
-        model.addAttribute("produksi",new ProduksiModel());
+        produksi.setIdKategori(angka);
+        produksi.setIdItem(uuid);
+        model.addAttribute("produksi",produksi);
         model.addAttribute("mesin",new MesinModel());
         model.addAttribute("item",item);
         return "form-update-item";
@@ -119,12 +124,11 @@ public class ItemController {
             Model model,
             @ModelAttribute ProduksiModel produksi
     ) {
-        //mesin blm masuk
-        itemRestService.updateItem(produksi.getIdItem());
-        // System.out.println(produksi.getMesin());
-
+        ItemDetail item_ditambahkan = itemRestService.getItemByUUID(produksi.getIdItem());
         ProduksiModel prod = produksiService.createProduksi(produksi);
-        itemRestService.updateItem(produksi.getIdItem());
+        System.out.println("berhasil buat");
+        itemRestService.updateItem(prod.getIdItem(),prod.getTambahanStok(),item_ditambahkan.getStok());
+
         model.addAttribute("produksi", "produksi");
         return "respon-update-item";
     }

@@ -25,8 +25,7 @@ public class RequestUpdateItemModel implements Serializable{
 
     //merujuk ke siitem
     @NotNull
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "id_item", nullable = false)
     private String idItem;
 
     @NotNull

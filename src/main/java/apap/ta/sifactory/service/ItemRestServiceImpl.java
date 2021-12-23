@@ -59,14 +59,23 @@ public class ItemRestServiceImpl implements ItemRestService{
 
 
     @Override
-    public Mono<StokDetail> updateItem(String uuid) {
-        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
-        data.add("namaBioskop","Bioskop Mock Server");
+    public StokDetail updateItem(String uuid, Integer tambahanStok, Integer stokItem) {
+        HashMap data = new HashMap();
+        data.put("stok", tambahanStok+stokItem);
+        // data.add("stok",tambahanStok);
+        System.out.println(data);
 
-        return this.webClient.post().uri(uuid)
+        // StokDetail postItem = new StokDetail();
+        String uuid_item = "/" + uuid;
+        StokDetail postItem = this.webClient.put().uri(uuid_item)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.ALL)
                 .syncBody(data)
                 .retrieve()
-                .bodyToMono(StokDetail.class);
+                .bodyToMono(StokDetail.class).block();
+                
+        System.out.println("masuk");
+        return postItem;
     }
 
     //Fitur 4 dan 6
