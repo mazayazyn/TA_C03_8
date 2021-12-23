@@ -81,7 +81,7 @@ public class RequestUpdateItemController {
             requestUpdateItem.setExecuted(true);
             requestUpdateItemDB.save(requestUpdateItem);
             model.addAttribute("action", "update stok item berdasarkan request");
-            model.addAttribute("tipe", "item '" + namaItem + "'. Produksi untuk stok tambahan akan dijalankan.");
+            model.addAttribute("tipe", "item '" + namaItem + "'. <br /> <br />Produksi untuk stok tambahan akan dijalankan.");
             model.addAttribute("url", "/request/daftar-request");
             model.addAttribute("pageTitle", "Daftar Request");
             return "success-page-update";

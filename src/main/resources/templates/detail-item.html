@@ -64,16 +64,35 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div th:if="*{detailProduksi == null}">
-                        <p class="text-center">Tidak ada produksi pada item ini</p>
-                        <br>
+                    <div
+                            th:unless="*{detailProduksi.size() != 0}"
+                            style="text-align: center"
+                    >
+                        <br /><br />
+                        <img
+                                th:src="@{/images/undraw/no-data.svg}"
+                                class="img-fluid"
+                                alt="svg image"
+                                style="max-width: 100%; height: auto"
+                                width="200"
+                        />
+                        <br /><br />
+                        <h5
+                                th:text="'Tidak ada produksi pada item ini'"
+                                style="color: #6c757d"
+                        ></h5>
                     </div>
                 </div>
             </div>
             <br>
-            <a class="btn btn-primary" th:href="@{/item/daftar-item}" th:text="Kembali"></a>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-warning" th:href="@{/item/daftar-item}">Kembali ke Daftar Item</a>
+            </div>
         </div>
     </div>
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+
 </div>
 </body>
 </html>

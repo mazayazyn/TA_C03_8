@@ -9,22 +9,23 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
   <body>
-
-
     <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
     <div class="container">
-      <div class="d-flex justify-content-center">
+        <br/><br/><br/>
+      <div class="d-flex justify-content-center card">
         <div class="card-body">
           <div class="d-flex flex-column">
             <h3>Berhasil menambahkan item</h3>
-            <a href="/item/daftar-item" class="btn btn-outline-primary"
-              >Kembali</a
-            >
+            <div>
+              <a href="/item/daftar-item" class="btn btn-outline-primary"
+                >Kembali</a
+              >
+            </div>
           </div>
         </div>
       </div>
+      <!-- FOOTER -->
+      <footer th:replace="fragments/fragment :: footer"></footer>
     </div>
-
-
   </body>
 </html>
