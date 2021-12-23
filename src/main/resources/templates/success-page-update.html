@@ -10,7 +10,8 @@
 
 <body>
 <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-<nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
 </div>
 <br><br>
 <div class="container">
