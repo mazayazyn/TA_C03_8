@@ -1,151 +1,96 @@
 <!DOCTYPE html>
 <html
-  lang="en"
-  xmlns:th="http://thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
-  <head>
-    <meta charset="UTF-8" />
+        lang="en"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
     <title>Daftar Request Update Item</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-  </head>
-  <body>
-    <div class="container">
-      <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+</head>
+<body>
+<div class="container">
+    <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
         <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-      </div>
-      <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
-        <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
-      </div>
-      <br /><br />
-      <div class="card mx-auto m-4 p-4">
-        <div class="card-body">
-          <div class="d-flex justify-content-center">
-            <h2>Daftar Request Update Item</h2>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="d-flex justify-content-center">
-            <div class="justify-content-center">
-              <div th:if="*{listRequest.size() != 0}">
-                <table class="table table-striped">
-                  <thead class="text-center">
-                    <tr style="background-color: #fbda78">
-                      <th>ID Request</th>
-                      <th>Tanggal Request</th>
-                      <th>ID Cabang</th>
-                      <th>Nama Item</th>
-                      <th>Kategori</th>
-                      <th>Stok Tambahan</th>
-                      <th>Executed</th>
-                      <th>ID Produksi</th>
-                      <th>ID Delivery</th>
-                      <th sec:authorize="hasAnyAuthority('STAFF_GUDANG')"></th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <tr
-                      th:each="request : ${listRequest}"
-                      style="text-align: center"
-                    >
-                      <td th:text="${request.idRequestUpdateItem}"></td>
-                      <td th:text="${request.tanggalRequest}"></td>
-                      <td th:text="${request.idCabang}"></td>
-                      <div th:each="item : ${listItem}">
-                        <td
-                          th:if="${item.uuid} == ${request.idItem}"
-                          th:text="${item.nama}"
-                        ></td>
-                        <td
-                          th:if="${item.uuid} == ${request.idItem}"
-                          th:text="${item.kategori}"
-                        ></td>
-                      </div>
-                      <td th:text="${request.tambahanStok}"></td>
-                      <td th:if="${request.executed} == false">&#10006;</td>
-                      <td th:if="${request.executed} == true">&#10004;</td>
-                      <td th:if="${request.produksi} == null">&#45;</td>
-                      <td
-                        th:if="${request.produksi} != null"
-                        th:text="${request.produksi.idProduksi}"
-                      ></td>
-                      <td
-                        th:if="${request.executed} == true and ${request.delivery} == null"
-                        sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')"
-                      >
-                        <a
-                          class="btn btn-sm btn-warning"
-                          th:href="@{/delivery/assign-kurir/} + ${request.idRequestUpdateItem}"
-                          >Buat Delivery</a
-                        >
-                      </td>
-                      <td
-                        th:if="${request.executed} == false and ${request.delivery} == null"
-                        sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')"
-                      >
-                        &#45;
-                      </td>
-                      <td
-                        th:if="${request.executed} == true and ${request.delivery} == null"
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                      >
-                        &#45;
-                      </td>
-                      <td
-                        th:if="${request.executed} == false and ${request.delivery} == null"
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                      >
-                        &#45;
-                      </td>
-                      <td
-                        th:if="${request.delivery} != null"
-                        th:text="${request.delivery.idDelivery}"
-                      ></td>
-                      <td
-                        th:if="${request.executed} == false"
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                      >
-                        <a
-                          class="btn btn-sm btn-warning"
-                          th:href="@{/request/updateItemByRequest/} + ${request.idRequestUpdateItem}"
-                          >Update</a
-                        >
-                      </td>
-                      <td
-                        th:unless="${request.executed} == false"
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                      >
-                        &nbsp;
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div
-                th:unless="*{listRequest.size() != 0}"
-                style="text-align: center"
-              >
-                <br /><br />
-                <img
-                  th:src="@{/images/undraw/no-data.svg}"
-                  class="img-fluid"
-                  alt="svg image"
-                  style="max-width: 100%; height: auto"
-                  width="200"
-                />
-                <br /><br />
-                <h5
-                  th:text="'Tidak ada request yang tersedia'"
-                  style="color: #6c757d"
-                ></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer th:replace="fragments/fragment :: footer"></footer>
-
     </div>
-  </body>
+    <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
+        <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
+    </div>
+    <br/><br/>
+    <div class="card mx-auto m-4 p-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <h2>Daftar Request Update Item</h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <div class="justify-content-center">
+                    <div th:if="*{listRequest.size() != 0}">
+                        <table class="table table-striped">
+                            <thead class="text-center">
+                            <tr style="background-color: #fbda78">
+                                <th>ID Request</th>
+                                <th>Tanggal Request</th>
+                                <th>ID Cabang</th>
+                                <th>Nama Item</th>
+                                <th>Kategori</th>
+                                <th>Stok Tambahan</th>
+                                <th>Executed</th>
+                                <th>ID Produksi</th>
+                                <th>ID Delivery</th>
+                                <th sec:authorize="hasAnyAuthority('STAFF_GUDANG')"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            <tr style="text-align: center" th:each="request : ${listRequest}">
+                                <td th:text="${request.idRequestUpdateItem}"></td>
+                                <td th:text="${request.tanggalRequest}"></td>
+                                <td th:text="${request.idCabang}"></td>
+                                <div th:each="item : ${listItem}">
+                                    <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.nama}"></td>
+                                    <td th:if="${item.uuid} == ${request.idItem}" th:text="${item.kategori}"></td>
+                                </div>
+                                <td th:text="${request.tambahanStok}"></td>
+                                <td th:if="${request.executed} == false">&#10006;</td>
+                                <td th:if="${request.executed} == true">&#10004;</td>
+                                <td th:if="${request.produksi} == null">&#45;</td>
+                                <td th:if="${request.produksi} != null" th:text="${request.produksi.idProduksi}"></td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')" th:if="${request.executed} == true and ${request.delivery} == null">
+                                    <a class="btn btn-sm btn-warning" th:href="@{/delivery/assign-kurir/} + ${request.idRequestUpdateItem}">Buat Delivery</a>
+                                </td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')" th:if="${request.executed} == false and ${request.delivery} == null">
+                                    &#45;
+                                </td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_GUDANG')" th:if="${request.executed} == true and ${request.delivery} == null">
+                                    &#45;
+                                </td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_GUDANG')" th:if="${request.executed} == false and ${request.delivery} == null">
+                                    &#45;
+                                </td>
+                                <td th:if="${request.delivery} != null" th:text="${request.delivery.idDelivery}"></td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_GUDANG')" th:if="${request.executed} == false">
+                                    <a class="btn btn-sm btn-warning" th:href="@{/request/updateItemByRequest/} + ${request.idRequestUpdateItem}">Update</a>
+                                </td>
+                                <td sec:authorize="hasAnyAuthority('STAFF_GUDANG')" th:unless="${request.executed} == false">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center" th:unless="*{listRequest.size() != 0}">
+                        <br/><br/>
+                        <img alt="svg image" class="img-fluid" style="max-width: 100%; height: auto" th:src="@{/images/undraw/no-data.svg}" width="200"/>
+                        <br/><br/>
+                        <h5 style="color: #6c757d"th:text="'Tidak ada request yang tersedia'"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</div>
+</body>
 </html>
