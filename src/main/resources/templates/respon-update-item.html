@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Si Factory</title>
-</head>
-<body>
-    <P>Respon update</P>
-</body>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column">
+          <h3>Berhasil menambahkan item</h3>
+          <a href="/item/daftar-item" class="btn btn-outline-primary"
+            >Kembali</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

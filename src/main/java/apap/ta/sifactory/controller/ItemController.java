@@ -126,7 +126,6 @@ public class ItemController {
     ) {
         ItemDetail item_ditambahkan = itemRestService.getItemByUUID(produksi.getIdItem());
         ProduksiModel prod = produksiService.createProduksi(produksi);
-        System.out.println("berhasil buat");
         itemRestService.updateItem(prod.getIdItem(),prod.getTambahanStok(),item_ditambahkan.getStok());
 
         model.addAttribute("produksi", "produksi");

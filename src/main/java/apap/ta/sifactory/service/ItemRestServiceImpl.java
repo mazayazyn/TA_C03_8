@@ -1,14 +1,11 @@
 package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
-import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import apap.ta.sifactory.rest.ListItemDetail;
@@ -16,7 +13,6 @@ import apap.ta.sifactory.rest.ListItemDetail;
 import javax.transaction.Transactional;
 import apap.ta.sifactory.rest.Setting;
 import apap.ta.sifactory.rest.StokDetail;
-import reactor.core.publisher.Mono;
 
 import java.util.*;
 import apap.ta.sifactory.rest.GetItem;
@@ -62,10 +58,7 @@ public class ItemRestServiceImpl implements ItemRestService{
     public StokDetail updateItem(String uuid, Integer tambahanStok, Integer stokItem) {
         HashMap data = new HashMap();
         data.put("stok", tambahanStok+stokItem);
-        // data.add("stok",tambahanStok);
-        System.out.println(data);
 
-        // StokDetail postItem = new StokDetail();
         String uuid_item = "/" + uuid;
         StokDetail postItem = this.webClient.put().uri(uuid_item)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -74,7 +67,6 @@ public class ItemRestServiceImpl implements ItemRestService{
                 .retrieve()
                 .bodyToMono(StokDetail.class).block();
                 
-        System.out.println("masuk");
         return postItem;
     }
 
@@ -82,12 +74,10 @@ public class ItemRestServiceImpl implements ItemRestService{
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
-        System.out.print(uuid_dicari);
         GetItem getSiItem = this.webClient.get().uri(uuid_dicari)
                 .retrieve()
                 .bodyToMono(GetItem.class)
                 .block();
-        System.out.print(getSiItem);
         return getSiItem.getItem();
     }
 
@@ -115,15 +105,10 @@ public class ItemRestServiceImpl implements ItemRestService{
                 .syncBody(data)
                 .retrieve()
                 .bodyToMono(String.class).block();
-        System.out.println("hasil");
-        System.out.println(hasil);
 
         hasil = hasil.substring(1, hasil.length()-1);
-        System.out.println(hasil);
         String getStatus = hasil.split(",")[1];   //split to get response status
-        System.out.println(getStatus);
         String statusCode = getStatus.split(":")[1];
-        System.out.println(statusCode);
 
         return statusCode;
     }

@@ -42,7 +42,7 @@
                     <th>Tambahan Stok</th>
                     <th>Tanggal Produksi</th>
                     <th>Id Mesin</th>
-                    <th>Id Pegawai</th>
+                    <th>Nama Pegawai</th>
                     <th>Id Item</th>
                   </tr>
                 </thead>
@@ -53,16 +53,17 @@
                   >
                     <td th:text="${iterationStatus.count}"></td>
                     <td th:text="${produksi.idKategori}"></td>
-                    <td th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"></td>
+                    <td th:if="${produksi.requestUpdateItem == NULL}">-</td>
+                    <td
+                      th:unless="${produksi.requestUpdateItem == NULL}"
+                      th:text="${produksi.requestUpdateItem.idRequestUpdateItem}"
+                    ></td>
                     <td th:text="${produksi.tambahanStok}"></td>
                     <td th:text="${produksi.tanggalProduksi}"></td>
-                    <td th:text="${produksi.mesin}"></td>
-                    <td th:text="${produksi.pegawai}"></td>
+                    <td th:text="${produksi.mesin.idMesin}"></td>
+                    <td th:text="${produksi.pegawai.nama}"></td>
                     <td th:text="${produksi.idItem}"></td>
 
-                    <!-- <td th:text="${produksi.harga}"></td>
-                    <td th:text="${produksi.stok}"></td>
-                    <td th:text="${produksi.kategori}"></td> -->
                     <td>
                       <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
                       <!-- <a
