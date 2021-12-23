@@ -101,6 +101,7 @@ public class DeliveryController {
             if (deliveryService.checkCabang(delivery.getIdCabang()) == true){
                 boolean flag = true;
                 delivery.setSent(flag);
+                delivery.setTanggalDikirim(LocalDate.now());
                 model.addAttribute("alamat", deliveryService.returnAlamat(delivery.getIdCabang()));
                 String name = SecurityContextHolder.getContext().getAuthentication().getName();
                 pegawaiService.addCounterPegawai(name);
