@@ -65,6 +65,7 @@
                         <a
                           class="btn btn-primary"
                           th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}"
+                          onclick="return confirm('Apakah Anda yakin untuk melakukan pengiriman?');"
                           >Kirim</a
                         >
                       </td>
@@ -94,6 +95,7 @@
           </div>
         </div>
       </div>
+      <!-- FOOTER -->
       <footer th:replace="fragments/fragment :: footer"></footer>
 
     </div>
