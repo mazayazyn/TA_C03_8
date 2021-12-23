@@ -5,11 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 @Transactional
 public interface ProduksiDB extends JpaRepository<ProduksiModel, Integer>{
-    Optional<ProduksiModel> findByIdItem(String req);
-    ProduksiModel findByIdProduksi(Integer idProduksi);
+    List<ProduksiModel> findAllByIdItem(String req);
 }

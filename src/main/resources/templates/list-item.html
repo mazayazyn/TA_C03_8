@@ -30,19 +30,19 @@
       <br /><br />
       <div class="card m-4 p-4">
         <div class="card-body">
-          <h2>Daftar Item</h2>
+          <h2 class="text-center pb-4">Daftar Item</h2>
           <div class="d-flex justify-content-center">
             <div>
               <table class="table table-striped">
                 <thead class="text-center">
-                  <tr>
+                    <tr style="background-color: #fbda78">
                     <th>No</th>
                     <th>Nama Item</th>
                     <th>Harga</th>
                     <th>Stok</th>
                     <th>Kategori</th>
-                    <th></th>
-                    <th></th>
+                    <th>Action</th>
+                    
                   </tr>
                 </thead>
                 <tbody class="text-center">
@@ -55,21 +55,20 @@
                     <td th:text="${item.harga}"></td>
                     <td th:text="${item.stok}"></td>
                     <td th:text="${item.kategori}"></td>
-                    <td>
-                      <!--                            TODO: sinkronkan href ke mapping di controller yang render template detail & update-->
-                      <a
-                        class="btn btn-sm btn-primary"
-                        th:href="@{/item/view/} + ${item.uuid}"
-                        >Detail</a
-                      >
-                    </td>
-                    <td>
-                      <a
-                        sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
-                        class="btn btn-sm btn-warning"
-                        th:href="@{/item/update/} + ${item.uuid}"
-                        >Update</a
-                      >
+                    <td class="w-full">
+                      <div class="d-flex justify-content-center">
+                        <a
+                          class="btn btn-sm btn-primary mx-2"
+                          th:href="@{/item/view/} + ${item.uuid}"
+                          >Detail</a
+                        >
+                        <a
+                          sec:authorize="hasAnyAuthority('STAFF_GUDANG')"
+                          class="btn btn-sm btn-warning"
+                          th:href="@{/item/update/} + ${item.uuid}"
+                          >Update</a
+                        >
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -78,6 +77,8 @@
           </div>
         </div>
       </div>
+      <footer th:replace="fragments/fragment :: footer"></footer>
+
     </div>
   </body>
 </html>
