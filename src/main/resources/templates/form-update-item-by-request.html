@@ -21,7 +21,7 @@
             <br>
             <div class="card">
                 <div class="card-body justify-content-center">
-                    <h3 style="text-align: center">Update Stok Item By Request Update</h3>
+                    <h3>Update Stok Item By Request Update</h3>
                     <br>
                     <form th:action="@{/request/updateItemByRequest/{id}(id=${idRequest})}" th:object="${requestUpdateItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin mengupdate item berdasarkan request?');">
                         <input type="hidden" th:field="*{idRequestUpdateItem}" />
@@ -33,6 +33,16 @@
                         <input type="hidden" th:field="*{executed}" />
 
                         <div class="form-row" style="text-align: left">
+                            <label>ID Item</label>
+                            <input required class="form-control" type="text" name="uuid" th:value="${item.uuid}" disabled />
+                        </div>
+                        <br>
+                        <div class="form-row" style="text-align: left">
+                            <label>Nama Item</label>
+                            <input required class="form-control" type="text" name="nama" th:value="${item.nama}" disabled />
+                        </div>
+                        <br>
+                        <div class="form-row" style="text-align: left">
                             <label>Stok yang Ingin Ditambah</label>
                             <input required class="form-control" type="text" name="tambahanStok" th:value="*{tambahanStok}" disabled />
                         </div>
@@ -40,15 +50,13 @@
                         <div class="form-row" style="text-align: left">
                             <label>Mesin yang Akan Digunakan</label>
                             <select required name="mesin" class="form-control">
-                                <option hidden>-- Pilih Mesin --</option>
+                                <option value="" hidden disabled selected>-- Pilih Mesin --</option>
                                 <option th:each="mesin : ${listMesin}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
                             </select>
                         </div>
                         <div style="margin-top: 2rem">
-                            <button class="btn btn-outline-primary" th:href="@{/request/daftar-request}">
-                                Kembali
-                              </button>
-                              <button type="submit" class="btn btn-warning">Update</button>
+                            <a class="btn btn-outline-primary" th:href="@{/request/daftar-request}">Kembali</a>
+                            <button type="submit" class="btn btn-warning">Update</button>
                         </div>
                     </form>
                 </div>
