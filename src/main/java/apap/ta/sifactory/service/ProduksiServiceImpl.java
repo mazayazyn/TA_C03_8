@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,7 +40,6 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        //idKategori dan idMesin belum
         produksi.setIdKategori(produksiBaru.getIdKategori());
         produksi.setRequestUpdateItem(null);
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
@@ -50,9 +50,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         kapasitasMesin--;
         mesinDB.getById(produksiBaru.getMesin().getIdMesin()).setKapasitas(kapasitasMesin);
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
-        produksi.setIdItem(produksiBaru.getIdItem());
-
-        //panggil counter nya
+        produksi.setIdItem(produksiBaru.getIdItem());        
 
         return produksiDB.save(produksi);
     }
@@ -72,19 +70,14 @@ public class ProduksiServiceImpl implements ProduksiService {
         produksi.setRequestUpdateItem(req);
         produksi.setMesin(mesin);
         produksi.setPegawai(pegawai);
-
         mesin.setKapasitas(mesin.getKapasitas()-1);
 
         return produksiDB.save(produksi);
     }
 
     @Override
-    public ProduksiModel getProduksiByItem(String req) {
-        Optional<ProduksiModel> produksi = produksiDB.findByIdItem(req);
-        if (produksi.isPresent()) {
-            return produksi.get();
-        }
-        return null;
+    public List<ProduksiModel> getProduksiByItem(String req) {
+        return produksiDB.findAllByIdItem(req);
     }
 
 }

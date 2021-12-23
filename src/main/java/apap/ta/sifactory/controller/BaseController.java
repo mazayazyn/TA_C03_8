@@ -4,12 +4,9 @@ import apap.ta.sifactory.model.PegawaiModel;
 import apap.ta.sifactory.model.ProduksiModel;
 import apap.ta.sifactory.repository.PegawaiDB;
 import apap.ta.sifactory.repository.ProduksiDB;
-import apap.ta.sifactory.rest.ItemDetail;
 import apap.ta.sifactory.service.ItemRestService;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,13 +42,15 @@ public class BaseController {
     public String listItem(Model model) {
         List<ProduksiModel> listProduksi = produksiDB.findAll();
         List<String> listItemSaring = new ArrayList<>();
-
+        List<String> listKategoriSaring = new ArrayList<>();
         for (int i = 0; i < listProduksi.size(); i++) {
             listItemSaring.add(itemRestService.getItemByUUID(listProduksi.get(i).getIdItem()).getNama());
+            listKategoriSaring.add(itemRestService.getItemByUUID(listProduksi.get(i).getIdItem()).getKategori());
         }
 
         model.addAttribute("listProduksi", listProduksi);
         model.addAttribute("listItemSaring", listItemSaring);
+        model.addAttribute("listKategoriSaring", listKategoriSaring);
         return "list-produksi";
     }
 }

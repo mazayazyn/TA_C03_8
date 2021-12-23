@@ -2,7 +2,6 @@ package apap.ta.sifactory.service;
 
 import apap.ta.sifactory.model.JenisKategori;
 import apap.ta.sifactory.model.RequestUpdateItemModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,6 @@ public class ItemRestServiceImpl implements ItemRestService{
     private final WebClient webClient;
     private final WebClient siBusinessWeb;
 
-    @Autowired
-    private ProduksiService produksiService;
 
     public ItemRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.siItemUrl).build();
@@ -81,16 +78,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getItem();
     }
 
-    //Fitur 4
-    @Override
-    public List<String> getKategoriItem() {
-//        Mono<ItemDetail> hasil = getAllItem();
-//        System.out.print(hasil);
-//        for (ItemDetail i:hasil) {
-//            //if id kategori di mesin
-//        }
-        return null;
-    }
 
     public String postProposeItem(ItemDetail proposeItem) {
         Integer kategori = JenisKategori.valueOf(proposeItem.getKategori()).ordinal()+1;

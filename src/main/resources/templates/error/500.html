@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
     <link rel="stylesheet" href="css/tooplate-style.css">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
@@ -41,6 +43,8 @@
             </div>
         </div>
     </div>
+    <footer th:replace="fragments/fragment :: footer"></footer>
+
 </div>
 </body>
 

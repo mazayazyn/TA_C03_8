@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface ItemRestService {
     List<ItemDetail> getAllItem();
-    List<String> getKategoriItem();
     List<ItemDetail> getListKategori(Integer idKategori);
     StokDetail updateItem(String uuid, Integer tambahanStok, Integer stokItem);
     ItemDetail getItemByUUID(String uuid);

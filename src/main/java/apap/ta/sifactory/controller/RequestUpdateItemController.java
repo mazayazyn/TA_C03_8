@@ -77,11 +77,11 @@ public class RequestUpdateItemController {
 
         if(status.is2xxSuccessful()) {
             pegawaiService.addCounterPegawai(usernamePegawai);
-            ProduksiModel produksi = produksiService.createProduksiByRequest(requestUpdateItem, idMesin, usernamePegawai);
+            produksiService.createProduksiByRequest(requestUpdateItem, idMesin, usernamePegawai);
             requestUpdateItem.setExecuted(true);
             requestUpdateItemDB.save(requestUpdateItem);
             model.addAttribute("action", "update stok item berdasarkan request");
-            model.addAttribute("tipe", "item '" + namaItem + "'. Produksi untuk stok tambahan akan dijalankan.");
+            model.addAttribute("tipe", "item '" + namaItem + "'. <br /> <br />Produksi untuk stok tambahan akan dijalankan.");
             model.addAttribute("url", "/request/daftar-request");
             model.addAttribute("pageTitle", "Daftar Request");
             return "success-page-update";
