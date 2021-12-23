@@ -1,55 +1,85 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="en"
+  xmlns:th="http://thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>Propose Item</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-</head>
-<body>
-
-<div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
-    <!-- MENU -->
-    <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
-</div>
-<br><br>
-<div class="container">
-    <div class="d-flex justify-content-center">
-        <div class="col-md-6">
-            <br>
-            <div class="card">
-                <div class="card-body justify-content-center">
-                    <h3>Propose Item</h3>
-                    <form th:action="@{/item/propose-item}" th:object="${proposeItem}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin submit form?');">
-                        <label>Nama Item</label>
-                        <input required type="text" name="nama" class="form-control" />
-
-                        <label>Harga Item</label>
-                        <input required type="number" name="harga" class="form-control" />
-
-                        <label>Stok Item</label>
-                        <input required type="number" name="stok" class="form-control" />
-
-                        <label>Kategori Item</label>
-                        <select name="kategori" class="form-control">
-                            <option selected value="">-- Pilih Kategori --</option>
-                            <option th:each="kategori : ${listKategori}" th:value="${kategori}" th:text="${kategori.kategori}"></option>
-                        </select>
-                        <br>
-
-                        <label>Cluster Item</label>
-                        <input disabled type="text" name="cluster" class="form-control" value="C03"/>
-
-                        <br>
-                        <button type="submit" class="btn btn-warning">Simpan</button>
-                        <a class="btn btn-link" th:href="@{/}">Kembali</a>
-                    </form>
-                </div>
-            </div>
-        </div>
+  </head>
+  <body>
+    <div sec:authorize="hasAnyAuthority('FACTORY_MANAGER')">
+      <!-- MENU -->
+      <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
     </div>
-</div>
-</body>
+    <br /><br />
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+          <br />
+          <div class="card">
+            <div class="card-body justify-content-center">
+              <h3>Propose Item</h3>
+              <form
+                th:action="@{/item/propose-item}"
+                th:object="${proposeItem}"
+                method="POST"
+                onsubmit="return confirm('Apakah Anda yakin ingin submit form?');"
+              >
+                <label>Nama Item</label>
+                <input required type="text" name="nama" class="form-control" />
+
+                <label>Harga Item</label>
+                <input
+                  required
+                  type="number"
+                  name="harga"
+                  class="form-control"
+                />
+
+                <label>Stok Item</label>
+                <input
+                  required
+                  type="number"
+                  name="stok"
+                  class="form-control"
+                />
+
+                <label>Kategori Item</label>
+                <select name="kategori" class="form-control">
+                  <option selected value="">-- Pilih Kategori --</option>
+                  <option
+                    th:each="kategori : ${listKategori}"
+                    th:value="${kategori}"
+                    th:text="${kategori.kategori}"
+                  ></option>
+                </select>
+                <br />
+
+                <label>Cluster Item</label>
+                <input
+                  disabled
+                  type="text"
+                  name="cluster"
+                  class="form-control"
+                  value="C03"
+                />
+
+                <br />
+                <div class="d-flex">
+                  <a class="btn btn-outline-primary pr-2" th:href="@{/}"
+                    >Kembali</a
+                  >
+                  <button type="submit" class="btn btn-warning">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
