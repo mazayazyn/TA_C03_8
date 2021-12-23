@@ -22,7 +22,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/api/**").permitAll()
-                .antMatchers("/item/update").hasAnyAuthority("STAFF_GUDANG")
+                .antMatchers("/item/update/**").hasAnyAuthority("STAFF_GUDANG")
+                .antMatchers("/request/daftar-request").hasAnyAuthority("STAFF_GUDANG", "STAFF_OPERASIONAL")
+                .antMatchers("/request/updateItemByRequest/**").hasAnyAuthority("STAFF_GUDANG")
+                .antMatchers("/item/propose-item").hasAnyAuthority("FACTORY_MANAGER")
+                .antMatchers("/delivery/assign-kurir/**").hasAnyAuthority("STAFF_OPERASIONAL")
+                .antMatchers("/delivery/daftar-delivery").hasAnyAuthority("STAFF_OPERASIONAL","STAFF_KURIR")
+                .antMatchers("/pegawai/add-pegawai").hasAnyAuthority("ADMIN")
+                .antMatchers("/pegawai/daftar-pegawai").hasAnyAuthority("ADMIN", "FACTORY_MANAGER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -40,14 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(encoder())
-//                .withUser("admin").password(encoder().encode("admin"))
-//                .roles("ADMIN");
-//    }
 
     @Autowired
     private UserDetailsService userDetailsService;

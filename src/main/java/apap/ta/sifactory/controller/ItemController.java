@@ -107,7 +107,6 @@ public class ItemController {
                 angka++;
                 List<MesinModel> listMesin = mesinService.getAllMesinByKategoriItem(item.getKategori());
                 model.addAttribute("listMesin",listMesin);
-                
             }
         }
         produksi.setIdKategori(angka);
@@ -129,6 +128,8 @@ public class ItemController {
         itemRestService.updateItem(prod.getIdItem(),prod.getTambahanStok(),item_ditambahkan.getStok());
 
         model.addAttribute("produksi", "produksi");
+        String nama = SecurityContextHolder.getContext().getAuthentication().getName();//get pegawai yang input
+        pegawaiService.addCounterPegawai(nama);
         return "respon-update-item";
     }
 

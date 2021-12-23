@@ -39,7 +39,6 @@ public class ProduksiServiceImpl implements ProduksiService {
         ProduksiModel produksi = new ProduksiModel();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        //idKategori dan idMesin belum
         produksi.setIdKategori(produksiBaru.getIdKategori());
         produksi.setRequestUpdateItem(null);
         produksi.setTambahanStok(produksiBaru.getTambahanStok());
@@ -50,9 +49,7 @@ public class ProduksiServiceImpl implements ProduksiService {
         kapasitasMesin--;
         mesinDB.getById(produksiBaru.getMesin().getIdMesin()).setKapasitas(kapasitasMesin);
         produksi.setPegawai(pegawaiDB.findByUsername(authentication.getName()));
-        produksi.setIdItem(produksiBaru.getIdItem());
-
-        //panggil counter nya
+        produksi.setIdItem(produksiBaru.getIdItem());        
 
         return produksiDB.save(produksi);
     }
@@ -72,7 +69,6 @@ public class ProduksiServiceImpl implements ProduksiService {
         produksi.setRequestUpdateItem(req);
         produksi.setMesin(mesin);
         produksi.setPegawai(pegawai);
-
         mesin.setKapasitas(mesin.getKapasitas()-1);
 
         return produksiDB.save(produksi);
