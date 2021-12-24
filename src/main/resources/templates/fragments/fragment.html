@@ -28,7 +28,9 @@
 <body>
 <nav th:fragment="navbar-admin" class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/"><i class='uil uil-user'></i>  SI-Factory</a>
+        <a class="navbar-brand" href="/">
+            <img alt="" src="images/partner/sifactory2.png" style="width: 20%; height: 20%;" class=""/>
+            SI-Factory</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav-admin" aria-controls="navbarNav-admin" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -50,9 +52,10 @@
                     <a th:href="@{/pegawai/add-pegawai}" class="nav-link"><span data-hover="Buat Pengguna">Buat Pengguna</span></a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/logout}" class="nav-link" onclick="return confirm('Apakah Anda yakin ingin logout?');"><span data-hover="Logout">Logout</span></a>
+                    <a th:href="@{/logout}" class="nav-link"><span data-hover="Logout">Logout</span></a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>
@@ -175,7 +178,7 @@
     </div>
 </nav>
 
-<section th:fragment="team" id="team">
+<section th:fragment="team" id="team" class="py-4">
     <h1 class="animated animated-text">
         <br /><br />
         <div class="text-center">
@@ -278,6 +281,70 @@
             </div>
         </div>
     </div>
+</section>
+
+<section th:fragment="partner" id="partner">
+    <h1 class="animated animated-text">
+        <br /><br />
+        <div class="text-center">
+            <span class="mr-2" th:text="'IN COLLABORATION WITH'"></span>
+            <p>Si Factory bekerja sama dengan beberapa produk lainnya dalam mendukung bisnis proses Si Factory. </p>
+        </div>
+    </h1>
+    <!--container---------------->
+    <section class="container pb-xl-5">
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6 mx-2">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                
+                    <img alt="" src="images/partner/sr.png" style="width: 25%; height: 25%;" class="m-auto px-2"/>
+                <div class="col py-4 d-flex flex-column position-static">
+                  <h3 class="mb-0">Si Retail</h3>
+                  <p class="">Sebuah sistem informasi yang dapat digunakan untuk mengelola
+                    cabang-cabang yang dimiliki oleh PT Will Urlaub. </p>
+                  <a href="https://siret4il.herokuapp.com/" target="_blank" class="stretched-link">See product</a>
+                </div>
+                <!-- <div class="col-auto d-none d-lg-block">
+                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-6 mx-2">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  
+                <img alt="" src="images/partner/sb.png" style="width: 25%; height: 25%;" class="m-auto px-5"/>
+                <div class="col py-4 d-flex flex-column position-static">
+                  <h3 class="mb-0">Si Business</h3>
+                  <p class="">Sebuah sistem informasi yang dapat digunakan untuk mengelola penerimaan item, pembuatan kupon, dan request cabang.</p>
+                  <a href="https://sibusiness-c03-7.herokuapp.com" target="_blank" class="stretched-link">See product</a>
+                </div>
+                <!-- <div class="col-auto d-none d-lg-block">
+                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center pb-xl-5">
+            <div class="col-md-6 mx-2">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  
+                <img alt="" src="images/partner/siitem.png" style="width: 25%; height: 25%;" class="m-auto px-2"/>
+                <div class="col py-4 d-flex flex-column position-static">
+                  <h3 class="mb-0">Si Item</h3>
+                  <p class="">Merupakan Manajemen Supply Barang yang memasok pasokan barang yang dibutuhkan antara masing-masing produk.</p>
+                  <a href="https://si-item.herokuapp.com/swagger-ui/index.html" target="_blank" class="stretched-link">See product</a>
+                </div>
+                <!-- <div class="col-auto d-none d-lg-block">
+                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        
+                </div> -->
+              </div>
+            </div>
+          </div>
+    </section>
+
 </section>
 
 
