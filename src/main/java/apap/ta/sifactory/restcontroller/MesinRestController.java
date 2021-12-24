@@ -20,7 +20,6 @@ public class MesinRestController {
     @Autowired
     private MesinService mesinService;
 
-
     @GetMapping(value = "/mesin/{idMesin}")
     private MesinModel retrieveMesin(@PathVariable("idMesin") Integer idMesin) {
         try {

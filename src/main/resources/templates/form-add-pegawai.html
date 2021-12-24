@@ -10,7 +10,9 @@
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
+
   <body>
+  <!-- MENU -->
     <div sec:authorize="hasAnyAuthority('ADMIN')">
       <nav th:replace="fragments/fragment :: navbar-admin"></nav>
     </div>
@@ -73,7 +75,7 @@
                   <option
                     th:each="role : ${listRole}"
                     th:value="${role.idRole}"
-                    th:text="${role.namaRole}"
+                    th:text="${#strings.replace(role.namaRole, '_', ' ')}"
                   ></option>
                 </select>
                 <br />
@@ -88,6 +90,7 @@
           </div>
         </div>
       </div>
+
       <!-- FOOTER -->
       <footer th:replace="fragments/fragment :: footer"></footer>
     </div>

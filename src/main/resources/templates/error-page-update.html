@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<!-- MENU -->
 <div sec:authorize="hasAnyAuthority('STAFF_GUDANG')">
     <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
 </div>
@@ -26,7 +27,6 @@
     <!-- FOOTER -->
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
-
 </body>
 
 </html>

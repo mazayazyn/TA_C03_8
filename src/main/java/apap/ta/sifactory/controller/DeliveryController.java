@@ -29,7 +29,6 @@ public class DeliveryController {
     private RequestUpdateItemService requestUpdateItemService;
 
     //Fitur 12
-    //Daftar request update item kalo executed True ada button Buat Delivery
     @GetMapping("/assign-kurir/{idRequestUpdateItem}")
     private String assignKurirForm(
             @PathVariable Integer idRequestUpdateItem,
@@ -69,8 +68,6 @@ public class DeliveryController {
     public String viewAllDelivery(
             Model model
     ){
-        //get rolenya dulu, kalo staff op dia get all delivery
-        //kalo kurir, get delivery yang id kurirnya dia
         String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
         if (role.equals("[STAFF_OPERASIONAL]")){
             List<DeliveryModel> listDelivery = deliveryService.getAllDelivery();

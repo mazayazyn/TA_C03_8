@@ -7,32 +7,32 @@ public class BaseResponse<T>{
     private String message;
     private T result;
 
-    // mengembalikan status
+    // Mengembalikan status
     public int getStatus() {
         return status;
     }
 
-    // mengembalikan message
+    // Mengembalikan message
     public String getMessage() {
         return message;
     }
 
-    // mengembalikan hasil
+    // Mengembalikan hasil
     public T getResult() {
         return result;
     }
 
-    // mengembalikan status untuk di set
+    // Mengembalikan status untuk di-set
     public void setStatus(int status) {
         this.status = status;
     }
 
-    // mengembalikan message untuk di set
+    // Mengembalikan message untuk di set
     public void setMessage(String message) {
         this.message = message;
     }
 
-    // mengembalikan hasil untuk di set
+    // Mengembalikan hasil untuk di set
     public void setResult(T result) {
         this.result = result;
     }

@@ -6,11 +6,12 @@
 >
   <head>
     <meta charset="UTF-8" />
-    <title>List Pegawai</title>
+    <title>Daftar Pegawai</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
   <body>
+  <!-- MENU -->
     <div
       class="container"
       sec:authorize="hasAnyAuthority('ADMIN','FACTORY_MANAGER')"
@@ -41,7 +42,7 @@
               <tbody class="text-center">
                 <tr th:each="pegawai : ${listPegawai}" class="table-striped">
                   <td th:text="${pegawai.nama}"></td>
-                  <td th:text="${pegawai.role.namaRole}"></td>
+                  <td th:text="${#strings.replace(pegawai.role.namaRole, '_', ' ')}"></td>
                   <td
                     th:text="'Rp'+${#numbers.formatDecimal(pegawai.counter*pegawai.role.baseWages,1,'COMMA',0, 'POINT')}"
                   ></td>
@@ -52,6 +53,7 @@
           </div>
         </div>
       </div>
+      <!-- FOOTER -->
       <footer th:replace="fragments/fragment :: footer"></footer>
 
     </div>

@@ -186,7 +186,7 @@
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-admin"></nav>
     <br>
-    <!-- ABOUT -->
+    <!-- SECTION ROLE -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row">
@@ -233,7 +233,7 @@
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-factory-manager"></nav>
 
-    <!-- ABOUT -->
+    <!-- SECTION ROLE -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row">
@@ -277,7 +277,7 @@
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-gudang"></nav>
     <br><br>
-    <!-- ABOUT -->
+    <!-- SECTION ROLE -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
         <div class="container">
             <div class="row">
@@ -321,7 +321,7 @@
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
     <br><br>
-    <!-- ABOUT -->
+    <!-- SECTION ROLE -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row">
@@ -340,8 +340,8 @@
                         <p>Yuk lihat delivery yang di-assign ke Anda dan kirimkan item kepada cabang-cabang di SI-Retail.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a href="/delivery/daftar-delivery" class="btn mr-lg-2 custom-btn"><i class='uil uil-truck'></i> Daftar Delivery</a>
-                            <a href="/produksi/daftar-produksi" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Produksi</a>
+                            <a th:href="@{/delivery/daftar-delivery}" class="btn mr-lg-2 custom-btn"><i class='uil uil-truck'></i> Daftar Delivery</a>
+                            <a th:href="@{/produksi/daftar-produksi}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Produksi</a>
                         </div>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
     <!-- MENU -->
     <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
     <br><br>
-    <!-- ABOUT -->
+    <!-- SECTION ROLE -->
     <section class="about full-screen d-lg-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row">

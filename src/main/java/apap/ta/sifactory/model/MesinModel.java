@@ -29,7 +29,7 @@ public class MesinModel implements Serializable{
     @Column(name = "nama", nullable= false)
     private String nama;
 
-    //merujuk ke id_kategori item pada si-item
+    //Merujuk ke id_kategori item pada SI-Item
     @NotNull
     @Column(name = "id_kategori", nullable = false)
     private Integer idKategori;

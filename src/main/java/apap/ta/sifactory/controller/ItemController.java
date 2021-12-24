@@ -53,7 +53,6 @@ public class ItemController {
 
     @PostMapping("/propose-item")
     private String proposeItemPost(@ModelAttribute ItemDetail proposeItem, Model model) {
-        // manggil servicenya sibusiness
         String responsePropose = itemRestService.postProposeItem(proposeItem);
         if (responsePropose.equals("201")) {
             model.addAttribute("action", "propose");

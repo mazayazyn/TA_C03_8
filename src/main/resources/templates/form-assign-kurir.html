@@ -22,7 +22,6 @@
                 <div class="card-body justify-content-center">
                     <h3>Assign Delivery Kurir</h3>
                     <form th:action="@{/delivery/assign-kurir/}+${idRequestUpdateItem}" th:object="${delivery}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin melakukan assign kurir?');">
-<!--                        <input type="hidden" th:field="*{requestUpdate}" th:value="${idRequestUpdateItem}" />-->
                         <label>Daftar Kurir</label>
                         <select name="pegawai" th:field="*{pegawai}" class="form-control">
                             <option selected value="">-- Pilih Kurir --</option>
