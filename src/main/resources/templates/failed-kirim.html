@@ -10,24 +10,24 @@
 </head>
 
 <body>
-<div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
-  <!-- MENU -->
-  <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
-</div>
-<br><br>
-<div class="container">
-  <div class="card m-4 p-4">
-    <div class="card-body">
-      <div class="justify-content-center">
-        <h2 th:text="'Maaf, pengiriman tidak berhasil karena retail tidak ditemukan'"></h2>
-        <br>
-        <a class="btn btn-primary" th:href="@{/delivery/daftar-delivery}">Kembali ke Daftar Delivery</a>
+  <div sec:authorize="hasAnyAuthority('STAFF_KURIR')">
+    <!-- MENU -->
+    <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
+  </div>
+  <br><br>
+  <div class="container">
+    <div class="card m-4 p-4">
+      <div class="card-body">
+        <div class="justify-content-center">
+          <h2 th:text="'Maaf, pengiriman tidak berhasil karena retail tidak ditemukan'"></h2>
+          <br>
+          <a class="btn btn-primary" th:href="@{/delivery/daftar-delivery}">Kembali ke Daftar Delivery</a>
+        </div>
       </div>
     </div>
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
   </div>
-  <!-- FOOTER -->
-  <footer th:replace="fragments/fragment :: footer"></footer>
-</div>
 
 </body>
 
