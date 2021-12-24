@@ -1,144 +1,103 @@
 <!DOCTYPE html>
 <html
-  lang="en"
-  xmlns:th="http://thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        lang="en"
+        xmlns:th="http://thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>List Delivery</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-  </head>
-  <body>
-    <div
-      class="container"
-      sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL','STAFF_KURIR')"
-    >
-      <div th:if="${role == '[STAFF_OPERASIONAL]'}">
+</head>
+<body>
+<div
+        class="container"
+        sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL','STAFF_KURIR')"
+>
+    <div th:if="${role == '[STAFF_OPERASIONAL]'}">
         <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-      </div>
-      <div th:if="${role == '[STAFF_KURIR]'}">
+    </div>
+    <div th:if="${role == '[STAFF_KURIR]'}">
         <nav th:replace="fragments/fragment :: navbar-staff-kurir"></nav>
-      </div>
-      <br/><br/>
-      <div class="card m-4 p-4">
+    </div>
+    <br/><br/>
+    <div class="card m-4 p-4">
         <div class="card-body">
-          <div class="d-flex justify-content-center">
-            <h2>Daftar Delivery</h2>
-          </div>
+            <div class="d-flex justify-content-center">
+                <h2>Daftar Delivery</h2>
+            </div>
         </div>
         <div class="card-body">
-<<<<<<< HEAD
             <div class="d-flex justify-content-center">
                 <div th:if="*{listDelivery.size() != 0}">
                     <table class="table table-striped">
                         <thead class="text-center">
-                        <tr>
+                        <tr style="background-color: #fbda78">
                             <th>Nama Kurir</th>
                             <th>Id Cabang</th>
                             <th>Tanggal Dibuat</th>
                             <th>Tanggal Dikirim</th>
                             <th>Status Dikirim</th>
-                            <div th:if="${role == '[STAFF_KURIR]'}">
-                                <th></th>
-                            </div>
+                            <th th:if="${role == '[STAFF_KURIR]'}">
+                            <th>Action</th>
+                            </th>
                         </tr>
                         </thead>
                         <tbody class="text-center">
-                        <tr th:each="delivery : ${listDelivery}" class="table-striped">
+                        <tr
+                                th:each="delivery : ${listDelivery}"
+                                class="table-striped"
+                        >
                             <td th:text="${delivery.pegawai.nama}"></td>
                             <td th:text="${delivery.idCabang}"></td>
                             <td th:text="${delivery.tanggalDibuat}"></td>
-                            <td th:text="${delivery.tanggalDikirim}"></td>
+                            <td th:if="${delivery.tanggalDikirim == NULL}">-</td>
+                            <td
+                                    th:unless="${delivery.tanggalDikirim == NULL}"
+                                    th:text="${delivery.tanggalDikirim}"
+                            ></td>
                             <td th:if="${delivery.sent} == false">Belum Dikirim</td>
                             <td th:if="${delivery.sent} == true">Terkirim</td>
-                            <div th:if="${role == '[STAFF_KURIR]'}">
-                                <td th:if="${delivery.sent} == false">
-                                    <a class="btn btn-primary" th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}">Kirim</a>
-                                </td>
-                            </div>
+                            <td th:if="${role == '[STAFF_KURIR]'}">
+                            <td th:if="${delivery.sent == true}">-</td>
+                            <td th:if="${delivery.sent} == false">
+                                <a
+                                        class="btn btn-primary"
+                                        th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}"
+                                        onclick="return confirm('Apakah Anda yakin untuk melakukan pengiriman?');"
+                                >Kirim</a
+                                >
+                            </td>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div th:unless="*{listDelivery.size() != 0}" style="text-align: center">
-                    <br><br>
-                    <img th:src="@{/images/undraw/no-data.svg}" class="img-fluid" alt="svg image" style="max-width: 100%; height: auto" width="200">
-                    <br><br>
-                    <h5 th:text="'Tidak ada delivery yang tersedia'" style="color: #6c757d"></h5>
+                <div
+                        th:unless="*{listDelivery.size() != 0}"
+                        style="text-align: center"
+                >
+                    <br /><br />
+                    <img
+                            th:src="@{/images/undraw/no-data.svg}"
+                            class="img-fluid"
+                            alt="svg image"
+                            style="max-width: 100%; height: auto"
+                            width="200"
+                    />
+                    <br /><br />
+                    <h5
+                            th:text="'Tidak ada delivery yang tersedia'"
+                            style="color: #6c757d"
+                    ></h5>
                 </div>
-=======
-          <div class="d-flex justify-content-center">
-            <div th:if="*{listDelivery.size() != 0}">
-              <table class="table table-striped">
-                <thead class="text-center">
-                  <tr style="background-color: #fbda78">
-                    <th>Nama Kurir</th>
-                    <th>Id Cabang</th>
-                    <th>Tanggal Dibuat</th>
-                    <th>Tanggal Dikirim</th>
-                    <th>Status Dikirim</th>
-                    <th th:if="${role == '[STAFF_KURIR]'}">
-                      <th>Action</th>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="text-center">
-                  <tr
-                    th:each="delivery : ${listDelivery}"
-                    class="table-striped"
-                  >
-                    <td th:text="${delivery.pegawai.nama}"></td>
-                    <td th:text="${delivery.idCabang}"></td>
-                    <td th:text="${delivery.tanggalDibuat}"></td>
-                    <td th:if="${delivery.tanggalDikirim == NULL}">-</td>
-                    <td
-                            th:unless="${delivery.tanggalDikirim == NULL}"
-                            th:text="${delivery.tanggalDikirim}"
-                    ></td>
-                    <td th:if="${delivery.sent} == false">Belum Dikirim</td>
-                    <td th:if="${delivery.sent} == true">Terkirim</td>
-                    <td th:if="${role == '[STAFF_KURIR]'}">
-                      <td th:if="${delivery.sent == true}">-</td>
-                      <td th:if="${delivery.sent} == false">
-                        <a
-                          class="btn btn-primary"
-                          th:href="@{/delivery/kirim-delivery/} + ${delivery.idDelivery}"
-                          onclick="return confirm('Apakah Anda yakin untuk melakukan pengiriman?');"
-                          >Kirim</a
-                        >
-                      </td>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
-            <div
-              th:unless="*{listDelivery.size() != 0}"
-              style="text-align: center"
-            >
-              <br /><br />
-              <img
-                th:src="@{/images/undraw/no-data.svg}"
-                class="img-fluid"
-                alt="svg image"
-                style="max-width: 100%; height: auto"
-                width="200"
-              />
-              <br /><br />
-              <h5
-                th:text="'Tidak ada delivery yang tersedia'"
-                style="color: #6c757d"
-              ></h5>
->>>>>>> a13c1f5b3e5d5122c1f81913461951960e431aaa
-            </div>
-          </div>
         </div>
-      </div>
-      <!-- FOOTER -->
-      <footer th:replace="fragments/fragment :: footer"></footer>
-
     </div>
-  </body>
+    <!-- FOOTER -->
+    <footer th:replace="fragments/fragment :: footer"></footer>
+
+</div>
+</body>
 </html>
