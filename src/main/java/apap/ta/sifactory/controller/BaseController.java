@@ -26,6 +26,7 @@ public class BaseController {
     @Autowired
     private ItemRestService itemRestService;
 
+    // Fitur 1
     @RequestMapping("/")
     private String home(Model model, @AuthenticationPrincipal UserDetails currentUser) {
         PegawaiModel pegawai = (PegawaiModel) pegawaiDB.findByUsername(currentUser.getUsername());
@@ -33,11 +34,13 @@ public class BaseController {
         return "home";
     }
 
+    // Fitur 2
     @RequestMapping("/login")
     public String login(){
         return "login";
     }
 
+    // Fitur 8
     @GetMapping("/produksi/daftar-produksi")
     public String listItem(Model model) {
         List<ProduksiModel> listProduksi = produksiDB.findAll();

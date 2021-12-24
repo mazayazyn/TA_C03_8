@@ -31,6 +31,7 @@ public class PegawaiController {
         return "form-add-pegawai";
     }
 
+    //Fitur 16
     @PostMapping(value = "/add-pegawai")
     private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
         if(pegawaiService.getPegawai(pegawai.getUsername())!=null){//pegawai yang ingin ditambah ada username sama

@@ -28,7 +28,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         this.siBusinessWeb = webClientBuilder.baseUrl(Setting.siBusinessUrl).build();
     }
 
-    //Fitur 5
     @Override
     public List<ItemDetail> getAllItem() {
         ListItemDetail getSiItem = this.webClient.get().uri("/")
@@ -38,7 +37,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getListItem();
     }
 
-    //Fitur 11
     @Override
     public List<ItemDetail> getListKategori(Integer idKategori) {
         String id_kategori = "/kategori/" + idKategori;
@@ -48,7 +46,6 @@ public class ItemRestServiceImpl implements ItemRestService{
                 .block();
         return getSiItem.getListItem();
     }
-
 
     @Override
     public StokDetail updateItem(String uuid, Integer tambahanStok, Integer stokItem) {
@@ -66,7 +63,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         return postItem;
     }
 
-    //Fitur 6
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
@@ -77,7 +73,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getItem();
     }
 
-    //Fitur 4
     public String postProposeItem(ItemDetail proposeItem) {
         Integer kategori = JenisKategori.valueOf(proposeItem.getKategori()).ordinal()+1;
         Map<String, Object> data = new HashMap<>();
@@ -99,7 +94,6 @@ public class ItemRestServiceImpl implements ItemRestService{
         return statusCode;
     }
 
-    //Fitur 11
     @Override
     public HttpStatus executeUpdateByRequest(RequestUpdateItemModel req, ItemDetail item) {
         Integer stokTambahan = item.getStok() + req.getTambahanStok();

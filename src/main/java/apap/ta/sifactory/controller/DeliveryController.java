@@ -41,6 +41,7 @@ public class DeliveryController {
         return "form-assign-kurir";
     }
 
+    //Fitur 12
     @PostMapping("/assign-kurir/{idRequestUpdateItem}")
     private String assignKurirPost(
             @ModelAttribute DeliveryModel delivery,

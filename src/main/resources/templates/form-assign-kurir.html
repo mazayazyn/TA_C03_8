@@ -10,36 +10,36 @@
 </head>
 <body>
 
-<div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
-    <!-- MENU -->
-    <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
-</div>
-<div class="container">
-    <div class="d-flex justify-content-center">
-        <div class="col-md-6">
-            <br><br><br>
-            <div class="card">
-                <div class="card-body justify-content-center">
-                    <h3>Assign Delivery Kurir</h3>
-                    <form th:action="@{/delivery/assign-kurir/}+${idRequestUpdateItem}" th:object="${delivery}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin melakukan assign kurir?');">
-                        <label>Daftar Kurir</label>
-                        <select name="pegawai" th:field="*{pegawai}" class="form-control">
-                            <option selected value="">-- Pilih Kurir --</option>
-                            <option th:each="kurir : ${listKurir}"
-                                    th:value="${kurir.idPegawai}"
-                                    th:text="${kurir.nama}"></option>
-                        </select>
-                        <br>
-                        <button type="submit" class="btn btn-warning">Simpan</button>
-                        <a th:href="@{/request/daftar-request}" class="btn btn-link">Kembali</a>
-                    </form>
+    <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
+        <!-- MENU -->
+        <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6">
+                <br><br><br>
+                <div class="card">
+                    <div class="card-body justify-content-center">
+                        <h3>Assign Delivery Kurir</h3>
+                        <form th:action="@{/delivery/assign-kurir/}+${idRequestUpdateItem}" th:object="${delivery}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin melakukan assign kurir?');">
+                            <label>Daftar Kurir</label>
+                            <select name="pegawai" th:field="*{pegawai}" class="form-control">
+                                <option selected value="">-- Pilih Kurir --</option>
+                                <option th:each="kurir : ${listKurir}"
+                                        th:value="${kurir.idPegawai}"
+                                        th:text="${kurir.nama}"></option>
+                            </select>
+                            <br>
+                            <button type="submit" class="btn btn-warning">Simpan</button>
+                            <a th:href="@{/request/daftar-request}" class="btn btn-link">Kembali</a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- FOOTER -->
-    <footer th:replace="fragments/fragment :: footer"></footer>
+        <!-- FOOTER -->
+        <footer th:replace="fragments/fragment :: footer"></footer>
 
-</div>
+    </div>
 </body>
 </html>
