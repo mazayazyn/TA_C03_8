@@ -11,6 +11,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
   <body>
+  <!-- MENU -->
     <div
       class="container"
       sec:authorize="hasAnyAuthority('ADMIN','FACTORY_MANAGER')"
@@ -52,6 +53,7 @@
           </div>
         </div>
       </div>
+      <!-- FOOTER -->
       <footer th:replace="fragments/fragment :: footer"></footer>
 
     </div>

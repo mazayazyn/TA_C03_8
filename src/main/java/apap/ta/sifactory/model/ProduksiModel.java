@@ -21,7 +21,7 @@ public class ProduksiModel implements Serializable{
     @Column(name = "id_produksi")
     private Integer idProduksi;
 
-    //merujuk ke siitem
+    //Merujuk ke SI-Item
     @NotNull
     @Column(name = "id_item", nullable = false)
     private String idItem;
@@ -34,11 +34,9 @@ public class ProduksiModel implements Serializable{
     @Column(name = "tambahan_stok", nullable = false)
     private Integer tambahanStok;
 
-//    @NotNull
     @Column(name = "tanggal_produksi", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tanggalProduksi;
-
 
     //Relasi dengan Request Update Item
     @OneToOne(fetch = FetchType.LAZY)

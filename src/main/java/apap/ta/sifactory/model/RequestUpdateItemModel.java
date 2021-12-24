@@ -22,7 +22,7 @@ public class RequestUpdateItemModel implements Serializable{
     @Column(name = "id_request_update_item")
     private Integer idRequestUpdateItem;
 
-    //merujuk ke siitem
+    //Merujuk ke SI-Item
     @NotNull
     @Column(name = "id_item", nullable = false)
     private String idItem;

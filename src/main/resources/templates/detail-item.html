@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="container">
+    <!-- MENU -->
     <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
         <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
     </div>

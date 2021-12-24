@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container">
+    <!-- MENU -->
     <div sec:authorize="hasAnyAuthority('STAFF_OPERASIONAL')">
         <nav th:replace="fragments/fragment :: navbar-staff-operasional"></nav>
     </div>
@@ -90,6 +91,7 @@
             </div>
         </div>
     </div>
+    <!-- FOOTER -->
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 </body>

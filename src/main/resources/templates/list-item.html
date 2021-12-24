@@ -9,6 +9,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<!-- MENU -->
 <div class="container">
     <div sec:authorize="hasAnyAuthority('ADMIN')">
         <nav th:replace="fragments/fragment :: navbar-admin"></nav>
@@ -64,6 +65,7 @@
             </div>
         </div>
     </div>
+    <!-- FOOTER -->
     <footer th:replace="fragments/fragment :: footer"></footer>
 </div>
 </body>

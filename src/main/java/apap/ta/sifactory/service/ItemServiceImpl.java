@@ -18,7 +18,6 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private RequestUpdateItemDB requestUpdateItemDB;
 
-
     @Override
     public RequestUpdateItemModel createRequest(RequestUpdateItemModel req) {
         RequestUpdateItemModel ReqSave = requestUpdateItemDB.save(req);
@@ -38,9 +37,6 @@ public class ItemServiceImpl implements ItemService {
         }
         return listKategori;
     }
-
     
-
-
 }
 

@@ -23,7 +23,6 @@ public class ItemRestServiceImpl implements ItemRestService{
     private final WebClient webClient;
     private final WebClient siBusinessWeb;
 
-
     public ItemRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.siItemUrl).build();
         this.siBusinessWeb = webClientBuilder.baseUrl(Setting.siBusinessUrl).build();
