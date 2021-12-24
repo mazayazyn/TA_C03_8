@@ -67,7 +67,7 @@ public class ItemRestServiceImpl implements ItemRestService{
         return postItem;
     }
 
-    //Fitur 4 dan 6
+    //Fitur 6
     @Override
     public ItemDetail getItemByUUID(String uuid) {
         String uuid_dicari = "/" + uuid;
@@ -78,7 +78,7 @@ public class ItemRestServiceImpl implements ItemRestService{
         return getSiItem.getItem();
     }
 
-
+    //Fitur 4
     public String postProposeItem(ItemDetail proposeItem) {
         Integer kategori = JenisKategori.valueOf(proposeItem.getKategori()).ordinal()+1;
         Map<String, Object> data = new HashMap<>();
