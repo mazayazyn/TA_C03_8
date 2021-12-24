@@ -52,11 +52,10 @@ public class RequestUpdateItemController {
     ) {
         RequestUpdateItemModel requestUpdateItem = requestUpdateItemService.getRequestById(id);
         ItemDetail item = itemRestService.getItemByUUID(requestUpdateItem.getIdItem());
-        String namaItem = item.getNama();
         List<MesinModel> listMesin = mesinService.getAllMesinByKategoriItem(item.getKategori());
         model.addAttribute("requestUpdateItem", requestUpdateItem);
         model.addAttribute("idRequest", requestUpdateItem.getIdRequestUpdateItem());
-        model.addAttribute("namaItem", namaItem);
+        model.addAttribute("item", item);
         model.addAttribute("listMesin", listMesin);
         return "form-update-item-by-request";
     }
