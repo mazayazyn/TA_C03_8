@@ -34,11 +34,11 @@
                             </div>
                         </h1>
 
-                        <p>Yuk kelola pegawai, item, dan produksi yang dilakukan di SI-Factory. Kamu dapat membuat pengguna, melihat daftar pegawai, daftar item, detail item, dan daftar produksi.</p>
+                        <p>Yuk kelola pegawai dengan membuatkannya akun sehingga pegawai tersebut bisa melakukan pekerjaannya dan mendapatkan gaji.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a th:href="@{/pegawai/add-pegawai}" class="btn mr-lg-2 custom-btn">Buat Pengguna/Pegawai</a>
-                            <a th:href="@{/pegawai/daftar-pegawai}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Pegawai</a>
+                            <a th:href="@{/pegawai/add-pegawai}" class="btn mr-lg-2 custom-btn"><i class='uil uil-constructor'></i> Buat Pengguna/Pegawai</a>
+                            <a th:href="@{/pegawai/daftar-pegawai}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-users-alt'></i> Daftar Pegawai</a>
                         </div>
                     </div>
                 </div>
@@ -77,10 +77,10 @@
                             </div>
                         </h1>
 
-                        <p>Yuk ajukan item kepada SI-Business. Lalu, mereka akan memproses request kamu ke SI-Item. Semakin cepat kamu request, semakin cepat juga request kamu selesai dikerjakan.</p>
+                        <p>Yuk ajukan item kepada SI-Business. Lalu, mereka akan memproses request kamu dengan membuat itemnya di SI-Item</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a th:href="@{/item/propose-item}" class="btn mr-lg-2 custom-btn">Propose Item</a>
+                            <a th:href="@{/item/propose-item}" class="btn mr-lg-2 custom-btn"><i class='uil uil-entry'></i> Propose Item</a>
                             <a th:href="@{/item/daftar-item}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Item</a>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                         <p>Yuk kelola stok item milik SI-Item dan terima request update item dari SI-Retail untuk diproses.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a th:href="@{/request/daftar-request}" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Daftar Request Update Item</a>
+                            <a th:href="@{/request/daftar-request}" class="btn mr-lg-2 custom-btn"><i class='uil uil-clipboard-notes'></i> Daftar Request Update Item</a>
                             <a th:href="@{/item/daftar-item}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Item</a>
                         </div>
                     </div>
@@ -165,11 +165,11 @@
                             </div>
                         </h1>
 
-                        <p>Yuk lihat delivery yang telah dikirimkan atau sedang di-assign ke kamu dan lihat detail delivery dari SI-Retail.</p>
+                        <p>Yuk lihat delivery yang di-assign ke kamu dan kirimkan item kepada cabang-cabang di SI-Retail.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a th:href="@{/delivery/daftar-delivery}" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Daftar Delivery</a>
-                            <a th:href="@{/produksi/daftar-produksi}" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Produksi</a>
+                            <a href="/delivery/daftar-delivery" class="btn mr-lg-2 custom-btn"><i class='uil uil-truck'></i> Daftar Delivery</a>
+                            <a href="/produksi/daftar-produksi" class="btn custom-btn custom-btn-bg custom-btn-link"><i class='uil uil-file-alt'></i> Daftar Produksi</a>
                         </div>
                     </div>
                 </div>
@@ -209,11 +209,11 @@
                             </div>
                         </h1>
 
-                        <p>Yuk lihat request update item yang dikirim dari SI-Retail dan kelola delivery dengan assign kurir ke delivery dan melihat daftar delivery yang ada.</p>
+                        <p>Yuk lihat request update item yang dikirim dari SI-Retail dan kelola delivery dengan assign kurir untuk melakukan pengiriman.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a th:href="@{/delivery/daftar-delivery}" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Daftar Delivery</a>
-                            <a th:href="@{/request/daftar-request}" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Daftar Request Update Item</a>
+                            <a th:href="@{/delivery/daftar-delivery}" class="btn mr-lg-2 custom-btn"><i class='uil uil-truck'></i> Daftar Delivery</a>
+                            <a th:href="@{/request/daftar-request}" class="btn mr-lg-2 custom-btn"><i class='uil uil-clipboard-notes'></i> Daftar Request Update Item</a>
                         </div>
                     </div>
                 </div>
