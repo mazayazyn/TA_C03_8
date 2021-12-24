@@ -51,6 +51,7 @@ public class ItemController {
         return "form-propose-item";
     }
 
+    // Fitur 4
     @PostMapping("/propose-item")
     private String proposeItemPost(@ModelAttribute ItemDetail proposeItem, Model model) {
         String responsePropose = itemRestService.postProposeItem(proposeItem);
