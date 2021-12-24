@@ -73,7 +73,7 @@
                   <option
                     th:each="role : ${listRole}"
                     th:value="${role.idRole}"
-                    th:text="${role.namaRole}"
+                    th:text="${#strings.replace(role.namaRole, '_', ' ')}"
                   ></option>
                 </select>
                 <br />
